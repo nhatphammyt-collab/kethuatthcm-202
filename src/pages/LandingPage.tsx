@@ -47,25 +47,25 @@ export default function LandingPage() {
       title: 'Từ Bối Cảnh Lịch Sử Đến Nhiệm Vụ',
       content: 'Sau khi xâm lược Việt Nam, thực dân Pháp không chỉ dùng quân sự mà còn thi hành các chính sách văn hóa độc hại: ngu dân, đồng hóa, chia rẽ tinh thần dân tộc. Hồ Chí Minh nhận ra: nếu văn hóa không đứng lên, dân tộc sẽ suy yếu từ bên trong.',
       align: 'left',
-      image: '/ho-chi-minh-reading-book-studying-marxism-leninism.jpg'
+      image: '/hinhbac1.jpg'
     },
     {
       title: 'Giặc Nội Xâm Là Ai?',
       content: 'Giặc nội xâm là những thói xấu trong chính con người Việt Nam: tham ô - lãng phí, lười biếng - quan liêu, phù hoa - xa xỉ, và tâm lý nô lệ. Đây là kẻ thù vô hình nhưng cực kỳ nguy hiểm, phá hoại từ bên trong.',
       align: 'right',
-      image: '/590447766_25593528560266180_3952112723474039720_n.png'
+      image: '/sddefault.jpg'
     },
     {
       title: 'Vũ Khí: Phò Chính Trừ Tà & Đời Sống Mới',
       content: 'Trừ tà - chống lại cái xấu. Phò chính - xây dựng cái đẹp. Đời sống mới được xây dựng trên nền tảng: Cần - Kiệm - Liêm - Chính. Bác dạy: "Muốn diệt cái xấu phải xây cái tốt."',
       align: 'left',
-      image: '/vietnam-modernization-development-city-ho-chi-minh.jpg'
+      image: '/cankiemliemchinh.jpg'
     },
     {
       title: 'Kết Luận – Mỗi Sinh Viên Là Một Chiến Sĩ',
       content: 'Cuộc chiến chống giặc nội xâm diễn ra mỗi ngày, trong từng quyết định nhỏ, từng hành động, từng suy nghĩ. Chiến thắng giặc nội xâm chính là chiến thắng bản thân - chiến thắng khó nhất nhưng ý nghĩa nhất.',
       align: 'right',
-      image: '/vietnamese-students-studying-together-university-c.jpg'
+      image: '/sinhvien.jpg'
     }
   ];
 
