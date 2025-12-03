@@ -264,13 +264,18 @@
   }
 
   /* Ensure aspect-ratio containers maintain proper sizing */
-  [class*="aspect-"] {
+  [style*="aspectRatio"] {
     position: relative;
     width: 100%;
   }
 
-  [class*="aspect-"] img {
+  [style*="aspectRatio"] img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }
