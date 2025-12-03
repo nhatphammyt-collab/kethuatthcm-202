@@ -98,11 +98,11 @@ export default function LandingPage() {
                 <div className="text-white font-bold text-2xl">HỒ CHÍ MINH</div>
               </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-2xl">
-              SINH VIÊN TRÊN "MẶT TRẬN VĂN HÓA"
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+              SINH VIÊN TRÊN <span className="whitespace-nowrap">"MẶT TRẬN VĂN HÓA"</span>
             </h1>
-            <h2 className="text-3xl md:text-5xl font-semibold text-[#FFD700] mb-8 drop-shadow-xl">
-              CUỘC CHIẾN CHỐNG "GIẶC NỘI XÂM"
+            <h2 className="text-2xl md:text-4xl font-semibold text-[#FFD700] mb-8 drop-shadow-xl">
+              CUỘC CHIẾN CHỐNG <span className="whitespace-nowrap">"GIẶC NỘI XÂM"</span>
             </h2>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 text-sm md:text-base">
               <p className="text-[#FFD700] font-bold mb-2">NHÓM 10</p>
