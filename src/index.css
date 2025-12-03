@@ -264,11 +264,14 @@
   }
 
   /* Ensure aspect-ratio containers maintain proper sizing */
+  /* Support both Tailwind class-based and inline style-based aspect-ratio */
+  [class*="aspect-"],
   [style*="aspectRatio"] {
     position: relative;
     width: 100%;
   }
 
+  /* For containers with inline aspectRatio style (LandingPage) - use absolute positioning */
   [style*="aspectRatio"] img {
     position: absolute;
     top: 0;
@@ -277,5 +280,11 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  /* For containers with Tailwind aspect- class (MemoryGalleryPage) - keep existing layout */
+  [class*="aspect-"] img {
+    width: 100%;
+    height: 100%;
   }
 }
