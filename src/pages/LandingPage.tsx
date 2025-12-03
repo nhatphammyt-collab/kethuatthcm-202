@@ -149,7 +149,8 @@ export default function LandingPage() {
                     <img
                       src={section.image}
                       alt={section.title}
-                      className="w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-64 object-cover object-center hover:scale-105 transition-transform duration-500"
+                      style={{ minHeight: '256px' }}
                     />
                   </div>
                 </div>

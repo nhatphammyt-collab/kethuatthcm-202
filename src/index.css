@@ -251,4 +251,16 @@
     animation: float 12s ease-in-out infinite;
     animation-delay: -4s;
   }
+
+  /* Ensure images display correctly in production builds */
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  img[class*="object-cover"] {
+    object-fit: cover;
+    object-position: center;
+  }
 }
