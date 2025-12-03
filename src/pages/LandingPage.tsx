@@ -146,15 +146,15 @@ export default function LandingPage() {
                     {section.content}
                   </p>
                   <div 
-                    className="rounded-xl overflow-hidden shadow-2xl bg-gray-900/20 relative"
+                    className="rounded-xl overflow-hidden shadow-2xl bg-gray-900/20 relative flex items-center justify-center"
                     style={{ aspectRatio: '4/3' }}
                   >
                     <img
                       src={section.image}
                       alt={section.title}
-                      className="absolute inset-0 w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                      className="absolute inset-0 w-full h-full object-contain object-center hover:scale-105 transition-transform duration-500"
                       style={{ 
-                        objectFit: 'cover',
+                        objectFit: 'contain',
                         objectPosition: 'center'
                       }}
                       loading="lazy"
