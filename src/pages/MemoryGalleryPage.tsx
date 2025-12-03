@@ -56,8 +56,19 @@ const MemoryGalleryPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#FFF8DC] via-[#FAEBD7] to-[#FFE4B5] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+    <div className="min-h-screen relative overflow-hidden">
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#FFF8DC] via-[#FAEBD7] to-[#FFE4B5]"></div>
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{
+            backgroundImage: `url('/pexels-jmeyer1220-667870.jpg')`,
+            backgroundBlendMode: 'soft-light'
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FFD700]/10 via-transparent to-[#FFA500]/10"></div>
+      </div>
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none z-[1]">
         <div className="absolute top-10 left-10 text-9xl">🥁</div>
         <div className="absolute top-40 right-20 text-8xl">🪷</div>
         <div className="absolute bottom-40 left-32 text-7xl">⭐</div>
