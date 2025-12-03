@@ -8,11 +8,18 @@ const MemoryGalleryPage = () => {
   const [isAutoPlay, setIsAutoPlay] = useState(false);
   const [showMascot, setShowMascot] = useState(false);
 
-  const memoryImages = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    src: `/memories/memory-${i + 1}.jpg`,
-    caption: `Kỷ niệm ${i + 1} - Hành trình học tập và trưởng thành`
-  }));
+  const memoryImages = [
+    {
+      id: 1,
+      src: '/image copy copy copy copy.png',
+      caption: 'Kỷ niệm 1 - Hành trình học tập và trưởng thành'
+    },
+    ...Array.from({ length: 11 }, (_, i) => ({
+      id: i + 2,
+      src: `/memories/memory-${i + 2}.jpg`,
+      caption: `Kỷ niệm ${i + 2} - Hành trình học tập và trưởng thành`
+    }))
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
