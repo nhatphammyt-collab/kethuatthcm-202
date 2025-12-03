@@ -53,7 +53,7 @@ export default function LandingPage() {
       title: 'Giặc Nội Xâm Là Ai?',
       content: 'Giặc nội xâm là những thói xấu trong chính con người Việt Nam: tham ô - lãng phí, lười biếng - quan liêu, phù hoa - xa xỉ, và tâm lý nô lệ. Đây là kẻ thù vô hình nhưng cực kỳ nguy hiểm, phá hoại từ bên trong.',
       align: 'right',
-      image: '/vietnamese-people-unity-celebration-national-flag.jpg'
+      image: '/590447766_25593528560266180_3952112723474039720_n.png'
     },
     {
       title: 'Vũ Khí: Phò Chính Trừ Tà & Đời Sống Mới',
