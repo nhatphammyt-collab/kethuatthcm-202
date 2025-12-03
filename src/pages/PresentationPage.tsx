@@ -671,17 +671,33 @@ export default function PresentationPage() {
                   )}
                 </div>
               </div>
-              <div className="h-1 bg-gradient-to-r from-[#FFD700] to-[#b30000] rounded-full mb-8"></div>
-              <h2 className="text-3xl font-bold text-[#b30000] mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.2)'}}>
-                PHẦN 4: VẬN DỤNG THỰC TIỄN – HÀNH ĐỘNG CỦA SINH VIÊN
-              </h2>
+              <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-[#1E90FF]/85 via-[#4169E1]/85 to-[#0000CD]/85 p-8 shadow-2xl backdrop-blur-md hover:shadow-[0_20px_60px_rgba(30,144,255,0.4)] transition-all duration-300">
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-2 left-4 text-6xl">💪</div>
+                  <div className="absolute bottom-2 right-4 text-6xl">⚡</div>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl">🎯</div>
+                </div>
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className="text-6xl">🚀</div>
+                  <div>
+                    <div className="text-base font-bold text-[#FFD700] mb-2 tracking-wider" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>PHẦN 4</div>
+                    <h2 className="text-3xl font-bold text-white" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(255,215,0,0.5)'}}>
+                      VẬN DỤNG THỰC TIỄN – HÀNH ĐỘNG CỦA SINH VIÊN
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
               <p className="text-black font-semibold leading-relaxed mb-6">
                 Để không chỉ hiểu mà còn thực hành, sinh viên cần hành động rõ ràng:
               </p>
 
               <div className="space-y-6">
                 <div className="bg-gradient-to-r from-blue-50/80 via-blue-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
-                  <h3 className="text-xl font-bold text-[#b30000] mb-3">1. Rèn luyện Professionalism – thái độ chuyên nghiệp</h3>
+                  <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
+                    <span className="text-2xl">💼</span>
+                    <span>1. Rèn luyện Professionalism – thái độ chuyên nghiệp</span>
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                     <li>đúng giờ</li>
                     <li>tôn trọng lời nói, lời hứa</li>
@@ -694,7 +710,10 @@ export default function PresentationPage() {
                 </div>
 
                 <div className="bg-gradient-to-r from-green-50/80 via-green-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-green-500">
-                  <h3 className="text-xl font-bold text-[#b30000] mb-3">2. Bản lĩnh trên không gian mạng</h3>
+                  <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
+                    <span className="text-2xl">🌐</span>
+                    <span>2. Bản lĩnh trên không gian mạng</span>
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                     <li>tỉnh táo trước tin giả</li>
                     <li>không theo trend độc hại</li>
@@ -707,7 +726,10 @@ export default function PresentationPage() {
                 </div>
 
                 <div className="bg-gradient-to-r from-yellow-50/80 via-yellow-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
-                  <h3 className="text-xl font-bold text-[#b30000] mb-3">3. Giữ bản sắc văn hóa Việt trong hội nhập</h3>
+                  <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
+                    <span className="text-2xl">🇻🇳</span>
+                    <span>3. Giữ bản sắc văn hóa Việt trong hội nhập</span>
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                     <li>học ngoại ngữ nhưng trân trọng tiếng Việt</li>
                     <li>học công nghệ nhưng hiểu lịch sử</li>
@@ -763,10 +785,23 @@ export default function PresentationPage() {
                   )}
                 </div>
               </div>
-              <div className="h-1 bg-gradient-to-r from-[#FFD700] to-[#b30000] rounded-full mb-8"></div>
-              <h2 className="text-3xl font-bold text-[#b30000] mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.2)'}}>
-                PHẦN 5: KẾT LUẬN – MỖI SINH VIÊN LÀ MỘT CHIẾN SĨ
-              </h2>
+              <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-[#FFD700]/85 via-[#FF8C00]/85 to-[#FF4500]/85 p-8 shadow-2xl backdrop-blur-md hover:shadow-[0_20px_60px_rgba(255,215,0,0.4)] transition-all duration-300">
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-2 left-4 text-6xl">🏆</div>
+                  <div className="absolute bottom-2 right-4 text-6xl">🎖️</div>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl">⭐</div>
+                </div>
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className="text-6xl">🛡️</div>
+                  <div>
+                    <div className="text-base font-bold text-[#b30000] mb-2 tracking-wider" style={{textShadow: '2px 2px 4px rgba(255,255,255,0.8)'}}>PHẦN 5</div>
+                    <h2 className="text-3xl font-bold text-white" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(179,0,0,0.5)'}}>
+                      KẾT LUẬN – MỖI SINH VIÊN LÀ MỘT CHIẾN SĨ
+                    </h2>
+                  </div>
+                </div>
+              </div>
+
               <div className="bg-[#FFD700]/10 border-l-4 border-[#FFD700] p-6 rounded-r-lg mb-6">
                 <p className="text-black font-semibold text-lg italic">
                   Hồ Chí Minh khẳng định: <strong>"Văn hoá soi đường cho quốc dân đi."</strong>
@@ -795,13 +830,26 @@ export default function PresentationPage() {
             </section>
 
             <section id="section6" className="fade-in-section mb-16">
-              <div className="h-1 bg-gradient-to-r from-[#FFD700] to-[#b30000] rounded-full mb-8"></div>
-              <h2 className="text-3xl font-bold text-[#b30000] mb-6" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.2)'}}>
-                PHẦN 6: TÀI LIỆU THAM KHẢO & TRÍCH DẪN
-              </h2>
+              <div className="relative mb-8 overflow-hidden rounded-2xl bg-gradient-to-r from-[#708090]/85 via-[#778899]/85 to-[#696969]/85 p-8 shadow-2xl backdrop-blur-md hover:shadow-[0_20px_60px_rgba(112,128,144,0.4)] transition-all duration-300">
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-2 left-4 text-6xl">📚</div>
+                  <div className="absolute bottom-2 right-4 text-6xl">📖</div>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl">📝</div>
+                </div>
+                <div className="relative z-10 flex items-center gap-4">
+                  <div className="text-6xl">📑</div>
+                  <div>
+                    <div className="text-base font-bold text-[#FFD700] mb-2 tracking-wider" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>PHẦN 6</div>
+                    <h2 className="text-3xl font-bold text-white" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(255,215,0,0.5)'}}>
+                      TÀI LIỆU THAM KHẢO & TRÍCH DẪN
+                    </h2>
+                  </div>
+                </div>
+              </div>
 
-              <h3 className="text-2xl font-black text-[#8b0000] mb-4">
-                Tài liệu tham khảo
+              <h3 className="text-2xl font-black text-[#8b0000] mb-4 flex items-center gap-3">
+                <BookOpen size={28} />
+                <span>Tài liệu tham khảo</span>
               </h3>
               <p className="text-gray-900 font-semibold mb-6 italic text-base">
                 Nguồn tư liệu và trích dẫn sử dụng trong bài trình chiếu
@@ -816,8 +864,9 @@ export default function PresentationPage() {
                 </ol>
               </div>
 
-              <h3 className="text-2xl font-semibold text-[#8b0000] mb-4">
-                Kết luận
+              <h3 className="text-2xl font-semibold text-[#8b0000] mb-4 flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Kết luận</span>
               </h3>
               <div className="bg-green-50 p-6 rounded-xl mb-8 border-l-4 border-green-500">
                 <p className="text-black font-semibold leading-relaxed mb-4">
@@ -836,8 +885,9 @@ export default function PresentationPage() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-semibold text-[#8b0000] mb-4">
-                Trích dẫn
+              <h3 className="text-2xl font-semibold text-[#8b0000] mb-4 flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+                <span>Trích dẫn</span>
               </h3>
               <div className="space-y-4">
                 <div className="bg-white border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-md">
