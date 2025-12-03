@@ -112,12 +112,20 @@ export default function LandingPage() {
               <p className="text-gray-200 text-sm mb-1"><strong>Môn:</strong> HCM202 - Tư tưởng Hồ Chí Minh</p>
               <p className="text-gray-200 text-sm"><strong>Chương 6:</strong> Tư Tưởng Hồ Chí Minh Về Văn Hóa, Đạo Đức, Con Người</p>
             </div>
-            <button
-              onClick={() => navigate('/presentation')}
-              className="cta-button"
-            >
-              XEM NỘI DUNG TRÌNH CHIẾU
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => navigate('/presentation')}
+                className="cta-button"
+              >
+                XEM NỘI DUNG TRÌNH CHIẾU
+              </button>
+              <button
+                onClick={() => navigate('/memory-gallery')}
+                className="cta-button"
+              >
+                THƯ VIỆN KỶ NIỆM
+              </button>
+            </div>
           </div>
         </header>
 
@@ -163,12 +171,20 @@ export default function LandingPage() {
         </main>
       </div>
 
-      <button
-        onClick={() => navigate('/presentation')}
-        className="fixed bottom-8 right-8 cta-button-floating z-50"
-      >
-        XEM NỘI DUNG TRÌNH CHIẾU
-      </button>
+      <div className="fixed bottom-8 right-8 flex flex-col gap-3 z-50">
+        <button
+          onClick={() => navigate('/presentation')}
+          className="cta-button-floating"
+        >
+          XEM NỘI DUNG TRÌNH CHIẾU
+        </button>
+        <button
+          onClick={() => navigate('/memory-gallery')}
+          className="cta-button-floating"
+        >
+          THƯ VIỆN KỶ NIỆM
+        </button>
+      </div>
 
       {showChat && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6" onClick={() => setShowChat(false)}>

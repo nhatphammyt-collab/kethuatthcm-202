@@ -139,13 +139,21 @@ export default function PresentationPage() {
       </div>
       <nav className="fixed top-0 left-0 right-0 bg-white/70 backdrop-blur-md shadow-xl z-50 border-b-4 border-[#FFD700]">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 bg-[#FFD700] text-[#b30000] px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
-          >
-            <ArrowLeft size={20} />
-            Trang Chủ
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => navigate('/')}
+              className="flex items-center gap-2 bg-[#FFD700] text-[#b30000] px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
+            >
+              <ArrowLeft size={20} />
+              Trang Chủ
+            </button>
+            <button
+              onClick={() => navigate('/memory-gallery')}
+              className="flex items-center gap-2 bg-[#FFD700] text-[#b30000] px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
+            >
+              THƯ VIỆN KỶ NIỆM
+            </button>
+          </div>
           <div className="flex items-center gap-3">
             <BookOpen className="text-[#b30000]" size={28} />
             <span className="text-[#b30000] font-bold text-xl hidden md:block">Nội Dung Trình Chiếu</span>
@@ -923,7 +931,13 @@ export default function PresentationPage() {
         </div>
       </div>
 
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed bottom-8 right-8 z-50 flex flex-col gap-3">
+        <button
+          onClick={() => navigate('/memory-gallery')}
+          className="cta-button-floating"
+        >
+          THƯ VIỆN KỶ NIỆM
+        </button>
         <button
           onClick={() => navigate('/minigame')}
           className="cta-button-floating"
