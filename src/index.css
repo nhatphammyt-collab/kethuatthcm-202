@@ -256,11 +256,21 @@
   img {
     display: block;
     max-width: 100%;
-    height: auto;
   }
 
   img[class*="object-cover"] {
-    object-fit: cover;
-    object-position: center;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  /* Ensure aspect-ratio containers maintain proper sizing */
+  [class*="aspect-"] {
+    position: relative;
+    width: 100%;
+  }
+
+  [class*="aspect-"] img {
+    width: 100%;
+    height: 100%;
   }
 }
