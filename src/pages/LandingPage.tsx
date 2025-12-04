@@ -390,7 +390,7 @@ export default function LandingPage() {
                   <p><strong>Nhóm:</strong> Nhóm 10</p>
                   <p><strong>Lớp:</strong> 3W_HCM202_04</p>
                   <p><strong>Môn học:</strong> HCM202 - Tư tưởng Hồ Chí Minh</p>
-                  <p><strong>Chủ đề:</strong> Chương 6 - Văn Hóa, Đạo Đức, Con Người</p>
+                  <p><strong>Chủ đề:</strong> Chương 6 - Tư Tưởng Hồ Chí Minh Về Văn Hóa, Đạo Đức, Con Người</p>
                 </div>
               </div>
               <div>
