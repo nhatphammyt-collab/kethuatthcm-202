@@ -105,10 +105,10 @@ export default function PresentationPage() {
             backgroundImage: 'url(/hcm-1-2560x1440.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            opacity: 0.5
+            opacity: 0.3
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/15 to-amber-50/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/35 to-amber-50/40"></div>
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
           <div className="absolute top-20 left-10 text-6xl animate-float">🥁</div>
           <div className="absolute top-40 right-20 text-5xl animate-float-delay-1">🌸</div>
