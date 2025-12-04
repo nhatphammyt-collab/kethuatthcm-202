@@ -102,7 +102,7 @@ export default function PresentationPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/4.jpg)',
+            backgroundImage: 'url(/long-live-uncle-ho.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.5
