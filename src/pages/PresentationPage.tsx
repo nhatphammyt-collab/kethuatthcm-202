@@ -221,7 +221,7 @@ export default function PresentationPage() {
                     </div>
                   </button>
                   {activeChatBot === 1 && (
-                    <div className="mt-4 w-64 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#FFD700] animate-fade-in">
+                    <div className="absolute left-full ml-4 top-0 w-72 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#FFD700] animate-fade-in z-[100]">
                       <div className="flex justify-between items-center mb-3 pb-3 border-b-2 border-[#FFD700]">
                         <h4 className="font-bold text-[#b30000] flex items-center gap-2">
                           <BookOpen size={16} />
@@ -358,7 +358,7 @@ export default function PresentationPage() {
                     </div>
                   </button>
                   {activeChatBot === 2 && (
-                    <div className="mt-4 w-64 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#b30000] animate-fade-in">
+                    <div className="absolute left-full ml-4 top-0 w-72 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#b30000] animate-fade-in z-[100]">
                       <div className="flex justify-between items-center mb-3 pb-3 border-b-2 border-[#b30000]">
                         <h4 className="font-bold text-[#b30000] flex items-center gap-2">
                           <Shield size={16} />
@@ -530,7 +530,7 @@ export default function PresentationPage() {
                     </div>
                   </button>
                   {activeChatBot === 3 && (
-                    <div className="mt-4 w-64 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#228B22] animate-fade-in">
+                    <div className="absolute left-full ml-4 top-0 w-72 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#228B22] animate-fade-in z-[100]">
                       <div className="flex justify-between items-center mb-3 pb-3 border-b-2 border-[#228B22]">
                         <h4 className="font-bold text-[#006400] flex items-center gap-2">
                           ⚖️ Trợ Lý Đạo Đức
@@ -659,7 +659,7 @@ export default function PresentationPage() {
                     </div>
                   </button>
                   {activeChatBot === 4 && (
-                    <div className="mt-4 w-64 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#1E90FF] animate-fade-in">
+                    <div className="absolute left-full ml-4 top-0 w-72 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#1E90FF] animate-fade-in z-[100]">
                       <div className="flex justify-between items-center mb-3 pb-3 border-b-2 border-[#1E90FF]">
                         <h4 className="font-bold text-[#0000CD] flex items-center gap-2">
                           🎓 Trợ Lý Sinh Viên
@@ -773,7 +773,7 @@ export default function PresentationPage() {
                     </div>
                   </button>
                   {activeChatBot === 5 && (
-                    <div className="mt-4 w-64 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#FFD700] animate-fade-in">
+                    <div className="absolute left-full ml-4 top-0 w-72 bg-white rounded-2xl shadow-2xl p-4 border-4 border-[#FFD700] animate-fade-in z-[100]">
                       <div className="flex justify-between items-center mb-3 pb-3 border-b-2 border-[#FFD700]">
                         <h4 className="font-bold text-[#b30000] flex items-center gap-2">
                           🏆 Trợ Lý Chiến Thắng
