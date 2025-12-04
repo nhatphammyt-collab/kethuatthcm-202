@@ -207,7 +207,7 @@ export default function PresentationPage() {
                     onClick={() => setActiveChatBot(activeChatBot === 1 ? null : 1)}
                     className="cultural-bot-button group relative"
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF8C00] rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF8C00] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">📖</div>
@@ -216,7 +216,7 @@ export default function PresentationPage() {
                       </div>
                       <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-[#8B4513]">VĂN HÓA</div>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#b30000] rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#b30000] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-white" />
                     </div>
                   </button>
@@ -344,7 +344,7 @@ export default function PresentationPage() {
                     onClick={() => setActiveChatBot(activeChatBot === 2 ? null : 2)}
                     className="cultural-bot-button group relative"
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#DC143C] via-[#b30000] to-[#8B0000] rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#DC143C] via-[#b30000] to-[#8B0000] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-white rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">⚔️</div>
@@ -353,7 +353,7 @@ export default function PresentationPage() {
                       </div>
                       <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white">CHIẾN SĨ</div>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-[#b30000]" />
                     </div>
                   </button>
@@ -516,7 +516,7 @@ export default function PresentationPage() {
                     onClick={() => setActiveChatBot(activeChatBot === 3 ? null : 3)}
                     className="cultural-bot-button group relative"
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#32CD32] via-[#228B22] to-[#006400] rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#32CD32] via-[#228B22] to-[#006400] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">✨</div>
@@ -525,7 +525,7 @@ export default function PresentationPage() {
                       </div>
                       <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white">CHÍNH TRỪ TÀ</div>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-[#006400]" />
                     </div>
                   </button>
@@ -645,7 +645,7 @@ export default function PresentationPage() {
                     onClick={() => setActiveChatBot(activeChatBot === 4 ? null : 4)}
                     className="cultural-bot-button group relative"
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#4169E1] via-[#1E90FF] to-[#0000CD] rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#4169E1] via-[#1E90FF] to-[#0000CD] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">🎓</div>
@@ -654,7 +654,7 @@ export default function PresentationPage() {
                       </div>
                       <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white">SINH VIÊN</div>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-[#0000CD]" />
                     </div>
                   </button>
@@ -759,7 +759,7 @@ export default function PresentationPage() {
                     onClick={() => setActiveChatBot(activeChatBot === 5 ? null : 5)}
                     className="cultural-bot-button group relative"
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF6347] rounded-2xl shadow-2xl hover:shadow-3xl transition-all hover:scale-105 relative overflow-hidden border-4 border-[#b30000]">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF6347] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden border-4 border-[#b30000]">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">🏆</div>
@@ -768,7 +768,7 @@ export default function PresentationPage() {
                       </div>
                       <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white bg-[#b30000] py-1 rounded">CHIẾN THẮNG</div>
                     </div>
-                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#b30000] rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                    <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#b30000] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-white" />
                     </div>
                   </button>
