@@ -763,8 +763,7 @@ export default function PresentationPage() {
                       <div className="absolute top-2 left-2 right-2 text-center text-xs font-bold text-white bg-[#b30000] py-1 rounded">CHIẾN THẮNG</div>
                       <div className="absolute top-[2rem] left-1/2 -translate-x-1/2 w-12 h-12 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-[2.75rem] left-1/2 -translate-x-1/2 w-10 h-2 bg-[#b30000] rounded-full"></div>
-                      <div className="absolute top-[5.5rem] left-1/2 -translate-x-1/2 text-2xl">🏆</div>
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-8 bg-[#b30000] rounded-lg flex items-center justify-center text-sm">
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-24 h-14 bg-[#b30000] rounded-lg flex items-center justify-center text-3xl">
                         💪
                       </div>
                     </div>
