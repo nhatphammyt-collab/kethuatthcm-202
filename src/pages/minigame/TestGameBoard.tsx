@@ -15,7 +15,7 @@ import { useToast } from '../../components/minigame/ErrorToast';
 import { isRewardTile, getRewardTypeByTile, getRewardImagePath } from '../../utils/gameHelpers';
 import type { Player, Room, EventType, ActiveEvent } from '../../types/game';
 import { ALL_EVENT_TYPES } from '../../types/game';
-import { Settings, MousePointer2, X, Copy, Check, ListChecks, RefreshCw, BookOpen, Info, Zap, Trophy, Award } from 'lucide-react';
+import { Settings, MousePointer2, X, Copy, Check, ListChecks, RefreshCw, BookOpen, Info, Zap, Trophy, Award, Gift } from 'lucide-react';
 
 // Player colors - đồng bộ với GameBoard.tsx
 const PLAYER_COLORS = [
@@ -782,6 +782,28 @@ ${tilePositions.map((pos, i) => {
       });
     
     const top3 = leaderboardEntries.slice(0, 3);
+    const rewardConfig: Array<{ key: 'mysteryGiftBox' | 'pepsi' | 'cheetos' | 'candies'; label: string; accent: string }> = [
+      { key: 'mysteryGiftBox', label: 'Hộp quà bí ẩn', accent: 'from-purple-500/30 to-purple-600/30' },
+      { key: 'pepsi', label: 'Pepsi', accent: 'from-blue-500/30 to-blue-600/30' },
+      { key: 'cheetos', label: 'Bánh snack', accent: 'from-orange-500/30 to-orange-600/30' },
+      { key: 'candies', label: 'Kẹo', accent: 'from-pink-500/30 to-pink-600/30' },
+    ];
+
+    const rewardSummary = rewardConfig
+      .map(({ key, label, accent }) => {
+        const reward = mockRoomForEnd.rewards?.[key];
+        if (!reward) return null;
+        const claimedNames = (reward.claimedBy || []).map((pid) => mockRoomForEnd.players?.[pid]?.name || pid);
+        return {
+          key,
+          label,
+          accent,
+          total: reward.total,
+          claimed: reward.claimed,
+          names: claimedNames,
+        };
+      })
+      .filter((item): item is NonNullable<typeof item> => !!item);
     
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 relative overflow-hidden">
@@ -922,6 +944,53 @@ ${tilePositions.map((pos, i) => {
                     );
                   })}
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Reward Summary */}
+          {rewardSummary.length > 0 && (
+            <div className="max-w-4xl mx-auto mb-12">
+              <h2 className="text-3xl font-bold text-white text-center mb-6 drop-shadow-lg">
+                THỐNG KÊ PHẦN THƯỞNG (TEST VIEW)
+              </h2>
+              <div className="grid gap-6 md:grid-cols-2">
+                {rewardSummary.map((reward) => (
+                  <div
+                    key={reward.key}
+                    className={`bg-gradient-to-br ${reward.accent} rounded-2xl p-6 border border-white/20 backdrop-blur`}
+                  >
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        <p className="text-white/80 text-sm uppercase tracking-wide">Loại quà</p>
+                        <h3 className="text-white text-2xl font-bold">{reward.label}</h3>
+                      </div>
+                      <div className="bg-white/20 rounded-full p-3 text-white">
+                        <Gift size={24} />
+                      </div>
+                    </div>
+                    <div className="text-white mb-4">
+                      <p className="text-lg font-semibold">
+                        Đã trao: <span className="text-[#FFD700]">{reward.claimed}</span> / {reward.total}
+                      </p>
+                    </div>
+                    <div className="bg-black/20 rounded-xl p-4">
+                      <p className="text-white/90 font-semibold mb-2">Người nhận:</p>
+                      {reward.names.length > 0 ? (
+                        <ul className="text-white/90 text-sm space-y-1 max-h-32 overflow-y-auto pr-1">
+                          {reward.names.map((name, idx) => (
+                            <li key={`${reward.key}-${idx}`} className="flex items-center gap-2">
+                              <span className="w-2 h-2 bg-[#FFD700] rounded-full"></span>
+                              <span>{name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-white/60 text-sm">Chưa có người nhận</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           )}
