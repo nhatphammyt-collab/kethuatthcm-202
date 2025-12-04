@@ -102,7 +102,7 @@ export default function PresentationPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/cover-kl01_1717365181.gif)',
+            backgroundImage: 'url(/sss21-jpg-3fmod-3dajperes-26amp-3bcvid-3d.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.85
