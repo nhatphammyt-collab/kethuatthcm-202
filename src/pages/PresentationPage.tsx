@@ -267,7 +267,7 @@ export default function PresentationPage() {
                 />
               </div>
               <p className="text-black leading-relaxed mb-4 font-semibold text-lg">
-                <strong>Kính thưa thầy/cô và các bạn,</strong>
+                <strong></strong>
               </p>
               <p className="text-gray-900 leading-relaxed mb-4 font-medium text-base">
                 Để hiểu rõ vì sao Chủ tịch Hồ Chí Minh khẳng định văn hóa là một "mặt trận" và người làm văn hóa là "chiến sĩ", chúng ta cần đặt nó trong bối cảnh lịch sử đầy biến động cuối thế kỷ XIX – đầu thế kỷ XX.
