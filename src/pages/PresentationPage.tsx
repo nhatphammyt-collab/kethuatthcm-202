@@ -201,13 +201,13 @@ export default function PresentationPage() {
 
           <article className="prose prose-lg max-w-none">
             <section id="section1" className="fade-in-section mb-16 relative">
-              <div className="absolute top-0 hidden xl:block" style={{right: '-200px'}}>
+              <div className="absolute top-0 hidden xl:block" style={{right: '-180px'}}>
                 <div className="sticky top-24">
                   <button
                     onClick={() => setActiveChatBot(activeChatBot === 1 ? null : 1)}
-                    className="cultural-bot-button group relative"
+                    className={`cultural-bot-button group relative transition-transform duration-300 ${activeChatBot === 1 ? 'translate-y-8' : ''}`}
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF8C00] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF8C00] rounded-2xl shadow-2xl hover:shadow-3xl relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">📖</div>
@@ -338,13 +338,13 @@ export default function PresentationPage() {
             </section>
 
             <section id="section2" className="fade-in-section mb-16 relative">
-              <div className="absolute top-0 hidden xl:block" style={{right: '-200px'}}>
+              <div className="absolute top-0 hidden xl:block" style={{right: '-180px'}}>
                 <div className="sticky top-24">
                   <button
                     onClick={() => setActiveChatBot(activeChatBot === 2 ? null : 2)}
-                    className="cultural-bot-button group relative"
+                    className={`cultural-bot-button group relative transition-transform duration-300 ${activeChatBot === 2 ? 'translate-y-8' : ''}`}
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#DC143C] via-[#b30000] to-[#8B0000] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#DC143C] via-[#b30000] to-[#8B0000] rounded-2xl shadow-2xl hover:shadow-3xl relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-white rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">⚔️</div>
@@ -510,13 +510,13 @@ export default function PresentationPage() {
             </section>
 
             <section id="section3" className="fade-in-section mb-16 relative">
-              <div className="absolute top-0 hidden xl:block" style={{right: '-200px'}}>
+              <div className="absolute top-0 hidden xl:block" style={{right: '-180px'}}>
                 <div className="sticky top-24">
                   <button
                     onClick={() => setActiveChatBot(activeChatBot === 3 ? null : 3)}
-                    className="cultural-bot-button group relative"
+                    className={`cultural-bot-button group relative transition-transform duration-300 ${activeChatBot === 3 ? 'translate-y-8' : ''}`}
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#32CD32] via-[#228B22] to-[#006400] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#32CD32] via-[#228B22] to-[#006400] rounded-2xl shadow-2xl hover:shadow-3xl relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">✨</div>
@@ -639,13 +639,13 @@ export default function PresentationPage() {
             </section>
 
             <section id="section4" className="fade-in-section mb-16 relative">
-              <div className="absolute top-0 hidden xl:block" style={{right: '-200px'}}>
+              <div className="absolute top-0 hidden xl:block" style={{right: '-180px'}}>
                 <div className="sticky top-24">
                   <button
                     onClick={() => setActiveChatBot(activeChatBot === 4 ? null : 4)}
-                    className="cultural-bot-button group relative"
+                    className={`cultural-bot-button group relative transition-transform duration-300 ${activeChatBot === 4 ? 'translate-y-8' : ''}`}
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#4169E1] via-[#1E90FF] to-[#0000CD] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#4169E1] via-[#1E90FF] to-[#0000CD] rounded-2xl shadow-2xl hover:shadow-3xl relative overflow-hidden">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">🎓</div>
@@ -753,13 +753,13 @@ export default function PresentationPage() {
             </section>
 
             <section id="section5" className="fade-in-section mb-16 relative">
-              <div className="absolute top-0 hidden xl:block" style={{right: '-200px'}}>
+              <div className="absolute top-0 hidden xl:block" style={{right: '-180px'}}>
                 <div className="sticky top-24">
                   <button
                     onClick={() => setActiveChatBot(activeChatBot === 5 ? null : 5)}
-                    className="cultural-bot-button group relative"
+                    className={`cultural-bot-button group relative transition-transform duration-300 ${activeChatBot === 5 ? 'translate-y-8' : ''}`}
                   >
-                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF6347] rounded-2xl shadow-2xl hover:shadow-3xl transition-all relative overflow-hidden border-4 border-[#b30000]">
+                    <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF6347] rounded-2xl shadow-2xl hover:shadow-3xl relative overflow-hidden border-4 border-[#b30000]">
                       <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
                       <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
                       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">🏆</div>
