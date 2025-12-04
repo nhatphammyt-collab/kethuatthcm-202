@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 
 export default function LandingPage() {
   const navigate = useNavigate();
-  const [showChat, setShowChat] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
   const [scrolled, setScrolled] = useState(false);
 
@@ -120,12 +119,6 @@ export default function LandingPage() {
                 Trình Chiếu
               </button>
               <button
-                onClick={() => navigate('/chat')}
-                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
-              >
-                Trợ lý AI
-              </button>
-              <button
                 onClick={() => navigate('/memory-gallery')}
                 className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
               >
@@ -176,12 +169,6 @@ export default function LandingPage() {
                 XEM NỘI DUNG TRÌNH CHIẾU
               </button>
               <button
-                onClick={() => navigate('/chat')}
-                className="cta-button bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900"
-              >
-                TRỢ LÝ AI
-              </button>
-              <button
                 onClick={() => navigate('/memory-gallery')}
                 className="cta-button"
               >
@@ -228,8 +215,7 @@ export default function LandingPage() {
                 <div className="relative">
                   <div className={`teaching-assistant ${activeSection === index ? 'bounce' : ''}`}>
                     <div
-                      className="w-48 h-48 bg-[#FFD700] rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-2xl"
-                      onClick={() => setShowChat(true)}
+                      className="w-48 h-48 bg-[#FFD700] rounded-full flex items-center justify-center shadow-2xl"
                     >
                       <GraduationCap size={96} className="text-[#b30000]" />
                     </div>
@@ -455,37 +441,6 @@ export default function LandingPage() {
           THƯ VIỆN KỶ NIỆM
         </button>
       </div>
-
-      {showChat && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-6" onClick={() => setShowChat(false)}>
-          <div className="glassmorphism-card max-w-md w-full p-8 rounded-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <GraduationCap size={32} className="text-[#FFD700]" />
-                <h3 className="text-xl font-bold text-white">Trợ Lý Giảng Dạy</h3>
-              </div>
-              <button
-                onClick={() => setShowChat(false)}
-                className="text-gray-300 hover:text-white text-2xl"
-              >
-                ×
-              </button>
-            </div>
-            <div className="space-y-4">
-              <div className="bg-white/10 p-4 rounded-lg">
-                <p className="text-white">
-                  Xin chào! Tôi là trợ lý ảo của bài trình chiếu. Bạn có câu hỏi gì về nội dung không?
-                </p>
-              </div>
-              <div className="bg-[#FFD700]/20 p-4 rounded-lg">
-                <p className="text-gray-200 text-sm italic">
-                  💡 Gợi ý: Bấm vào các phần để tìm hiểu thêm về giặc nội xâm và vai trò của sinh viên!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
