@@ -120,6 +120,12 @@ export default function LandingPage() {
                 Trình Chiếu
               </button>
               <button
+                onClick={() => navigate('/chat')}
+                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              >
+                Trợ lý AI
+              </button>
+              <button
                 onClick={() => navigate('/memory-gallery')}
                 className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
               >
@@ -168,6 +174,12 @@ export default function LandingPage() {
                 className="cta-button"
               >
                 XEM NỘI DUNG TRÌNH CHIẾU
+              </button>
+              <button
+                onClick={() => navigate('/chat')}
+                className="cta-button bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900"
+              >
+                TRỢ LÝ AI
               </button>
               <button
                 onClick={() => navigate('/memory-gallery')}
