@@ -6,9 +6,12 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const [showChat, setShowChat] = useState(false);
   const [activeSection, setActiveSection] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+
       const sections = document.querySelectorAll('.content-section');
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
@@ -85,6 +88,53 @@ export default function LandingPage() {
           backgroundSize: '60px 60px'
         }}></div>
       </div>
+
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-[#b30000]/95 backdrop-blur-md shadow-2xl' : 'bg-transparent'
+      }`}>
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <img
+                src="/image copy copy copy copy copy.png"
+                alt="Logo"
+                className="w-12 h-12 object-contain"
+              />
+              <div className="text-left">
+                <div className="text-[#FFD700] font-bold text-sm">TƯ TƯỞNG</div>
+                <div className="text-white font-bold text-base">HỒ CHÍ MINH</div>
+              </div>
+            </div>
+
+            <div className="hidden md:flex items-center gap-8">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              >
+                Trang Chủ
+              </button>
+              <button
+                onClick={() => navigate('/presentation')}
+                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              >
+                Trình Chiếu
+              </button>
+              <button
+                onClick={() => navigate('/memory-gallery')}
+                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              >
+                Thư Viện Kỷ Niệm
+              </button>
+              <button
+                onClick={() => navigate('/minigame')}
+                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              >
+                Minigame
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       <div className="relative z-10">
         <header className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
