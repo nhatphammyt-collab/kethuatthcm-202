@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Gamepad2 } from 'lucide-react';
+import { ArrowLeft, Gamepad2, Crown, Users } from 'lucide-react';
 
 export default function MinigamePage() {
   const navigate = useNavigate();
@@ -45,21 +45,28 @@ export default function MinigamePage() {
             </h2>
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl mb-8">
-              <p className="text-xl text-gray-100 italic">
-                Nội dung mini game sẽ được bổ sung sau.
+              <p className="text-xl text-gray-100 mb-6">
+                Chọn vai trò của bạn
               </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => navigate('/minigame/create')}
+                  className="flex-1 bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-[#b30000] px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 hover:shadow-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+                >
+                  <Crown size={24} />
+                  TẠO PHÒNG
+                </button>
+                
+                <button
+                  onClick={() => navigate('/minigame/join')}
+                  className="flex-1 bg-gradient-to-r from-[#1E90FF] to-[#4169E1] text-white px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 hover:shadow-2xl transition-all shadow-lg flex items-center justify-center gap-3"
+                >
+                  <Users size={24} />
+                  THAM GIA PHÒNG
+                </button>
+              </div>
             </div>
-
-            <button
-              className="bg-[#FFD700] text-[#b30000] px-12 py-4 rounded-xl font-bold text-xl hover:scale-105 hover:shadow-2xl transition-all shadow-lg"
-              disabled
-            >
-              BẮT ĐẦU MINI GAME
-            </button>
-
-            <p className="text-gray-300 mt-6 text-sm">
-              (Chức năng đang được phát triển)
-            </p>
           </div>
         </main>
       </div>

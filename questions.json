@@ -1,0 +1,602 @@
+[
+  {
+    "question": "Khi thực dân Pháp thi hành chính sách “ngu dân”, mục đích chính của chúng là gì?",
+    "options": [
+      "Giúp dân Việt Nam học cao hơn",
+      "Khiến người dân mất khả năng nhận thức và không đủ trình độ để phản kháng",
+      "Phát triển giáo dục thuộc địa",
+      "Tăng số lượng trường học"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao Hồ Chí Minh khẳng định “văn hóa nghệ thuật cũng là một mặt trận”?",
+    "options": [
+      "Vì văn hóa chỉ dành cho nghệ sĩ",
+      "Vì văn hóa có thể góp phần vào công cuộc đấu tranh giải phóng dân tộc",
+      "Vì văn hóa không liên quan gì đến xã hội",
+      "Vì văn hóa chỉ để giải trí"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Giặc nội xâm” theo tư tưởng Hồ Chí Minh chủ yếu chỉ điều gì?",
+    "options": [
+      "Kẻ thù xâm lược từ bên ngoài",
+      "Thiên tai, dịch bệnh",
+      "Thói hư tật xấu trong mỗi con người, làm suy thoái đạo đức và tinh thần",
+      "Sự lạc hậu về công nghệ"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Trong các phẩm chất của “Đời sống mới”, “Cần” yêu cầu sinh viên phải:",
+    "options": [
+      "Làm việc đối phó",
+      "Siêng năng, chủ động và có tinh thần sáng tạo",
+      "Chỉ làm việc khi bị nhắc",
+      "Ưa nghỉ ngơi"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Trong “Đời sống mới”, “Kiệm” được hiểu là:",
+    "options": [
+      "Tiêu tiền càng nhiều càng tốt",
+      "Lãng phí thời gian",
+      "Biết tiết kiệm công sức, tiền bạc và thời gian",
+      "Chỉ tiết kiệm tiền"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Liêm” trong tư tưởng đạo đức Hồ Chí Minh nhất thiết yêu cầu sinh viên phải:",
+    "options": [
+      "Gian lận khi cần điểm cao",
+      "Lấy của chung làm của riêng",
+      "Trung thực, không gian dối trong học tập và thi cử",
+      "Im lặng trước lỗi sai"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tâm lý “nước đến chân mới nhảy” thể hiện loại giặc nội xâm nào?",
+    "options": [
+      "Tâm lý nô lệ",
+      "Quan liêu và lười biếng",
+      "Phù hoa",
+      "Trung thực"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một ví dụ phổ biến của “phù hoa – xa xỉ” trong sinh viên là:",
+    "options": [
+      "Sống lành mạnh",
+      "Chăm học mỗi ngày",
+      "Đăng ảnh sống ảo để thể hiện bản thân, chi tiêu chạy theo hình thức",
+      "Tiết kiệm tiền"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một biểu hiện của thiếu liêm chính học thuật là:",
+    "options": [
+      "Tự làm bài tập",
+      "Lên lớp đầy đủ",
+      "Đạo văn, copy bài, gian lận thi cử",
+      "Học nhóm nghiêm túc"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Phò chính” theo Hồ Chí Minh nghĩa là:",
+    "options": [
+      "Bỏ qua cái tốt",
+      "Ca ngợi, biểu dương người tốt – việc tốt",
+      "Che giấu sai lầm",
+      "Không quan tâm hành vi tích cực"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Trừ tà” theo tư tưởng Hồ Chí Minh yêu cầu sinh viên:",
+    "options": [
+      "Dung túng cho cái sai",
+      "Tránh né góp ý",
+      "Chủ động đấu tranh với cái xấu, cái lệch chuẩn",
+      "Không phê bình ai"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Lãng phí thời gian vào mạng xã hội thể hiện loại giặc nội xâm nào?",
+    "options": [
+      "Tâm lý nô lệ",
+      "Phù hoa",
+      "Lãng phí và lười nhác",
+      "Phò chính"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Hòa nhập nhưng không hòa tan” nghĩa là:",
+    "options": [
+      "Học mọi thứ nước ngoài và bỏ văn hóa Việt",
+      "Giữ nguyên truyền thống, không hội nhập",
+      "Tiếp thu cái mới, nhưng giữ bản sắc dân tộc",
+      "Ngại học cái mới"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Theo Hồ Chí Minh, văn hóa phải phục vụ ai?",
+    "options": [
+      "Một nhóm người",
+      "Giới nghệ sĩ",
+      "Nhân dân",
+      "Giới thượng lưu"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao sinh viên được xem là “chiến sĩ văn hóa”?",
+    "options": [
+      "Vì sinh viên rảnh rỗi",
+      "Vì sinh viên có vai trò lan tỏa giá trị tốt trong cộng đồng",
+      "Vì sinh viên chỉ học lý thuyết",
+      "Vì sinh viên không liên quan xã hội"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Chính sách “đồng hóa” của Pháp trong lĩnh vực văn hóa nhằm mục đích gì?",
+    "options": [
+      "Khuyến khích người Việt giữ bản sắc dân tộc",
+      "Lan truyền văn hóa tiến bộ",
+      "Xóa bỏ tinh thần dân tộc để dễ cai trị và kiểm soát",
+      "Xây dựng nền văn hóa Việt Nam mới"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao gian lận học thuật được xem là “mầm mống của tham ô”?",
+    "options": [
+      "Vì gian lận giúp tăng điểm số",
+      "Vì hành vi lấy cái không thuộc về mình giống bản chất tham nhũng khi trưởng thành",
+      "Vì ai cũng làm",
+      "Vì không bị phát hiện"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Quan liêu trong sinh viên thường thể hiện qua hành vi nào?",
+    "options": [
+      "Chủ động chuẩn bị bài",
+      "Làm việc đối phó, không sát thực tế",
+      "Tập trung vào năng lực cá nhân",
+      "Học nhóm hiệu quả"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao phù hoa – xa xỉ khiến sinh viên “mất gốc đạo đức”?",
+    "options": [
+      "Vì giúp tăng tự tin",
+      "Vì tạo sự cân bằng",
+      "Vì đẩy sinh viên vào lối sống hình thức, sống ảo, chạy theo hào nhoáng",
+      "Vì làm giàu tri thức"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Hồ Chí Minh nhấn mạnh “đời sống mới” vì:",
+    "options": [
+      "Muốn thay đổi hoàn toàn truyền thống",
+      "Xây dựng nền tảng đạo đức cho con người trong thời kỳ mới",
+      "Chỉ nhắm đến cán bộ cấp cao",
+      "Không liên quan giáo dục"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên có “Professionalism” thể hiện ở điều nào?",
+    "options": [
+      "Đi học tùy hứng",
+      "Tôn trọng giảng viên, đúng giờ, làm việc có trách nhiệm",
+      "Làm việc theo cảm xúc",
+      "Lười biếng"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Phò chính – trừ tà” trong môi trường đại học giúp xây dựng điều gì?",
+    "options": [
+      "Môi trường học tập cạnh tranh xấu",
+      "Môi trường lộn xộn",
+      "Môi trường học thuật trong sạch, kỷ luật và nhân văn",
+      "Môi trường dễ dãi"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao “giặc nội xâm” nguy hiểm hơn ngoại xâm trong thời bình?",
+    "options": [
+      "Vì có vũ khí mạnh",
+      "Vì nó phá hoại âm thầm từ bên trong",
+      "Vì nó đến từ nước ngoài",
+      "Vì dễ nhận biết"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tâm lý nô lệ trong sinh viên có thể thể hiện qua hiện tượng nào?",
+    "options": [
+      "Học hỏi có chọn lọc",
+      "Sính ngoại mù quáng, tự ti văn hóa Việt",
+      "Giữ gìn tiếng Việt",
+      "Tự hào lịch sử dân tộc"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên thực hành “Kiệm” đúng nghĩa trong thời đại số là:",
+    "options": [
+      "Lướt TikTok nhiều giờ",
+      "Lãng phí thời gian học online",
+      "Biết quản lý thời gian, tập trung vào việc có ích",
+      "Chạy theo nội dung độc hại"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Hành động “phò chính” trong lớp học là:",
+    "options": [
+      "Khen ngợi người làm điều tốt để lan tỏa năng lượng tích cực",
+      "Im lặng trước lỗi sai",
+      "Bao che hành vi gian lận",
+      "Chỉ trích vô lý"
+    ],
+    "correctAnswer": 0,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Lười biếng kéo dài sẽ ảnh hưởng gì đến tương lai?",
+    "options": [
+      "Không ảnh hưởng",
+      "Tạo thói quen quan liêu và trì trệ khi đi làm",
+      "Tăng tinh thần trách nhiệm",
+      "Khiến bạn nổi bật hơn"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên giữ vững bản sắc văn hóa Việt khi hội nhập sẽ:",
+    "options": [
+      "Phủ nhận tiếng Việt",
+      "Tự ti về văn hóa",
+      "Học cái mới nhưng vẫn tôn trọng giá trị dân tộc",
+      "Chỉ học văn hóa nước ngoài"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tại sao mạng xã hội được coi là “mặt trận văn hóa mới”?",
+    "options": [
+      "Vì nó không ảnh hưởng gì",
+      "Vì mọi giá trị, tốt xấu đều lan truyền nhanh chóng, tác động trực tiếp đến nhận thức",
+      "Vì nó là thế giới ảo, không thực",
+      "Vì chỉ dành cho giải trí"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao nói đấu tranh chống giặc nội xâm là nhiệm vụ của từng cá nhân?",
+    "options": [
+      "Vì nhà trường không hỗ trợ",
+      "Vì chính mỗi cá nhân phải tự nhận diện và chiến thắng thói xấu bản thân",
+      "Vì nó không liên quan tập thể",
+      "Vì thầy cô không quan tâm"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Theo tư tưởng Hồ Chí Minh, vì sao văn hóa có nhiệm vụ “soi đường”?",
+    "options": [
+      "Vì văn hóa chỉ phản ánh xã hội",
+      "Vì văn hóa định hướng giá trị, điều chỉnh hành vi và tạo động lực tinh thần cho con người",
+      "Vì văn hóa không quan trọng",
+      "Vì văn hóa không liên quan đạo đức"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Khi một sinh viên đạo văn làm bài, tác hại lớn nhất là:",
+    "options": [
+      "Mất điểm",
+      "Mất kỹ năng thật, tạo thói quen gian dối dẫn đến suy thoái đạo đức trong tương lai",
+      "Không ai biết",
+      "Thầy cô khó tính"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao Hồ Chí Minh nhấn mạnh phải “nâng cao dân trí” trong chiến lược văn hóa?",
+    "options": [
+      "Vì dân trí cao giúp dân tự tin sống xa xỉ",
+      "Vì dân trí thấp dễ bị nô dịch và dẫn đến tâm lý nô lệ",
+      "Vì dân trí không ảnh hưởng gì",
+      "Vì dân trí chỉ dành cho giáo viên"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Lối sống “hình thức – chạy theo mạng xã hội” ảnh hưởng gì đến giá trị nhân cách?",
+    "options": [
+      "Giúp tăng ý chí",
+      "Khiến con người đánh mất chiều sâu, chỉ chăm vào vẻ bề ngoài",
+      "Giúp học tốt hơn",
+      "Giúp tập trung"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên có bản lĩnh văn hóa là người:",
+    "options": [
+      "Theo mọi trào lưu cho “hợp thời”",
+      "Dễ bị mạng xã hội dẫn dắt",
+      "Biết chọn lọc thông tin, giữ vững giá trị cá nhân",
+      "Tự ti về bản sắc"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao “Cần – Kiệm – Liêm – Chính” được coi là “vũ khí đạo đức” của tuổi trẻ?",
+    "options": [
+      "Vì chỉ nói cho hay",
+      "Vì là truyền thống phong kiến",
+      "Vì giúp rèn nhân cách vững bền, tạo nền tảng chống suy thoái đạo đức",
+      "Vì để làm bài"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một tập thể dung túng gian lận sẽ dẫn đến kết quả nào?",
+    "options": [
+      "Càng đoàn kết",
+      "Mất kỷ luật, giảm uy tín và hình thành văn hóa tiêu cực",
+      "Tăng kỹ năng mềm",
+      "Tự tin hơn"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tư tưởng “phò chính – trừ tà” trong thời đại số đòi hỏi sinh viên:",
+    "options": [
+      "Im lặng trước nội dung độc hại",
+      "Chia sẻ thông tin bẩn cho vui",
+      "Chủ động đấu tranh với tin giả, nội dung xấu trên mạng",
+      "Theo trend độc hại để được like"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao nói giặc nội xâm “ẩn mình” nhưng nguy hiểm?",
+    "options": [
+      "Vì chúng thường rất to tiếng",
+      "Vì chúng phá hoại âm thầm trong thói quen, nhân cách và nếp sống",
+      "Vì chúng có hình dạng rõ ràng",
+      "Vì dễ nhìn thấy"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Tâm lý a dua theo số đông” trong mạng xã hội thuộc loại giặc nội xâm nào?",
+    "options": [
+      "Phù hoa",
+      "Tâm lý nô lệ",
+      "Chính trực",
+      "Cần cù"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên thực sự “trừ tà” sẽ làm gì khi thấy bạn mình gian lận?",
+    "options": [
+      "Giả vờ không biết",
+      "Bao che để giữ tình bạn",
+      "Nhắc nhở và khuyên dừng hành vi sai",
+      "Cổ vũ bạn gian lận"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Điều gì khiến sinh viên dễ rơi vào lối sống phù phiếm?",
+    "options": [
+      "Áp lực thành công",
+      "Tác động của mạng xã hội khiến mỗi người muốn thể hiện hình ảnh hoàn hảo",
+      "Tập trung rèn luyện lâu dài",
+      "Tự giác học tập"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Khi sinh viên hiểu đúng tư tưởng văn hóa Hồ Chí Minh, điều thay đổi rõ rệt nhất là:",
+    "options": [
+      "Giảm số giờ online",
+      "Thay đổi trong nhận thức và hành vi đạo đức mỗi ngày",
+      "Tăng điểm số ngay lập tức",
+      "Không thay đổi gì"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Chính” trong đời sống mới giúp sinh viên làm gì trong tình huống khó khăn?",
+    "options": [
+      "Chọn cách im lặng",
+      "Làm theo số đông để an toàn",
+      "Dám nói đúng và bảo vệ lẽ phải dù gặp áp lực",
+      "Tránh né vấn đề"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Tại sao nói mạng xã hội cần “bản lĩnh văn hóa” hơn trí tuệ?",
+    "options": [
+      "Vì mạng xã hội không cần hiểu biết",
+      "Vì bản lĩnh giúp sinh viên không bị lệch chuẩn trước tin giả, trend xấu",
+      "Vì trí tuệ không quan trọng",
+      "Vì ai cũng đọc được"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Vì sao rèn luyện thái độ chuyên nghiệp là cách chống giặc nội xâm?",
+    "options": [
+      "Vì nó giúp sinh viên đẹp hơn",
+      "Vì nó tạo kỷ luật, trách nhiệm, chống lại lười biếng và quan liêu từ sớm",
+      "Vì nó theo trend",
+      "Vì để thầy cô vui"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên tiêu thụ nội dung độc hại thường xuyên sẽ gặp hậu quả gì?",
+    "options": [
+      "Tăng tư duy phản biện",
+      "Dễ bị lệch chuẩn, suy giảm khả năng tập trung và hành vi tiêu cực",
+      "Mạnh mẽ hơn",
+      "Học tốt hơn"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "“Giữ gìn tiếng Việt” trong hội nhập không chỉ là ngôn ngữ mà còn là:",
+    "options": [
+      "Lối sống và giá trị cốt lõi của dân tộc",
+      "Học văn",
+      "Không biết ngoại ngữ",
+      "Không giao tiếp quốc tế"
+    ],
+    "correctAnswer": 0,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Một sinh viên có đạo đức đúng theo Hồ Chí Minh là người:",
+    "options": [
+      "Biết che giấu sai lầm",
+      "Tự tin khoe mẽ",
+      "Sống trung thực, giản dị, có trách nhiệm",
+      "Sống vì hình thức"
+    ],
+    "correctAnswer": 2,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Kết luận quan trọng nhất của tư tưởng “mặt trận văn hóa” đối với sinh viên là:",
+    "options": [
+      "Chỉ cần học tốt là đủ",
+      "Mỗi sinh viên phải tự rèn luyện để chiến thắng giặc nội xâm trong chính bản thân",
+      "Không cần quan tâm đạo đức",
+      "Cuộc sống chỉ cần vui"
+    ],
+    "correctAnswer": 1,
+    "category": "Tư tưởng Hồ Chí Minh",
+    "difficulty": "medium"
+  }
+]
