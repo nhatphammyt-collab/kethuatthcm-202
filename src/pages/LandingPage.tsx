@@ -247,7 +247,7 @@ export default function LandingPage() {
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
                 <div className="text-[#FFD700] font-bold text-3xl mb-3">1930</div>
                 <h4 className="text-white font-semibold text-xl mb-2">Thành Lập Đảng</h4>
-                <p className="text-gray-200">Chủ tịch hội nghị thành lập Đảng Cộng sản Việt Nam</p>
+                <p className="text-gray-200">Chủ trì hội nghị thành lập Đảng Cộng sản Việt Nam</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
                 <div className="text-[#FFD700] font-bold text-3xl mb-3">1945</div>
