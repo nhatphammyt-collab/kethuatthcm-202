@@ -1,11 +1,18 @@
 import { useNavigate } from 'react-router-dom';
 import { GraduationCap, Star } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { balladLyrics } from '../data/lyrics';
 
 export default function LandingPage() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(0);
   const [scrolled, setScrolled] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
+  const [hasClicked, setHasClicked] = useState(false);
+  const [currentLyric, setCurrentLyric] = useState<string>("");
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,16 +40,83 @@ export default function LandingPage() {
       { threshold: 0.15 }
     );
 
+    // Observer for timeline section to show bubble
+    const timelineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowBubble(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
     document.querySelectorAll('.fade-in-section').forEach((el) => {
       observer.observe(el);
     });
+
+    if (timelineRef.current) {
+      timelineObserver.observe(timelineRef.current);
+    }
 
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
+      timelineObserver.disconnect();
     };
   }, []);
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        // Pause music and hide bubble
+        audioRef.current.pause();
+        setIsPlaying(false);
+        setShowBubble(false);
+      } else {
+        if (!hasClicked) {
+          // First click - show hint message
+          setHasClicked(true);
+          setShowBubble(true);
+          // Wait a bit before playing
+          setTimeout(() => {
+            if (audioRef.current) {
+              audioRef.current.play();
+              setIsPlaying(true);
+            }
+          }, 1500);
+        } else {
+          // Already clicked before, just play
+          audioRef.current.play();
+          setIsPlaying(true);
+          setShowBubble(true);
+        }
+      }
+    }
+  };
+
+  const handleMusicEnded = () => {
+    setIsPlaying(false);
+    setShowBubble(false);
+    setCurrentLyric("");
+  };
+
+  const handleTimeUpdate = () => {
+    if (audioRef.current && isPlaying) {
+      const currentTime = audioRef.current.currentTime;
+      
+      // Tìm lyric phù hợp với thời gian hiện tại
+      const lyric = balladLyrics
+        .filter(l => l.time <= currentTime)
+        .pop();
+      
+      if (lyric) {
+        setCurrentLyric(lyric.text);
+      }
+    }
+  };
 
   const sections = [
     {
@@ -226,11 +300,68 @@ export default function LandingPage() {
           ))}
         </main>
 
-        <section className="container mx-auto px-6 py-20">
+        <section className="container mx-auto px-6 py-20" ref={timelineRef}>
           <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
-            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12">
-              Dòng Thời Gian Cuộc Đời Bác Hồ
-            </h2>
+            {/* Title with Singing Character */}
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex-1 flex justify-start">
+                <div className="relative ml-4">
+                  <img
+                    src={isPlaying ? "/singer2.png" : "/singer1.png"}
+                    alt="Singer"
+                    className="w-40 h-40 object-contain cursor-pointer hover:scale-110 transition-transform duration-300 drop-shadow-2xl"
+                    onClick={toggleMusic}
+                    title={isPlaying ? "Click để dừng nhạc" : "Click để phát nhạc"}
+                  />
+                  {isPlaying && (
+                    <div className="absolute -top-2 -right-2">
+                      <div className="relative">
+                        <span className="flex h-6 w-6">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFD700] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-6 w-6 bg-[#FFD700] items-center justify-center">
+                            <span className="text-xs">🎵</span>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Speech bubble */}
+                  {showBubble && (
+                    <div className="absolute -top-6 left-full ml-2 bg-white text-gray-800 px-5 py-3 rounded-2xl shadow-xl w-72 animate-fade-in z-10">
+                      <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white"></div>
+                      <p className="text-sm font-medium leading-relaxed">
+                        {!hasClicked 
+                          ? "🎤 Bạn có muốn nghe bài hát về Bác không?"
+                          : isPlaying && currentLyric
+                            ? currentLyric
+                            : "🎵 Bạn hãy đoán xem đây là bài gì nhé!"}
+                      </p>
+                    </div>
+                  )}
+                </div>
+                <audio
+                  ref={audioRef}
+                  src="/song.mp3"
+                  onEnded={handleMusicEnded}
+                  onTimeUpdate={handleTimeUpdate}
+                />
+              </div>
+              <h2 className="text-3xl font-bold text-[#FFD700] text-center flex-1 whitespace-nowrap">
+                Dòng Thời Gian Cuộc Đời Chủ Tịch Hồ Chí Minh
+              </h2>
+              <div className="flex-1"></div>
+            </div>
+
+            {/* Chủ tịch HCM image */}
+            <div className="flex justify-center mb-12">
+              <img
+                src="/chutichhcm.jpg"
+                alt="Chủ tịch Hồ Chí Minh"
+                className="w-64 h-64 object-cover rounded-full shadow-2xl border-4 border-[#FFD700]"
+              />
+            </div>
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
                 <div className="text-[#FFD700] font-bold text-3xl mb-3">1890</div>
