@@ -703,7 +703,7 @@ export default function PresentationPage() {
               <div className="space-y-6">
                 <div className="bg-gradient-to-r from-blue-50/80 via-blue-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
                   <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
-                    <span className="text-2xl">💼</span>
+                    <span className="text-2xl"></span>
                     <span>1. Rèn luyện Professionalism – thái độ chuyên nghiệp</span>
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-black font-semibold">
@@ -719,7 +719,7 @@ export default function PresentationPage() {
 
                 <div className="bg-gradient-to-r from-green-50/80 via-green-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-green-500">
                   <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
-                    <span className="text-2xl">🌐</span>
+                    <span className="text-2xl"></span>
                     <span>2. Bản lĩnh trên không gian mạng</span>
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-black font-semibold">
@@ -735,7 +735,7 @@ export default function PresentationPage() {
 
                 <div className="bg-gradient-to-r from-yellow-50/80 via-yellow-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
                   <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
-                    <span className="text-2xl">🇻🇳</span>
+                    <span className="text-2xl"></span>
                     <span>3. Giữ bản sắc văn hóa Việt trong hội nhập</span>
                   </h3>
                   <ul className="list-disc list-inside space-y-2 text-black font-semibold">
