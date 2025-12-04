@@ -208,13 +208,13 @@ export default function PresentationPage() {
                     className="cultural-bot-button group relative"
                   >
                     <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF8C00] rounded-2xl shadow-2xl relative overflow-hidden">
-                      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
-                      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">📖</div>
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center">
+                      <div className="absolute top-2 left-2 right-2 text-center text-xs font-bold text-[#8B4513]">VĂN HÓA</div>
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
+                      <div className="absolute top-11 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
+                      <div className="absolute top-17 left-1/2 -translate-x-1/2 text-2xl">📖</div>
+                      <div className="absolute top-25 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center">
                         <BookOpen size={24} className="text-[#b30000]" />
                       </div>
-                      <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-[#8B4513]">VĂN HÓA</div>
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#b30000] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-white" />
@@ -345,13 +345,13 @@ export default function PresentationPage() {
                     className="cultural-bot-button group relative"
                   >
                     <div className="w-32 h-40 bg-gradient-to-b from-[#DC143C] via-[#b30000] to-[#8B0000] rounded-2xl shadow-2xl relative overflow-hidden">
-                      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-white rounded-full"></div>
-                      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">⚔️</div>
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center">
+                      <div className="absolute top-2 left-2 right-2 text-center text-xs font-bold text-white">CHIẾN SĨ</div>
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
+                      <div className="absolute top-11 left-1/2 -translate-x-1/2 w-12 h-3 bg-white rounded-full"></div>
+                      <div className="absolute top-17 left-1/2 -translate-x-1/2 text-2xl">⚔️</div>
+                      <div className="absolute top-25 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center">
                         <Shield size={24} className="text-[#b30000]" />
                       </div>
-                      <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white">CHIẾN SĨ</div>
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-[#b30000]" />
@@ -517,13 +517,13 @@ export default function PresentationPage() {
                     className="cultural-bot-button group relative"
                   >
                     <div className="w-32 h-40 bg-gradient-to-b from-[#32CD32] via-[#228B22] to-[#006400] rounded-2xl shadow-2xl relative overflow-hidden">
-                      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
-                      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">✨</div>
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center text-2xl">
+                      <div className="absolute top-2 left-2 right-2 text-center text-xs font-bold text-white">CHÍNH TRỪ TÀ</div>
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
+                      <div className="absolute top-11 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
+                      <div className="absolute top-17 left-1/2 -translate-x-1/2 text-2xl">✨</div>
+                      <div className="absolute top-25 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center text-2xl">
                         ⚖️
                       </div>
-                      <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white">CHÍNH TRỪ TÀ</div>
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-[#006400]" />
@@ -646,13 +646,13 @@ export default function PresentationPage() {
                     className="cultural-bot-button group relative"
                   >
                     <div className="w-32 h-40 bg-gradient-to-b from-[#4169E1] via-[#1E90FF] to-[#0000CD] rounded-2xl shadow-2xl relative overflow-hidden">
-                      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
-                      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">🎓</div>
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center text-2xl">
+                      <div className="absolute top-2 left-2 right-2 text-center text-xs font-bold text-white">SINH VIÊN</div>
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
+                      <div className="absolute top-11 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
+                      <div className="absolute top-17 left-1/2 -translate-x-1/2 text-2xl">🎓</div>
+                      <div className="absolute top-25 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#FFD700] rounded-lg flex items-center justify-center text-2xl">
                         💼
                       </div>
-                      <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white">SINH VIÊN</div>
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-[#0000CD]" />
@@ -760,13 +760,13 @@ export default function PresentationPage() {
                     className="cultural-bot-button group relative"
                   >
                     <div className="w-32 h-40 bg-gradient-to-b from-[#FFD700] via-[#FFA500] to-[#FF6347] rounded-2xl shadow-2xl relative overflow-hidden border-4 border-[#b30000]">
-                      <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
-                      <div className="absolute top-6 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
-                      <div className="absolute top-12 left-1/2 -translate-x-1/2 text-2xl">🏆</div>
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#b30000] rounded-lg flex items-center justify-center text-2xl">
+                      <div className="absolute top-2 left-2 right-2 text-center text-xs font-bold text-white bg-[#b30000] py-1 rounded">CHIẾN THẮNG</div>
+                      <div className="absolute top-8 left-1/2 -translate-x-1/2 w-16 h-16 bg-[#8B4513] rounded-full border-4 border-[#654321]"></div>
+                      <div className="absolute top-11 left-1/2 -translate-x-1/2 w-12 h-3 bg-[#b30000] rounded-full"></div>
+                      <div className="absolute top-17 left-1/2 -translate-x-1/2 text-2xl">🏆</div>
+                      <div className="absolute top-25 left-1/2 -translate-x-1/2 w-20 h-16 bg-[#b30000] rounded-lg flex items-center justify-center text-2xl">
                         💪
                       </div>
-                      <div className="absolute bottom-2 left-2 right-2 text-center text-xs font-bold text-white bg-[#b30000] py-1 rounded">CHIẾN THẮNG</div>
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-[#b30000] rounded-full flex items-center justify-center shadow-lg">
                       <MessageCircle size={20} className="text-white" />
