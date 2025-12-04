@@ -72,7 +72,11 @@ class MockFirestore {
     this.listeners.push({ path, callback });
     callback({ data: () => this.data[path] || null, exists: () => !!this.data[path] });
     return () => {
-      this.listeners = this.listeners.filter(l => l.path !== path || l.callback !== callback);
+      this.listeners = this.listeners.filter(listener => {
+        const samePath = listener.path === path;
+        const sameCallback = listener.callback === callback;
+        return !(samePath && sameCallback);
+      });
     };
   }
 
@@ -476,4 +480,3 @@ if (isMainModule || !process.argv[1] || process.argv[1].includes('testGameIntegr
 }
 
 export { runIntegrationTests };
-

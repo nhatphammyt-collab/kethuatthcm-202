@@ -40,8 +40,11 @@ export default function MinigamePage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
               MINI GAME
             </h1>
-            <h2 className="text-2xl md:text-3xl text-[#FFD700] font-semibold mb-8">
-              KIỂM TRA KIẾN THỨC TƯ TƯỞNG HỒ CHÍ MINH
+            <h2 className="text-2xl md:text-3xl text-[#FFD700] font-semibold mb-8 leading-snug">
+              <span className="block">KIỂM TRA KIẾN THỨC</span>
+              <span className="block text-2xl md:text-[2.2rem] tracking-wide">
+                TƯ TƯỞNG HỒ CHÍ MINH
+              </span>
             </h2>
 
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl mb-8">
