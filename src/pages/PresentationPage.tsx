@@ -261,7 +261,7 @@ export default function PresentationPage() {
 
               <div className="mb-6 relative">
                 <img
-                  src="/ho-chi-minh-reading-book-studying-marxism-leninism.jpg"
+                  src="/91a5b114d584465580d9795b66cf0b06.jpg"
                   alt="Bác Hồ nghiên cứu"
                   className="w-full max-w-md float-right ml-6 mb-4 rounded-xl shadow-lg"
                 />
@@ -277,21 +277,21 @@ export default function PresentationPage() {
               </p>
               <div className="space-y-4 mb-4">
                 <div className="flex gap-3 items-start bg-red-50/50 backdrop-blur-sm p-4 rounded-lg border-l-4 border-red-600">
-                  <div className="text-3xl flex-shrink-0">🚫</div>
+                  <div className="text-3xl flex-shrink-0"></div>
                   <div>
                     <strong className="text-red-700">Chính sách ngu dân:</strong>
                     <p className="text-black font-semibold mt-1">hạn chế mở trường, không cho dân ta học cao, chỉ đào tạo một tầng lớp tay sai phục vụ chính quyền thực dân.</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start bg-orange-50/50 backdrop-blur-sm p-4 rounded-lg border-l-4 border-orange-600">
-                  <div className="text-3xl flex-shrink-0">🎭</div>
+                  <div className="text-3xl flex-shrink-0"></div>
                   <div>
                     <strong className="text-orange-700">Chính sách đồng hóa:</strong>
                     <p className="text-black font-semibold mt-1">truyền bá lối sống, tư tưởng, thói quen, thị hiếu của văn hóa Pháp với mục đích làm "nhạt nhòa" bản sắc Việt.</p>
                   </div>
                 </div>
                 <div className="flex gap-3 items-start bg-amber-50/50 backdrop-blur-sm p-4 rounded-lg border-l-4 border-amber-600">
-                  <div className="text-3xl flex-shrink-0">⚠️</div>
+                  <div className="text-3xl flex-shrink-0"></div>
                   <div>
                     <strong className="text-amber-700">Chính sách chia rẽ tinh thần dân tộc:</strong>
                     <p className="text-black font-semibold mt-1">xuyên tạc lịch sử, thay đổi chương trình giáo dục, hạ thấp giá trị của tổ tiên ta.</p>
@@ -407,18 +407,18 @@ export default function PresentationPage() {
 
               <div className="space-y-6 mb-6">
                 <div className="bg-gradient-to-r from-red-50/80 via-red-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-red-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
-                  <div className="absolute top-4 right-4 text-6xl opacity-10">💰</div>
+                  <div className="absolute top-4 right-4 text-6xl opacity-10"></div>
                   <div className="flex items-start gap-4">
-                    <div className="text-5xl">💰</div>
+                    <div className="text-5xl"></div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-[#b30000] mb-3">1. Tham ô – lãng phí – tệ nạn mùa nào cũng có</h3>
                       <div className="space-y-2 mb-3">
                         <div className="flex items-center gap-2">
-                          <span className="text-xl">🚨</span>
+                          <span className="text-xl"></span>
                           <p className="text-black font-semibold"><strong>Tham ô</strong> làm mất niềm tin của nhân dân.</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xl">💸</span>
+                          <span className="text-xl"></span>
                           <p className="text-black font-semibold"><strong>Lãng phí</strong> làm thất thoát của công, của dân, của nước.</p>
                         </div>
                       </div>
@@ -430,18 +430,18 @@ export default function PresentationPage() {
                 </div>
 
                 <div className="bg-gradient-to-r from-orange-50/80 via-orange-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-orange-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
-                  <div className="absolute top-4 right-4 text-6xl opacity-10">😴</div>
+                  <div className="absolute top-4 right-4 text-6xl opacity-10"></div>
                   <div className="flex items-start gap-4">
-                    <div className="text-5xl">😴</div>
+                    <div className="text-5xl"></div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-orange-700 mb-3">2. Lười biếng – quan liêu – bệnh mãn tính của nhiều thế hệ</h3>
                       <div className="space-y-2 mb-3">
                         <div className="flex items-center gap-2">
-                          <span className="text-xl">⏰</span>
+                          <span className="text-xl"></span>
                           <p className="text-black font-semibold">Lười làm việc, lười học, lười suy nghĩ → dẫn đến phụ thuộc, thụ động, trì trệ.</p>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xl">📄</span>
+                          <span className="text-xl"></span>
                           <p className="text-black font-semibold">Quan liêu là thói làm việc hình thức, xa rời thực tế, thiếu trách nhiệm.</p>
                         </div>
                       </div>
@@ -455,15 +455,15 @@ export default function PresentationPage() {
                 <div className="bg-gradient-to-r from-purple-50/80 via-purple-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-purple-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
                   <div className="absolute top-4 right-4 text-6xl opacity-10">💎</div>
                   <div className="flex items-start gap-4">
-                    <div className="text-5xl">💎</div>
+                    <div className="text-5xl"></div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-purple-700 mb-3">3. Phù hoa – xa xỉ</h3>
                       <p className="text-gray-900 font-medium mb-3">Đây là căn bệnh phổ biến nhất trong giới trẻ:</p>
                       <div className="space-y-2 mb-3">
-                        <div className="flex items-center gap-2"><span className="text-xl">📱</span><p className="text-black font-semibold">sống ảo, khoe của</p></div>
-                        <div className="flex items-center gap-2"><span className="text-xl">🎭</span><p className="text-black font-semibold">chạy theo trend độc hại</p></div>
-                        <div className="flex items-center gap-2"><span className="text-xl">✨</span><p className="text-black font-semibold">coi trọng hình thức hơn năng lực</p></div>
-                        <div className="flex items-center gap-2"><span className="text-xl">🎪</span><p className="text-black font-semibold">"sống sang chảnh ảo" nhưng bên trong rỗng</p></div>
+                        <div className="flex items-center gap-2"><span className="text-xl"></span><p className="text-black font-semibold">sống ảo, khoe của</p></div>
+                        <div className="flex items-center gap-2"><span className="text-xl"></span><p className="text-black font-semibold">chạy theo trend độc hại</p></div>
+                        <div className="flex items-center gap-2"><span className="text-xl"></span><p className="text-black font-semibold">coi trọng hình thức hơn năng lực</p></div>
+                        <div className="flex items-center gap-2"><span className="text-xl"></span><p className="text-black font-semibold">"sống sang chảnh ảo" nhưng bên trong rỗng</p></div>
                       </div>
                       <p className="text-black font-semibold mt-3 bg-white/90 p-3 rounded-lg">
                         <strong>Hậu quả:</strong> Con người đánh mất giá trị thật, trở thành "nô lệ" của mạng xã hội.
@@ -473,9 +473,9 @@ export default function PresentationPage() {
                 </div>
 
                 <div className="bg-gradient-to-r from-gray-100/80 via-gray-100/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-gray-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
-                  <div className="absolute top-4 right-4 text-6xl opacity-10">⛓️</div>
+                  <div className="absolute top-4 right-4 text-6xl opacity-10"></div>
                   <div className="flex items-start gap-4">
-                    <div className="text-5xl">⛓️</div>
+                    <div className="text-5xl"></div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-gray-900 font-semibold mb-3">4. Tâm lý nô lệ – sự tha hóa nguy hiểm nhất</h3>
                       <p className="text-gray-900 font-medium mb-3">
