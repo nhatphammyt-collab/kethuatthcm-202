@@ -227,6 +227,206 @@ export default function LandingPage() {
             </section>
           ))}
         </main>
+
+        <section className="container mx-auto px-6 py-20">
+          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12">
+              Dòng Thời Gian Cuộc Đời Bác Hồ
+            </h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
+                <div className="text-[#FFD700] font-bold text-3xl mb-3">1890</div>
+                <h4 className="text-white font-semibold text-xl mb-2">Ra Đời</h4>
+                <p className="text-gray-200">Sinh ngày 19/5 tại làng Kim Liên, Nghệ An</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
+                <div className="text-[#FFD700] font-bold text-3xl mb-3">1911</div>
+                <h4 className="text-white font-semibold text-xl mb-2">Ra Đi Tìm Đường Cứu Nước</h4>
+                <p className="text-gray-200">Lên tàu Đô đốc Latouche Tréville, bắt đầu hành trình 30 năm phiêu bạt</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
+                <div className="text-[#FFD700] font-bold text-3xl mb-3">1930</div>
+                <h4 className="text-white font-semibold text-xl mb-2">Thành Lập Đảng</h4>
+                <p className="text-gray-200">Chủ tịch hội nghị thành lập Đảng Cộng sản Việt Nam</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
+                <div className="text-[#FFD700] font-bold text-3xl mb-3">1945</div>
+                <h4 className="text-white font-semibold text-xl mb-2">Tuyên Ngôn Độc Lập</h4>
+                <p className="text-gray-200">Đọc Tuyên ngôn độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
+                <div className="text-[#FFD700] font-bold text-3xl mb-3">1954</div>
+                <h4 className="text-white font-semibold text-xl mb-2">Chiến Thắng Điện Biên Phủ</h4>
+                <p className="text-gray-200">Lãnh đạo nhân dân đánh bại thực dân Pháp</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl hover:bg-white/20 transition-all duration-300">
+                <div className="text-[#FFD700] font-bold text-3xl mb-3">1969</div>
+                <h4 className="text-white font-semibold text-xl mb-2">Vĩnh Biệt</h4>
+                <p className="text-gray-200">Đi vào lịch sử dân tộc, để lại di sản vô giá</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12">
+              Những Câu Nói Bất Hủ
+            </h2>
+            <div className="space-y-8">
+              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm p-8 rounded-xl border-l-4 border-[#FFD700]">
+                <p className="text-white text-2xl italic mb-4">"Không có gì quý hơn độc lập, tự do"</p>
+                <p className="text-gray-300">- Chủ tịch Hồ Chí Minh</p>
+              </div>
+              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm p-8 rounded-xl border-l-4 border-[#FFD700]">
+                <p className="text-white text-2xl italic mb-4">"Đoàn kết, đoàn kết, đại đoàn kết. Thành công, thành công, đại thành công"</p>
+                <p className="text-gray-300">- Chủ tịch Hồ Chí Minh</p>
+              </div>
+              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm p-8 rounded-xl border-l-4 border-[#FFD700]">
+                <p className="text-white text-2xl italic mb-4">"Văn hóa soi đường cho quốc dân đi"</p>
+                <p className="text-gray-300">- Chủ tịch Hồ Chí Minh</p>
+              </div>
+              <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm p-8 rounded-xl border-l-4 border-[#FFD700]">
+                <p className="text-white text-2xl italic mb-4">"Dĩ bất biến, ứng vạn biến"</p>
+                <p className="text-gray-300">- Chủ tịch Hồ Chí Minh</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12">
+              Di Sản & Giá Trị Vĩnh Hằng
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl hover:glow transition-all duration-300">
+                <div className="text-5xl mb-4 text-center">🏛️</div>
+                <h4 className="text-[#FFD700] font-bold text-2xl mb-4 text-center">Tư Tưởng Chính Trị</h4>
+                <p className="text-gray-200 leading-relaxed">
+                  Tư tưởng Hồ Chí Minh là kết tinh của chủ nghĩa Mác-Lênin với thực tiễn cách mạng Việt Nam,
+                  tạo nền tảng lý luận cho sự nghiệp giải phóng dân tộc và xây dựng đất nước.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl hover:glow transition-all duration-300">
+                <div className="text-5xl mb-4 text-center">❤️</div>
+                <h4 className="text-[#FFD700] font-bold text-2xl mb-4 text-center">Đạo Đức Cách Mạng</h4>
+                <p className="text-gray-200 leading-relaxed">
+                  Cần - Kiệm - Liêm - Chính - Chí công vô tư. Những giá trị đạo đức này đã trở thành chuẩn mực
+                  cho mọi thế hệ cán bộ, đảng viên và nhân dân Việt Nam.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl hover:glow transition-all duration-300">
+                <div className="text-5xl mb-4 text-center">🎓</div>
+                <h4 className="text-[#FFD700] font-bold text-2xl mb-4 text-center">Giáo Dục & Văn Hóa</h4>
+                <p className="text-gray-200 leading-relaxed">
+                  Văn hóa phải soi đường cho quốc dân đi. Giáo dục là quốc sách hàng đầu.
+                  Bác luôn coi trọng việc xây dựng nền văn hóa và con người mới.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl hover:glow transition-all duration-300">
+                <div className="text-5xl mb-4 text-center">🌏</div>
+                <h4 className="text-[#FFD700] font-bold text-2xl mb-4 text-center">Hòa Bình & Đoàn Kết</h4>
+                <p className="text-gray-200 leading-relaxed">
+                  Tinh thần đại đoàn kết dân tộc, đoàn kết quốc tế. Bác Hồ không chỉ là
+                  lãnh tụ của dân tộc Việt Nam mà còn là biểu tượng của phong trào giải phóng dân tộc thế giới.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-8">
+              Thông Điệp Dành Cho Sinh Viên
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-[#FFD700]/20 to-[#FFD700]/5 backdrop-blur-sm p-10 rounded-2xl border-2 border-[#FFD700]/30">
+                <p className="text-white text-xl leading-relaxed mb-6">
+                  Các bạn sinh viên hôm nay là những người sẽ xây dựng tương lai của đất nước.
+                  Hãy học tập tư tưởng Hồ Chí Minh không chỉ qua lý thuyết mà qua hành động:
+                </p>
+                <ul className="space-y-4 text-gray-200 text-lg">
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#FFD700] font-bold text-2xl">✓</span>
+                    <span>Học tập chăm chỉ, rèn luyện đạo đức, sống có ích cho xã hội</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#FFD700] font-bold text-2xl">✓</span>
+                    <span>Giữ vững bản lĩnh trước mọi giặc nội xâm trong thời đại mới</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#FFD700] font-bold text-2xl">✓</span>
+                    <span>Yêu nước, yêu chủ nghĩa xã hội, đoàn kết và sáng tạo</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-[#FFD700] font-bold text-2xl">✓</span>
+                    <span>Kết hợp tri thức hiện đại với truyền thống dân tộc</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer className="relative z-10 border-t-4 border-[#FFD700] bg-black/30 backdrop-blur-md">
+          <div className="container mx-auto px-6 py-12">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <img
+                    src="/image copy copy copy copy copy.png"
+                    alt="Logo"
+                    className="w-12 h-12 object-contain"
+                  />
+                  <div>
+                    <div className="text-[#FFD700] font-bold">TƯ TƯỞNG</div>
+                    <div className="text-white font-bold">HỒ CHÍ MINH</div>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Trang web giáo dục về tư tưởng Hồ Chí Minh, được xây dựng bởi sinh viên
+                  với mục đích học tập và chia sẻ kiến thức.
+                </p>
+              </div>
+              <div>
+                <h4 className="text-[#FFD700] font-bold text-lg mb-4">Thông Tin Nhóm</h4>
+                <div className="text-gray-300 text-sm space-y-2">
+                  <p><strong>Nhóm:</strong> Nhóm 10</p>
+                  <p><strong>Lớp:</strong> 3W_HCM202_04</p>
+                  <p><strong>Môn học:</strong> HCM202 - Tư tưởng Hồ Chí Minh</p>
+                  <p><strong>Chủ đề:</strong> Chương 6 - Văn Hóa, Đạo Đức, Con Người</p>
+                </div>
+              </div>
+              <div>
+                <h4 className="text-[#FFD700] font-bold text-lg mb-4">Liên Kết</h4>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => navigate('/presentation')}
+                    className="block text-gray-300 hover:text-[#FFD700] transition-colors duration-200"
+                  >
+                    → Trình Chiếu
+                  </button>
+                  <button
+                    onClick={() => navigate('/memory-gallery')}
+                    className="block text-gray-300 hover:text-[#FFD700] transition-colors duration-200"
+                  >
+                    → Thư Viện Kỷ Niệm
+                  </button>
+                  <button
+                    onClick={() => navigate('/minigame')}
+                    className="block text-gray-300 hover:text-[#FFD700] transition-colors duration-200"
+                  >
+                    → Minigame
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-white/20 pt-6 text-center">
+              <p className="text-gray-400 text-sm">
+                © 2024 Nhóm 10 - Lớp 3W_HCM202_04. Được tạo ra với sự tôn trọng và ngưỡng mộ Chủ tịch Hồ Chí Minh.
+              </p>
+              <p className="text-gray-500 text-xs mt-2">
+                Website mang tính chất học tập và nghiên cứu
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
 
       <div className="fixed bottom-8 right-8 flex flex-col gap-3 z-50">
