@@ -172,7 +172,7 @@ export default function PresentationPage() {
             </h2>
           </div>
 
-          <div className="bg-white/75 backdrop-blur-md p-8 rounded-2xl shadow-2xl mb-12 border-4 border-[#FFD700] hover:shadow-[0_20px_60px_rgba(255,215,0,0.3)] transition-all duration-300">
+          <div className="bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-2xl mb-12 border-4 border-[#FFD700] hover:shadow-[0_20px_60px_rgba(255,215,0,0.3)] transition-all duration-300">
             <h3 className="text-3xl font-black text-[#b30000] mb-6 flex items-center gap-2 drop-shadow-md">
               <BookOpen size={32} />
               MỤC LỤC
@@ -266,58 +266,61 @@ export default function PresentationPage() {
                   className="w-full max-w-md float-right ml-6 mb-4 rounded-xl shadow-lg"
                 />
               </div>
-              <p className="text-black leading-relaxed mb-4 font-semibold text-lg">
-                <strong></strong>
-              </p>
-              <p className="text-gray-900 leading-relaxed mb-4 font-medium text-base">
-                Để hiểu rõ vì sao Chủ tịch Hồ Chí Minh khẳng định văn hóa là một "mặt trận" và người làm văn hóa là "chiến sĩ", chúng ta cần đặt nó trong bối cảnh lịch sử đầy biến động cuối thế kỷ XIX – đầu thế kỷ XX.
-              </p>
-              <p className="text-gray-900 leading-relaxed mb-4 font-medium text-base">
-                Lúc bấy giờ, sau khi xâm lược Việt Nam, thực dân Pháp không chỉ dùng quân sự để thống trị mà còn thi hành nhiều chính sách cực kỳ thâm độc về văn hóa:
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <p className="text-black leading-relaxed mb-4 font-semibold text-lg">
+                  Để hiểu rõ vì sao Chủ tịch Hồ Chí Minh khẳng định văn hóa là một "mặt trận" và người làm văn hóa là "chiến sĩ", chúng ta cần đặt nó trong bối cảnh lịch sử đầy biến động cuối thế kỷ XIX – đầu thế kỷ XX.
+                </p>
+                <p className="text-gray-900 leading-relaxed mb-4 font-semibold text-base">
+                  Lúc bấy giờ, sau khi xâm lược Việt Nam, thực dân Pháp không chỉ dùng quân sự để thống trị mà còn thi hành nhiều chính sách cực kỳ thâm độc về văn hóa:
+                </p>
+              </div>
               <div className="space-y-4 mb-4">
-                <div className="flex gap-3 items-start bg-red-50/50 backdrop-blur-sm p-4 rounded-lg border-l-4 border-red-600">
+                <div className="flex gap-3 items-start bg-red-50/95 backdrop-blur-sm p-5 rounded-xl border-l-4 border-red-600 shadow-md">
                   <div className="text-3xl flex-shrink-0"></div>
                   <div>
-                    <strong className="text-red-700">Chính sách ngu dân:</strong>
+                    <strong className="text-red-700 text-lg">Chính sách ngu dân:</strong>
                     <p className="text-black font-semibold mt-1">hạn chế mở trường, không cho dân ta học cao, chỉ đào tạo một tầng lớp tay sai phục vụ chính quyền thực dân.</p>
                   </div>
                 </div>
-                <div className="flex gap-3 items-start bg-orange-50/50 backdrop-blur-sm p-4 rounded-lg border-l-4 border-orange-600">
+                <div className="flex gap-3 items-start bg-orange-50/95 backdrop-blur-sm p-5 rounded-xl border-l-4 border-orange-600 shadow-md">
                   <div className="text-3xl flex-shrink-0"></div>
                   <div>
-                    <strong className="text-orange-700">Chính sách đồng hóa:</strong>
+                    <strong className="text-orange-700 text-lg">Chính sách đồng hóa:</strong>
                     <p className="text-black font-semibold mt-1">truyền bá lối sống, tư tưởng, thói quen, thị hiếu của văn hóa Pháp với mục đích làm "nhạt nhòa" bản sắc Việt.</p>
                   </div>
                 </div>
-                <div className="flex gap-3 items-start bg-amber-50/50 backdrop-blur-sm p-4 rounded-lg border-l-4 border-amber-600">
+                <div className="flex gap-3 items-start bg-amber-50/95 backdrop-blur-sm p-5 rounded-xl border-l-4 border-amber-600 shadow-md">
                   <div className="text-3xl flex-shrink-0"></div>
                   <div>
-                    <strong className="text-amber-700">Chính sách chia rẽ tinh thần dân tộc:</strong>
+                    <strong className="text-amber-700 text-lg">Chính sách chia rẽ tinh thần dân tộc:</strong>
                     <p className="text-black font-semibold mt-1">xuyên tạc lịch sử, thay đổi chương trình giáo dục, hạ thấp giá trị của tổ tiên ta.</p>
                   </div>
                 </div>
               </div>
-              <p className="text-black font-semibold leading-relaxed mb-4">
-                <strong>Thực dân không chỉ muốn chiếm đất mà còn muốn chiếm luôn linh hồn và trí tuệ dân tộc.</strong>
-              </p>
-              <p className="text-black font-semibold leading-relaxed mb-4">
-                Chính vì vậy, Hồ Chí Minh nhìn rất rõ:
-              </p>
-              <p className="text-black font-semibold leading-relaxed ml-6 mb-2">
-                → Nếu văn hóa không đứng lên, dân tộc sẽ suy yếu từ bên trong.
-              </p>
-              <p className="text-black font-semibold leading-relaxed ml-6 mb-4">
-                → Nếu tinh thần bị nô dịch, thì độc lập chính trị cũng chỉ là hình thức.
-              </p>
-              <div className="bg-[#FFD700]/10 border-l-4 border-[#FFD700] p-6 rounded-r-lg mb-4">
-                <p className="text-black font-semibold italic">
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-4 border-2 border-gray-200">
+                <p className="text-black font-semibold leading-relaxed mb-4">
+                  <strong>Thực dân không chỉ muốn chiếm đất mà còn muốn chiếm luôn linh hồn và trí tuệ dân tộc.</strong>
+                </p>
+                <p className="text-black font-semibold leading-relaxed mb-4">
+                  Chính vì vậy, Hồ Chí Minh nhìn rất rõ:
+                </p>
+                <p className="text-black font-semibold leading-relaxed ml-6 mb-2">
+                  → Nếu văn hóa không đứng lên, dân tộc sẽ suy yếu từ bên trong.
+                </p>
+                <p className="text-black font-semibold leading-relaxed ml-6 mb-4">
+                  → Nếu tinh thần bị nô dịch, thì độc lập chính trị cũng chỉ là hình thức.
+                </p>
+              </div>
+              <div className="bg-[#FFD700]/20 border-l-4 border-[#FFD700] p-6 rounded-r-lg mb-4 shadow-md backdrop-blur-sm">
+                <p className="text-black font-bold italic text-lg" style={{textShadow: '1px 1px 2px rgba(255,255,255,0.8)'}}>
                   Bác nói: <strong>"Văn hóa nghệ thuật cũng là một mặt trận. Anh chị em là chiến sĩ trên mặt trận ấy."</strong>
                 </p>
               </div>
-              <p className="text-black font-semibold leading-relaxed mb-6">
-                Ngày nay, chúng ta không còn đối mặt với súng đạn, nhưng vẫn đang đứng trên mặt trận văn hóa mới, nơi kẻ thù không phải quân xâm lược mà là những thói hư tật xấu âm thầm gặm nhấm con người. Cuộc chiến này lặng lẽ hơn, nhưng hậu quả của nó cũng nặng nề không kém.
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <p className="text-black font-semibold leading-relaxed">
+                  Ngày nay, chúng ta không còn đối mặt với súng đạn, nhưng vẫn đang đứng trên mặt trận văn hóa mới, nơi kẻ thù không phải quân xâm lược mà là những thói hư tật xấu âm thầm gặm nhấm con người. Cuộc chiến này lặng lẽ hơn, nhưng hậu quả của nó cũng nặng nề không kém.
+                </p>
+              </div>
 
               <div className="flex justify-between items-center mt-8 pt-6 border-t-2 border-[#FFD700]">
                 <button
@@ -395,18 +398,20 @@ export default function PresentationPage() {
                   </div>
                 </div>
               </div>
-              <p className="text-black font-semibold leading-relaxed mb-4">
-                Giặc nội xâm, theo tư tưởng Hồ Chí Minh, là những thói xấu trong chính con người Việt Nam, từ đó phá hoại phẩm chất đạo đức và làm suy yếu sức mạnh dân tộc.
-              </p>
-              <p className="text-black font-semibold leading-relaxed mb-4">
-                <strong>Đây là thứ kẻ thù "vô hình", không nhìn thấy bằng mắt thường nhưng tồn tại trong mỗi suy nghĩ, hành vi hàng ngày.</strong>
-              </p>
-              <p className="text-black font-semibold leading-relaxed mb-6">
-                Bác chỉ rõ bốn nhóm "giặc nội xâm" nguy hiểm:
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <p className="text-black font-semibold leading-relaxed mb-4">
+                  Giặc nội xâm, theo tư tưởng Hồ Chí Minh, là những thói xấu trong chính con người Việt Nam, từ đó phá hoại phẩm chất đạo đức và làm suy yếu sức mạnh dân tộc.
+                </p>
+                <p className="text-black font-semibold leading-relaxed mb-4">
+                  <strong>Đây là thứ kẻ thù "vô hình", không nhìn thấy bằng mắt thường nhưng tồn tại trong mỗi suy nghĩ, hành vi hàng ngày.</strong>
+                </p>
+                <p className="text-black font-semibold leading-relaxed">
+                  Bác chỉ rõ bốn nhóm "giặc nội xâm" nguy hiểm:
+                </p>
+              </div>
 
               <div className="space-y-6 mb-6">
-                <div className="bg-gradient-to-r from-red-50/80 via-red-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-red-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="bg-gradient-to-r from-red-50/95 via-red-50/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-red-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
                   <div className="absolute top-4 right-4 text-6xl opacity-10"></div>
                   <div className="flex items-start gap-4">
                     <div className="text-5xl"></div>
@@ -429,7 +434,7 @@ export default function PresentationPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-orange-50/80 via-orange-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-orange-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="bg-gradient-to-r from-orange-50/95 via-orange-50/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-orange-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
                   <div className="absolute top-4 right-4 text-6xl opacity-10"></div>
                   <div className="flex items-start gap-4">
                     <div className="text-5xl"></div>
@@ -452,7 +457,7 @@ export default function PresentationPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-purple-50/80 via-purple-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-purple-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="bg-gradient-to-r from-purple-50/95 via-purple-50/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-purple-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
                   <div className="absolute top-4 right-4 text-6xl opacity-10">💎</div>
                   <div className="flex items-start gap-4">
                     <div className="text-5xl"></div>
@@ -472,7 +477,7 @@ export default function PresentationPage() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-r from-gray-100/80 via-gray-100/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-gray-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                <div className="bg-gradient-to-r from-gray-100/95 via-gray-100/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-8 border-gray-600 relative overflow-hidden hover:shadow-2xl transition-all duration-300">
                   <div className="absolute top-4 right-4 text-6xl opacity-10"></div>
                   <div className="flex items-start gap-4">
                     <div className="text-5xl"></div>
@@ -495,7 +500,7 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="bg-yellow-50/50 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl">
+              <div className="bg-yellow-50/95 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg">
                 <h3 className="text-xl font-bold text-[#b30000] mb-4">⇒ Liên hệ thực tế sinh viên – "Chiến trường" sát nhất</h3>
                 <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                   <li><strong>Lãng phí:</strong> thời gian trôi qua trên game, mạng xã hội, "lướt TikTok cả ngày".</li>
@@ -503,7 +508,7 @@ export default function PresentationPage() {
                   <li><strong>Lười biếng:</strong> trì hoãn, deadline dí mới làm.</li>
                   <li><strong>Phù phiếm:</strong> sống ảo, thích được công nhận qua "like" và "view".</li>
                 </ul>
-                <p className="text-gray-900 font-medium mt-4 font-semibold">
+                <p className="text-gray-900 font-semibold mt-4">
                   → Đây chính là những mầm bệnh âm thầm hủy hoại tương lai người trẻ.
                 </p>
               </div>
@@ -569,9 +574,9 @@ export default function PresentationPage() {
 
               <h3 className="text-2xl font-black text-[#8b0000] mb-4">1. "PHÒ CHÍNH TRỪ TÀ" – giá trị cốt lõi của mặt trận văn hóa</h3>
 
-              <div className="bg-red-50/80 backdrop-blur-sm p-6 rounded-xl mb-6 shadow-lg">
+              <div className="bg-red-50/95 backdrop-blur-sm p-6 rounded-xl mb-6 shadow-lg border-2 border-red-200">
                 <h4 className="text-xl font-bold text-[#b30000] mb-3">TRỪ TÀ: chống lại cái xấu</h4>
-                <p className="text-gray-900 font-medium mb-3">Sinh viên cần:</p>
+                <p className="text-gray-900 font-semibold mb-3">Sinh viên cần:</p>
                 <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                   <li>chống gian lận</li>
                   <li>chống lười biếng</li>
@@ -579,12 +584,12 @@ export default function PresentationPage() {
                   <li>chống vô cảm trong tập thể</li>
                   <li>chống nói xấu, công kích cá nhân trên mạng</li>
                 </ul>
-                <p className="text-gray-900 font-medium mt-3 italic">
+                <p className="text-gray-900 font-semibold mt-3 italic">
                   "Tà" không phải chỉ là tội ác lớn, đôi khi chỉ là sự cẩu thả, thói quen xấu, tâm lý ỷ lại.
                 </p>
               </div>
 
-              <div className="bg-yellow-50/70 backdrop-blur-sm p-6 rounded-xl mb-6 shadow-lg">
+              <div className="bg-yellow-50/95 backdrop-blur-sm p-6 rounded-xl mb-6 shadow-lg border-2 border-yellow-200">
                 <h4 className="text-xl font-bold text-[#b30000] mb-3">PHÒ CHÍNH: xây dựng cái đẹp</h4>
                 <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                   <li>Biểu dương người tốt</li>
@@ -592,38 +597,40 @@ export default function PresentationPage() {
                   <li>Tôn vinh sự nỗ lực</li>
                   <li>Khuyến khích tinh thần cống hiến, sẻ chia</li>
                 </ul>
-                <div className="bg-[#FFD700]/20 border-l-4 border-[#FFD700] p-4 mt-4 rounded-r">
-                  <p className="text-black font-semibold italic">
+                <div className="bg-[#FFD700]/30 border-l-4 border-[#FFD700] p-4 mt-4 rounded-r shadow-md">
+                  <p className="text-black font-bold italic text-lg">
                     Bác dặn: <strong>"Muốn diệt cái xấu phải xây cái tốt."</strong>
                   </p>
                 </div>
               </div>
 
-              <h3 className="text-2xl font-black text-[#8b0000] mb-4">2. "ĐỜI SỐNG MỚI": CẦN – KIỆM – LIÊM – CHÍNH</h3>
-              <p className="text-gray-900 font-medium mb-6">
-                Đây là vũ khí đạo đức mạnh nhất chống lại giặc nội xâm.
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <h3 className="text-2xl font-black text-[#8b0000] mb-4">2. "ĐỜI SỐNG MỚI": CẦN – KIỆM – LIÊM – CHÍNH</h3>
+                <p className="text-gray-900 font-semibold mb-6">
+                  Đây là vũ khí đạo đức mạnh nhất chống lại giặc nội xâm.
+                </p>
+              </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-white/75 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="bg-white/95 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <h4 className="text-xl font-bold text-[#b30000] mb-2">• CẦN</h4>
                   <p className="text-black font-semibold">
                     Nỗ lực, chủ động, sáng tạo → không đợi người nhắc.
                   </p>
                 </div>
-                <div className="bg-white/75 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="bg-white/95 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <h4 className="text-xl font-bold text-[#b30000] mb-2">• KIỆM</h4>
                   <p className="text-black font-semibold">
                     Không hoang phí thời gian, tiền bạc, công sức → biết đủ, biết quý trọng.
                   </p>
                 </div>
-                <div className="bg-white/75 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="bg-white/95 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <h4 className="text-xl font-bold text-[#b30000] mb-2">• LIÊM</h4>
                   <p className="text-black font-semibold">
                     Không gian dối, không tham lam → trung thực trong học tập, công việc.
                   </p>
                 </div>
-                <div className="bg-white/75 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                <div className="bg-white/95 backdrop-blur-sm border-2 border-[#FFD700] p-6 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                   <h4 className="text-xl font-bold text-[#b30000] mb-2">• CHÍNH</h4>
                   <p className="text-black font-semibold">
                     Sống thẳng thắn, công bằng → dám nói đúng, làm đúng.
@@ -696,12 +703,14 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <p className="text-black font-semibold leading-relaxed mb-6">
-                Để không chỉ hiểu mà còn thực hành, sinh viên cần hành động rõ ràng:
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <p className="text-black font-semibold leading-relaxed">
+                  Để không chỉ hiểu mà còn thực hành, sinh viên cần hành động rõ ràng:
+                </p>
+              </div>
 
               <div className="space-y-6">
-                <div className="bg-gradient-to-r from-blue-50/80 via-blue-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+                <div className="bg-gradient-to-r from-blue-50/95 via-blue-50/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
                   <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
                     <span className="text-2xl"></span>
                     <span>1. Rèn luyện Professionalism – thái độ chuyên nghiệp</span>
@@ -717,7 +726,7 @@ export default function PresentationPage() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-green-50/80 via-green-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+                <div className="bg-gradient-to-r from-green-50/95 via-green-50/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-green-500">
                   <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
                     <span className="text-2xl"></span>
                     <span>2. Bản lĩnh trên không gian mạng</span>
@@ -733,7 +742,7 @@ export default function PresentationPage() {
                   </p>
                 </div>
 
-                <div className="bg-gradient-to-r from-yellow-50/80 via-yellow-50/60 to-white/80 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
+                <div className="bg-gradient-to-r from-yellow-50/95 via-yellow-50/90 to-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
                   <h3 className="text-xl font-bold text-[#b30000] mb-3 flex items-center gap-2">
                     <span className="text-2xl"></span>
                     <span>3. Giữ bản sắc văn hóa Việt trong hội nhập</span>
@@ -809,23 +818,25 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="bg-[#FFD700]/10 border-l-4 border-[#FFD700] p-6 rounded-r-lg mb-6">
-                <p className="text-black font-semibold text-lg italic">
+              <div className="bg-[#FFD700]/25 border-l-4 border-[#FFD700] p-6 rounded-r-lg mb-6 shadow-md backdrop-blur-sm">
+                <p className="text-black font-bold text-lg italic" style={{textShadow: '1px 1px 2px rgba(255,255,255,0.8)'}}>
                   Hồ Chí Minh khẳng định: <strong>"Văn hoá soi đường cho quốc dân đi."</strong>
                 </p>
               </div>
-              <p className="text-black font-semibold leading-relaxed mb-4">
-                Vì vậy, mỗi sinh viên không chỉ là người thụ hưởng văn hóa mà phải là người xây dựng, bảo vệ, lan tỏa văn hóa.
-              </p>
-              <p className="text-black font-semibold leading-relaxed mb-4">
-                Cuộc chiến chống giặc nội xâm:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-black font-semibold mb-6 ml-6">
-                <li>không có tiếng súng,</li>
-                <li>nhưng diễn ra mỗi ngày,</li>
-                <li>trong từng quyết định nhỏ,</li>
-                <li>từng hành động, từng suy nghĩ của mỗi người.</li>
-              </ul>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <p className="text-black font-semibold leading-relaxed mb-4">
+                  Vì vậy, mỗi sinh viên không chỉ là người thụ hưởng văn hóa mà phải là người xây dựng, bảo vệ, lan tỏa văn hóa.
+                </p>
+                <p className="text-black font-semibold leading-relaxed mb-4">
+                  Cuộc chiến chống giặc nội xâm:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-black font-semibold ml-6">
+                  <li>không có tiếng súng,</li>
+                  <li>nhưng diễn ra mỗi ngày,</li>
+                  <li>trong từng quyết định nhỏ,</li>
+                  <li>từng hành động, từng suy nghĩ của mỗi người.</li>
+                </ul>
+              </div>
               <div className="bg-gradient-to-r from-[#b30000] to-[#8b0000] text-white p-8 rounded-2xl text-center shadow-2xl">
                 <p className="text-2xl font-black mb-2">
                   Chiến thắng giặc nội xâm chính là chiến thắng bản thân,
@@ -854,16 +865,18 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-black text-[#8b0000] mb-4 flex items-center gap-3">
-                <BookOpen size={28} />
-                <span>Tài liệu tham khảo</span>
-              </h3>
-              <p className="text-gray-900 font-semibold mb-6 italic text-base">
-                Nguồn tư liệu và trích dẫn sử dụng trong bài trình chiếu
-              </p>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <h3 className="text-2xl font-black text-[#8b0000] mb-4 flex items-center gap-3">
+                  <BookOpen size={28} />
+                  <span>Tài liệu tham khảo</span>
+                </h3>
+                <p className="text-gray-900 font-semibold mb-6 italic text-base">
+                  Nguồn tư liệu và trích dẫn sử dụng trong bài trình chiếu
+                </p>
+              </div>
 
-              <div className="bg-gray-50/50 backdrop-blur-sm p-6 rounded-xl mb-8">
-                <ol className="list-decimal list-inside space-y-3 text-gray-900 font-medium">
+              <div className="bg-gray-50/95 backdrop-blur-sm p-6 rounded-xl mb-8 shadow-lg border-2 border-gray-200">
+                <ol className="list-decimal list-inside space-y-3 text-gray-900 font-semibold">
                   <li>Hồ Chí Minh toàn tập — Tập 5, 10, 12 — Nhà xuất bản Chính trị quốc gia, Hà Nội</li>
                   <li>Tư tưởng Hồ Chí Minh về văn hóa — Viện nghiên cứu tư tưởng Hồ Chí Minh</li>
                   <li>Văn kiện Đại hội XIII của Đảng — nội dung về văn hóa, con người Việt Nam</li>
@@ -871,15 +884,17 @@ export default function PresentationPage() {
                 </ol>
               </div>
 
-              <h3 className="text-2xl font-semibold text-[#8b0000] mb-4 flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Kết luận</span>
-              </h3>
-              <div className="bg-green-50 p-6 rounded-xl mb-8 border-l-4 border-green-500">
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <h3 className="text-2xl font-semibold text-[#8b0000] mb-4 flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Kết luận</span>
+                </h3>
+              </div>
+              <div className="bg-green-50/95 p-6 rounded-xl mb-8 border-l-4 border-green-500 shadow-lg">
                 <p className="text-black font-semibold leading-relaxed mb-4">
                   Bài thuyết trình đã làm rõ tầm quan trọng của 'mặt trận văn hóa' trong tư tưởng Hồ Chí Minh và vai trò của sinh viên trong cuộc chiến chống 'giặc nội xâm' thời đại mới.
                 </p>
-                <p className="text-gray-900 font-medium font-semibold mb-3">Những điểm chính:</p>
+                <p className="text-gray-900 font-semibold mb-3">Những điểm chính:</p>
                 <ul className="list-disc list-inside space-y-2 text-black font-semibold">
                   <li>Văn hóa là nền tảng tinh thần của dân tộc</li>
                   <li>Giặc nội xâm là thách thức hiện thực với mỗi sinh viên</li>
@@ -892,33 +907,35 @@ export default function PresentationPage() {
                 </p>
               </div>
 
-              <h3 className="text-2xl font-semibold text-[#8b0000] mb-4 flex items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
-                <span>Trích dẫn</span>
-              </h3>
+              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
+                <h3 className="text-2xl font-semibold text-[#8b0000] mb-4 flex items-center gap-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"></path><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"></path></svg>
+                  <span>Trích dẫn</span>
+                </h3>
+              </div>
               <div className="space-y-4">
-                <div className="bg-white border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-md">
+                <div className="bg-white/95 border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-lg backdrop-blur-sm">
                   <p className="text-gray-900 font-semibold italic text-lg">
                     "Văn hoá soi đường cho quốc dân đi."
                   </p>
                   <p className="text-[#b30000] font-semibold mt-2">— Hồ Chí Minh</p>
                 </div>
 
-                <div className="bg-white border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-md">
+                <div className="bg-white/95 border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-lg backdrop-blur-sm">
                   <p className="text-gray-900 font-semibold italic text-lg">
                     "Văn hóa nghệ thuật cũng là một mặt trận. Anh chị em là chiến sĩ trên mặt trận ấy."
                   </p>
                   <p className="text-[#b30000] font-semibold mt-2">— Hồ Chí Minh</p>
                 </div>
 
-                <div className="bg-white border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-md">
+                <div className="bg-white/95 border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-lg backdrop-blur-sm">
                   <p className="text-gray-900 font-semibold italic text-lg">
                     "Muốn diệt cái xấu phải xây cái tốt."
                   </p>
                   <p className="text-[#b30000] font-semibold mt-2">— Hồ Chí Minh</p>
                 </div>
 
-                <div className="bg-white border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-md">
+                <div className="bg-white/95 border-l-4 border-[#FFD700] p-6 rounded-r-xl shadow-lg backdrop-blur-sm">
                   <p className="text-gray-900 font-semibold italic text-lg">
                     "Vì lợi ích mười năm thì phải trồng cây, vì lợi ích trăm năm thì phải trồng người."
                   </p>
