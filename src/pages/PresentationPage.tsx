@@ -102,7 +102,7 @@ export default function PresentationPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url(/tu-tuong-hcm-5-1024x691.jpg)',
+            backgroundImage: 'url(/cover-kl01_1717365181.gif)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.85
