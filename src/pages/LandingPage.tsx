@@ -419,7 +419,7 @@ export default function LandingPage() {
             </div>
             <div className="border-t border-white/20 pt-6 text-center">
               <p className="text-gray-400 text-sm">
-                © 2024 Nhóm 10 - Lớp 3W_HCM202_04. Được tạo ra với sự tôn trọng và ngưỡng mộ Chủ tịch Hồ Chí Minh.
+                © Fall 2025 - Nhóm 10 - Lớp 3W_HCM202_04. Được tạo ra với sự tôn trọng và ngưỡng mộ Chủ tịch Hồ Chí Minh.
               </p>
               <p className="text-gray-500 text-xs mt-2">
                 Website mang tính chất học tập và nghiên cứu
