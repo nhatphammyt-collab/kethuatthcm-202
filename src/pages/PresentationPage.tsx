@@ -259,20 +259,24 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <div className="mb-6 relative">
-                <img
-                  src="/91a5b114d584465580d9795b66cf0b06.jpg"
-                  alt="Bác Hồ nghiên cứu"
-                  className="w-full max-w-md float-right ml-6 mb-4 rounded-xl shadow-lg"
-                />
-              </div>
-              <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-6 border-2 border-gray-200">
-                <p className="text-black leading-relaxed mb-4 font-semibold text-lg">
-                  Để hiểu rõ vì sao Chủ tịch Hồ Chí Minh khẳng định văn hóa là một "mặt trận" và người làm văn hóa là "chiến sĩ", chúng ta cần đặt nó trong bối cảnh lịch sử đầy biến động cuối thế kỷ XIX – đầu thế kỷ XX.
-                </p>
-                <p className="text-gray-900 leading-relaxed mb-4 font-semibold text-base">
-                  Lúc bấy giờ, sau khi xâm lược Việt Nam, thực dân Pháp không chỉ dùng quân sự để thống trị mà còn thi hành nhiều chính sách cực kỳ thâm độc về văn hóa:
-                </p>
+              <div className="flex flex-col lg:flex-row gap-6 mb-6">
+                <div className="flex-1">
+                  <div className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border-2 border-gray-200">
+                    <p className="text-black leading-relaxed mb-4 font-semibold text-lg">
+                      Để hiểu rõ vì sao Chủ tịch Hồ Chí Minh khẳng định văn hóa là một "mặt trận" và người làm văn hóa là "chiến sĩ", chúng ta cần đặt nó trong bối cảnh lịch sử đầy biến động cuối thế kỷ XIX – đầu thế kỷ XX.
+                    </p>
+                    <p className="text-gray-900 leading-relaxed font-semibold text-base">
+                      Lúc bấy giờ, sau khi xâm lược Việt Nam, thực dân Pháp không chỉ dùng quân sự để thống trị mà còn thi hành nhiều chính sách cực kỳ thâm độc về văn hóa:
+                    </p>
+                  </div>
+                </div>
+                <div className="lg:w-96 flex-shrink-0">
+                  <img
+                    src="/91a5b114d584465580d9795b66cf0b06.jpg"
+                    alt="Bác Hồ nghiên cứu"
+                    className="w-full rounded-xl shadow-lg"
+                  />
+                </div>
               </div>
               <div className="space-y-4 mb-4">
                 <div className="flex gap-3 items-start bg-red-50/95 backdrop-blur-sm p-5 rounded-xl border-l-4 border-red-600 shadow-md">
@@ -572,7 +576,9 @@ export default function PresentationPage() {
                 </div>
               </div>
 
-              <h3 className="text-2xl font-black text-[#8b0000] mb-4">1. "PHÒ CHÍNH TRỪ TÀ" – giá trị cốt lõi của mặt trận văn hóa</h3>
+              <div className="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg mb-4 border-2 border-gray-200">
+                <h3 className="text-2xl font-black text-[#8b0000]">1. "PHÒ CHÍNH TRỪ TÀ" – giá trị cốt lõi của mặt trận văn hóa</h3>
+              </div>
 
               <div className="bg-red-50/95 backdrop-blur-sm p-6 rounded-xl mb-6 shadow-lg border-2 border-red-200">
                 <h4 className="text-xl font-bold text-[#b30000] mb-3">TRỪ TÀ: chống lại cái xấu</h4>
