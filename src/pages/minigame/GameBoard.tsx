@@ -173,7 +173,17 @@ export default function GameBoard() {
 
     // ⚡ HYBRID OPTIMIZATION: Real-time cho events (tất cả players)
     // Events cần real-time để quiz answers check đúng
-    const eventUnsubscribe = subscribeToEvents(roomId, (eventData) => {
+    // ⚠️ LƯU Ý: onSnapshot vẫn đọc toàn bộ document mỗi lần có thay đổi
+    // Nhưng cần thiết để đảm bảo quiz logic chính xác
+    let eventUnsubscribe: (() => void) | null = null;
+    eventUnsubscribe = subscribeToEvents(roomId, (eventData) => {
+      // ⚡ TỐI ƯU: Dừng listener nếu game đã ended
+      if (room?.status === 'finished' && eventUnsubscribe) {
+        eventUnsubscribe();
+        eventUnsubscribe = null;
+        return;
+      }
+      
       setActiveEvent(eventData);
       
       // Check for new event
@@ -198,16 +208,8 @@ export default function GameBoard() {
         setRoom(roomData);
         setLoading(false);
 
-        // Merge với event state từ real-time
-        if (roomData) {
-          setRoom({
-            ...roomData,
-            events: {
-              ...roomData.events,
-              activeEvent: activeEvent || roomData.events.activeEvent,
-            },
-          });
-        }
+        // Set room data (không merge với activeEvent để tránh dependency loop)
+        setRoom(roomData);
 
         // Get current player data
         if (roomData && playerId && roomData.players[playerId]) {
@@ -222,32 +224,32 @@ export default function GameBoard() {
         }
       });
     } else {
-      // Players: Polling mỗi 3 giây cho updates thông thường
+      // Players: Polling mỗi 10 giây cho updates thông thường (tối ưu Firebase reads)
+      // Giảm từ 3s xuống 10s: 3 players × 30 polls/5min = 90 reads thay vì 300 reads
       const pollRoom = async () => {
         try {
           const roomData = await getRoomById(roomId);
           if (roomData) {
             setLoading(false);
             
-            // Merge với event state từ real-time
-            setRoom({
-              ...roomData,
-              events: {
-                ...roomData.events,
-                activeEvent: activeEvent || roomData.events.activeEvent,
-              },
-            });
+            // ⚡ TỐI ƯU: Dừng polling ngay khi game ended để tránh reads không cần thiết
+            if (roomData.status === 'finished') {
+              if (pollInterval) {
+                clearInterval(pollInterval);
+                pollInterval = null;
+              }
+              navigate(`/minigame/end/${roomId}`, { 
+                state: { role, adminId, playerId } 
+              });
+              return;
+            }
+            
+            // Set room data (activeEvent được quản lý riêng bởi subscribeToEvents)
+            setRoom(roomData);
 
             // Get current player data
             if (roomData.players[playerId]) {
               setCurrentPlayer(roomData.players[playerId]);
-            }
-
-            // If game ended, navigate to end screen
-            if (roomData.status === 'finished') {
-              navigate(`/minigame/end/${roomId}`, { 
-                state: { role, adminId, playerId } 
-              });
             }
           }
         } catch (error) {
@@ -257,17 +259,21 @@ export default function GameBoard() {
 
       // Poll ngay lập tức
       pollRoom();
-      // Poll mỗi 3 giây
-      pollInterval = setInterval(pollRoom, 3000);
+      // ⚡ TỐI ƯU: Poll mỗi 10 giây thay vì 3 giây (giảm 70% reads)
+      pollInterval = setInterval(pollRoom, 10000);
     }
 
     return () => {
-      eventUnsubscribe();
+      // ⚡ TỐI ƯU: Cleanup tất cả listeners và intervals để tránh memory leak và duplicate reads
+      if (eventUnsubscribe) {
+        eventUnsubscribe();
+      }
       if (fullUnsubscribe) {
         fullUnsubscribe();
       }
       if (pollInterval) {
         clearInterval(pollInterval);
+        pollInterval = null;
       }
       // ⚡ BATCH QUIZ: Cleanup - batch update trước khi unmount
       if (quizUpdateTimer.current) {
@@ -279,7 +285,10 @@ export default function GameBoard() {
         batchQuizUpdates();
       }
     };
-  }, [roomId, navigate, role, adminId, playerId, isAdmin, batchQuizUpdates, activeEvent]);
+    // ⚠️ QUAN TRỌNG: KHÔNG thêm activeEvent vào dependencies!
+    // Nếu thêm activeEvent, mỗi lần event thay đổi sẽ recreate listeners → reads tăng vọt!
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roomId, navigate, role, adminId, playerId, isAdmin]);
 
   // ⚡ Cooldown timer cho dice rolls (7 giây)
   useEffect(() => {
@@ -774,12 +783,9 @@ export default function GameBoard() {
             {/* Event Buttons */}
             <div className="grid grid-cols-2 gap-2">
               {ALL_EVENT_TYPES.map((eventType) => {
-                // Safely check active event type (handle null, undefined, or empty string)
-                const activeEvent = room.events?.activeEvent;
+                // ⚡ HYBRID: Dùng activeEvent từ state (real-time) thay vì room.events?.activeEvent
+                // activeEvent state được cập nhật bởi subscribeToEvents callback (real-time)
                 const activeEventType = activeEvent?.type;
-                
-                // Debug: Log button state for first button only when it changes (to avoid spam)
-                // Removed excessive logging - only log when needed for debugging
                 
                 // Check if there's actually an active event
                 // Firestore may return null, undefined, empty string, or a valid EventType
