@@ -78,7 +78,7 @@ const sections = [
     id: "van-dung",
     title: "PHẦN 4: VẬN DỤNG THỰC TIỄN",
     color: "from-blue-700 to-blue-800",
-    image: "/images/images.jpg",
+    image: "/svfpt.png",
     content: {
       intro: 'Sinh viên ngày nay có thể vận dụng tư tưởng Hồ Chí Minh để chống "giặc nội xâm" bằng cách:',
       checklist: [
@@ -93,10 +93,10 @@ const sections = [
     id: "ket-luan",
     title: "PHẦN 5: KẾT LUẬN",
     color: "from-[#b30000] to-[#8b0000]",
-    image: "/vietnam-youth-future-hope-patriotic.jpg",
+    image: "/ketluan.jpg",
     content: {
       text: 'Cuộc chiến chống "giặc nội xâm" là cuộc chiến lâu dài, không có tiếng súng nhưng vô cùng quyết liệt. Đó là cuộc chiến với chính bản thân mình.',
-      quote: { text: "Chiến thắng bản thân là chiến thắng vẻ vang nhất.", author: "Hồ Chí Minh" },
+      quote: { text: "Muốn cải tạo xã hội trước hết phải tự cải tạo chính mình.", author: "Hồ Chí Minh" },
       outro:
         "Mỗi sinh viên hãy là một chiến sĩ trên mặt trận văn hóa, góp phần xây dựng một Việt Nam giàu mạnh, văn minh.",
     },
@@ -217,7 +217,7 @@ export function ContentColumn() {
                       <div key={i} className="flex items-start gap-3">
                         <span className="text-white font-bold text-lg">•</span>
                         <div>
-                          <strong className="text-white font-semibold">{item.bold}</strong>
+                          <strong className="text-[#FFD700] font-bold">{item.bold}</strong>
                           <span className="ml-2">{item.text}</span>
                         </div>
                       </div>

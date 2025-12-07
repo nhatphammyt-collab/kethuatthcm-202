@@ -1,6 +1,5 @@
 import { FixedNavBar } from "../components/presentation/FixedNavBar"
 import { FixedSidebarButtons } from "../components/presentation/FixedSidebarButtons"
-import { FixedCharacterIcon } from "../components/presentation/FixedCharacterIcon"
 import { ContentColumn } from "../components/presentation/ContentColumn"
 
 export default function PresentationPage() {
@@ -27,7 +26,6 @@ export default function PresentationPage() {
       {/* Fixed UI Elements */}
       <FixedNavBar />
       <FixedSidebarButtons />
-      <FixedCharacterIcon />
 
       {/* Scrolling Content Column */}
       <div className="relative z-10 pt-20 pb-12">

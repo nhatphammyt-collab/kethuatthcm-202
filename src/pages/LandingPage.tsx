@@ -204,7 +204,7 @@ export default function LandingPage() {
     },
     {
       title: 'Kết Luận – Mỗi Sinh Viên Là Một Chiến Sĩ',
-      content: 'Cuộc chiến chống giặc nội xâm diễn ra mỗi ngày, trong từng quyết định nhỏ, từng hành động, từng suy nghĩ. Chiến thắng giặc nội xâm chính là chiến thắng bản thân - chiến thắng khó nhất nhưng ý nghĩa nhất.',
+      content: 'Cuộc chiến chống giặc nội xâm diễn ra mỗi ngày, trong từng quyết định nhỏ, từng hành động, từng suy nghĩ. Muốn cải tạo xã hội trước hết phải tự cải tạo chính mình.',
       align: 'right',
       image: '/sinhvien.jpg'
     }
@@ -238,6 +238,11 @@ export default function LandingPage() {
                 <div className="text-[#FFD700] font-bold text-sm">TƯ TƯỞNG</div>
                 <div className="text-white font-bold text-base">HỒ CHÍ MINH</div>
               </div>
+              <img 
+                src="/logofpt.png" 
+                alt="FPT Logo" 
+                className="h-8 w-auto ml-4 object-contain"
+              />
             </div>
 
             <nav className="nav-pill hidden md:flex">
