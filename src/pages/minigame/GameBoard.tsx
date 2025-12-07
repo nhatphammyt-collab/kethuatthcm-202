@@ -214,7 +214,7 @@ export default function GameBoard() {
         // Get current player data
         if (roomData && playerId && roomData.players[playerId]) {
           setCurrentPlayer(roomData.players[playerId]);
-      }
+        }
 
       // If game ended, navigate to end screen
       if (roomData?.status === 'finished') {
@@ -422,7 +422,7 @@ export default function GameBoard() {
         const seconds = error.message.split('_')[1];
         showToast(`⏱️ Bạn phải chờ ${seconds} giây nữa mới được lắc tiếp!`, 'warning');
       } else {
-      showToast('Lỗi khi lắc xúc xắc. Vui lòng thử lại.', 'error');
+        showToast('Lỗi khi lắc xúc xắc. Vui lòng thử lại.', 'error');
       }
     } finally {
       setIsRollingDice(false);
@@ -445,13 +445,13 @@ export default function GameBoard() {
       isCorrect,
       currentDiceRolls: currentPlayer.diceRolls || 0,
       currentScore: currentPlayer.score || 0,
-        });
+    });
     
     // ⚡ Debounce: Đợi 500ms, sau đó batch update
     // Nếu có timer cũ, clear nó và tạo timer mới
     if (quizUpdateTimer.current) {
       clearTimeout(quizUpdateTimer.current);
-        }
+    }
     
     quizUpdateTimer.current = setTimeout(() => {
       batchQuizUpdates();

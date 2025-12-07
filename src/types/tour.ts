@@ -9,10 +9,10 @@ export interface TourPlayer {
   joinedAt: Date;
   isReady: boolean;
   reactions: {
-    [locationId: number]: string; // emoji
+    [key: string]: string; // emoji - keys are strings like "locationId_timestamp"
   };
   messages: {
-    [locationId: number]: string; // message text
+    [key: string]: string; // message text - keys are strings like "locationId_timestamp"
   };
 }
 

@@ -179,7 +179,7 @@ const LOCATIONS = [
   { id: 3, name: "Đền Bến Dược" },
   { id: 4, name: "Quầy Lưu Niệm" },
   { id: 5, name: "Khu Tham Quan Địa Đạo" },
-  { id: 6, name: "Hồ Bơi" },
+  { id: 6, name: "Khu Nghỉ Dưỡng" },
   { id: 7, name: "Khu Tái Hiện Vùng Giải Phóng" },
   { id: 8, name: "Hồ Mô Phỏng Biển Đông" },
   { id: 9, name: "Khu Bắn Súng" },
