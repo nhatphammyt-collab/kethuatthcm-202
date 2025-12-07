@@ -17,6 +17,7 @@ export interface GameSettings {
   totalQuestions: number;
   gameDuration: number; // Thời gian game (giây) - mặc định 600 (10 phút)
   totalEvents: number; // Tổng số events - mặc định 8
+  diceCooldown: number; // ⚡ Thời gian chờ giữa các lần lắc xúc xắc (giây) - mặc định 7
   boardConfig: {
     totalTiles: number;
     rewardTiles: number[]; // [5, 10, 15, 20] - các ô có phần thưởng
@@ -48,6 +49,7 @@ export interface Player {
   freeDiceRolls: number; // Số lượt lắc miễn phí (từ events)
   bonusMultiplier: number; // Hệ số nhân điểm (từ events)
   joinedAt: any; // Firestore timestamp
+  lastDiceRollTime?: any; // ⚡ Firestore timestamp của lần lắc xúc xắc cuối cùng
   eventEffects: {
     diceDouble: boolean; // Event 1: Lần lắc tiếp theo x2
     scoreDouble: boolean; // Event 2: Mỗi ô đi được +2 điểm
@@ -125,41 +127,50 @@ export interface GameLog {
 }
 
 // Default values
+// ⚡ TỐI ƯU FIREBASE: Giảm game từ 10 phút xuống 5 phút
+// Tiết kiệm ~50% Firebase reads/writes!
 export const DEFAULT_SETTINGS: GameSettings = {
   maxPlayers: 50,
   totalQuestions: 20,
-  gameDuration: 600, // 10 phút
+  gameDuration: 300, // ⚡ 5 phút thay vì 10 phút
   totalEvents: 8,
+  diceCooldown: 7, // ⚡ Cooldown 7 giây giữa các lần lắc xúc xắc
   boardConfig: {
     totalTiles: 24, // 24 ô thực sự (0-23), ô 24 = ô 0 (cùng một ô)
     rewardTiles: [5, 9, 14, 19], // Các ô có phần thưởng: 5=Pepsi, 9=Kẹo, 14=Quà bí ẩn, 19=Bánh snack
   },
 };
 
+// ⚡ TỐI ƯU: Điều chỉnh unlockTimes cho phù hợp 5 phút
+// Giữ nguyên tỷ lệ unlock so với tổng thời gian game
 export const DEFAULT_REWARDS: Rewards = {
   mysteryGiftBox: { 
     total: 3, 
     claimed: 0, 
     claimedBy: [],
-    unlockTimes: [90, 300, 480] // Box 1: sau 1 phút 30 giây, Box 2: sau 5 phút, Box 3: sau 8 phút
+    // Box 1: 1 phút, Box 2: 2.5 phút, Box 3: 4 phút
+    unlockTimes: [60, 150, 240]
   },
   pepsi: { 
     total: 8, 
     claimed: 0, 
     claimedBy: [],
-    unlockTimes: [0, 180, 360] // 2-3-3: Sau 0s (2 rewards), 3 phút (5 rewards), 6 phút (8 rewards)
+    // Unlock: 0s, 1.5 phút, 3 phút
+    unlockTimes: [0, 90, 180]
   },
   cheetos: { 
     total: 8, 
     claimed: 0, 
     claimedBy: [],
-    unlockTimes: [60, 240, 420] // 2-3-3: Sau 1 phút (2 rewards), 4 phút (5 rewards), 7 phút (8 rewards)
+    // Unlock: 30s, 2 phút, 3.5 phút
+    unlockTimes: [30, 120, 210]
   },
   candies: { 
     total: 15, 
     claimed: 0, 
     claimedBy: [],
-    unlockTimes: [0, 120, 300, 480] // 5-5-5-0: Sau 0s (5 rewards), 2 phút (10 rewards), 5 phút (15 rewards), 8 phút (15 rewards)
+    // Unlock: 0s, 1 phút, 2.5 phút, 4 phút
+    unlockTimes: [0, 60, 150, 240]
   },
 };
 

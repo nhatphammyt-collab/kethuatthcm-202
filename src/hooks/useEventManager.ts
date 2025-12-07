@@ -71,7 +71,8 @@ export function useEventManager({ room, adminId, isAdmin }: UseEventManagerProps
         }
         
         const eventElapsed = Math.floor((now.getTime() - eventStartedAt.getTime()) / 1000);
-        const eventDuration = room.events.activeEvent.duration || 75;
+        // ⚡ TỐI ƯU: Duration mặc định 20s cho game 5 phút
+        const eventDuration = room.events.activeEvent.duration || 20;
         
         if (eventDuration > 0 && eventElapsed < eventDuration) {
           // Schedule automatic event end
@@ -98,10 +99,12 @@ export function useEventManager({ room, adminId, isAdmin }: UseEventManagerProps
       endGame(room.roomId, adminId).catch(console.error);
     }
     
-    // Update leaderboard periodically (every 5 seconds)
+    // ⚡ TỐI ƯU: Update leaderboard mỗi 30 giây thay vì 5 giây
+    // Tiết kiệm ~100 reads + 100 writes/game!
+    // Độ trễ 30s vẫn chấp nhận được với game 5 phút
     leaderboardUpdateTimerRef.current = setInterval(() => {
       updateLeaderboard(room.roomId).catch(console.error);
-    }, 5000);
+    }, 30000);
     
     return () => {
       if (gameEndTimerRef.current) {

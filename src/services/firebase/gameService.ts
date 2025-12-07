@@ -24,6 +24,62 @@ const ROOMS_COLLECTION = 'rooms';
 const QUESTIONS_COLLECTION = 'questions';
 const GAME_LOGS_COLLECTION = 'gameLogs';
 
+// ============================================
+// QUESTIONS CACHE - Tối ưu Firebase reads
+// ============================================
+let cachedQuestions: Question[] = [];
+let questionsLastFetched: number = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 phút cache
+
+/**
+ * Load questions to cache (gọi 1 lần khi game bắt đầu)
+ * Tiết kiệm ~150,000 reads/game!
+ */
+export async function loadQuestionsToCache(): Promise<void> {
+  const now = Date.now();
+  // Skip nếu cache vẫn còn hiệu lực
+  if (cachedQuestions.length > 0 && (now - questionsLastFetched) < CACHE_DURATION) {
+    console.log('[Cache] Questions cache còn hiệu lực, bỏ qua fetch');
+    return;
+  }
+  
+  try {
+    console.log('[Cache] Loading questions từ Firebase...');
+    const questionsRef = collection(db, QUESTIONS_COLLECTION);
+    const snapshot = await getDocs(questionsRef);
+    
+    cachedQuestions = snapshot.docs.map((doc) => ({
+      questionId: doc.id,
+      ...doc.data(),
+    })) as Question[];
+    
+    questionsLastFetched = now;
+    console.log(`[Cache] ✅ Đã load ${cachedQuestions.length} câu hỏi vào cache`);
+  } catch (error) {
+    console.error('[Cache] ❌ Lỗi khi load questions:', error);
+  }
+}
+
+/**
+ * Get random question từ cache (KHÔNG gọi Firebase!)
+ */
+export function getRandomQuestionFromCache(): Question | null {
+  if (cachedQuestions.length === 0) {
+    console.warn('[Cache] Cache trống! Gọi loadQuestionsToCache() trước.');
+    return null;
+  }
+  
+  const randomIndex = Math.floor(Math.random() * cachedQuestions.length);
+  return cachedQuestions[randomIndex];
+}
+
+/**
+ * Check xem cache đã được load chưa
+ */
+export function isQuestionsCacheLoaded(): boolean {
+  return cachedQuestions.length > 0;
+}
+
 /**
  * Create a new game room
  */
@@ -243,25 +299,18 @@ export async function logGameAction(
 }
 
 /**
- * Get random question
+ * Get random question - Sử dụng cache thay vì fetch từ Firebase mỗi lần
+ * Nếu cache trống, tự động load từ Firebase (fallback)
  */
 export async function getRandomQuestion(): Promise<Question | null> {
   try {
-    const questionsRef = collection(db, QUESTIONS_COLLECTION);
-    const snapshot = await getDocs(questionsRef);
-    
-    if (snapshot.empty) {
-      return null;
+    // Đảm bảo cache đã được load
+    if (!isQuestionsCacheLoaded()) {
+      await loadQuestionsToCache();
     }
     
-    const questions = snapshot.docs.map((doc) => ({
-      questionId: doc.id,
-      ...doc.data(),
-    })) as Question[];
-    
-    // Return random question
-    const randomIndex = Math.floor(Math.random() * questions.length);
-    return questions[randomIndex];
+    // Lấy từ cache (không gọi Firebase!)
+    return getRandomQuestionFromCache();
   } catch (error) {
     console.error('Error getting random question:', error);
     return null;
@@ -293,6 +342,27 @@ export async function rollDice(roomId: string, playerId: string): Promise<number
       const totalRolls = (player.diceRolls || 0) + (player.freeDiceRolls || 0);
       if (totalRolls <= 0) {
         throw new Error('No dice rolls available');
+      }
+      
+      // ⚡ Check dice cooldown (7 giây)
+      const diceCooldown = room.settings.diceCooldown || 7;
+      if (player.lastDiceRollTime) {
+        let lastRollTime: Date;
+        if (player.lastDiceRollTime.toDate) {
+          lastRollTime = player.lastDiceRollTime.toDate();
+        } else if (player.lastDiceRollTime instanceof Date) {
+          lastRollTime = player.lastDiceRollTime;
+        } else {
+          lastRollTime = new Date(player.lastDiceRollTime);
+        }
+        
+        const now = new Date();
+        const elapsedSeconds = Math.floor((now.getTime() - lastRollTime.getTime()) / 1000);
+        const remainingCooldown = diceCooldown - elapsedSeconds;
+        
+        if (remainingCooldown > 0) {
+          throw new Error(`COOLDOWN_${remainingCooldown}`);
+        }
       }
       
       // Roll dice (1-6)
@@ -331,7 +401,7 @@ export async function rollDice(roomId: string, playerId: string): Promise<number
         newDiceRolls -= 1;
       }
       
-      // Không reset diceDouble, để event kéo dài 75 giây
+      // Không reset diceDouble, để event kéo dài 45 giây (đã giảm từ 75s)
       // diceDouble sẽ được reset khi event kết thúc trong endActiveEvent
       const eventEffects = {
         ...player.eventEffects,
@@ -346,26 +416,24 @@ export async function rollDice(roomId: string, playerId: string): Promise<number
         [`players.${playerId}.diceRolls`]: newDiceRolls,
         [`players.${playerId}.freeDiceRolls`]: newFreeDiceRolls,
         [`players.${playerId}.eventEffects`]: eventEffects,
+        [`players.${playerId}.lastDiceRollTime`]: serverTimestamp(), // ⚡ Update cooldown timer
       });
       
-      // Update leaderboard after dice roll
-      // Note: This is done after the transaction to avoid conflicts
-      // We'll update it asynchronously
-      setTimeout(() => {
-        updateLeaderboard(roomId).catch(console.error);
-      }, 100);
+      // ⚡ TỐI ƯU: Bỏ leaderboard update sau mỗi roll
+      // useEventManager đã handle việc update leaderboard định kỳ (30s)
+      // Tiết kiệm ~1,500 writes/game!
       
-      // Log dice roll
-      await logGameAction(roomId, playerId, 'dice', {
-        diceResult,
-        finalDiceResult,
-        newPosition,
-        scoreBonus,
-      });
+      // ⚡ TỐI ƯU: Bỏ dice logs
+      // Không cần log mỗi lần roll, tiết kiệm ~1,500 writes/game!
+      // Chỉ giữ logs quan trọng: join, reward, event
       
       return finalDiceResult;
     });
-  } catch (error) {
+  } catch (error: any) {
+    // ⚡ Handle cooldown error - pass through để UI hiển thị
+    if (error?.message?.startsWith('COOLDOWN_')) {
+      throw error; // Re-throw để GameBoard có thể catch và hiển thị
+    }
     console.error('Error rolling dice:', error);
     return null;
   }
@@ -646,9 +714,10 @@ export async function triggerEvent(
       return false;
     }
     
-    // Calculate event duration (75 seconds for most events, 0 for instant events)
+    // ⚡ TỐI ƯU: Giảm event duration xuống 20s cho game 5 phút
+    // Event ngắn hơn, tempo game nhanh hơn, tăng tính cạnh tranh
     const instantEvents: EventType[] = ['free_dice', 'lose_dice'];
-    const duration = instantEvents.includes(eventType) ? 0 : 75;
+    const duration = instantEvents.includes(eventType) ? 0 : 20;
     
     // Remove event from remaining events
     const remainingEvents = room.events.remainingEvents.filter(e => e !== eventType);

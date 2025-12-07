@@ -11,8 +11,12 @@ export default function LandingPage() {
   const [showBubble, setShowBubble] = useState(false);
   const [hasClicked, setHasClicked] = useState(false);
   const [currentLyric, setCurrentLyric] = useState<string>("");
+  const [showQuiz, setShowQuiz] = useState(false);
+  const [quizAnswer, setQuizAnswer] = useState("");
+  const [clickCount, setClickCount] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+  const clickTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,16 +69,42 @@ export default function LandingPage() {
       window.removeEventListener('scroll', handleScroll);
       observer.disconnect();
       timelineObserver.disconnect();
+      if (clickTimerRef.current) {
+        clearTimeout(clickTimerRef.current);
+      }
     };
   }, []);
 
   const toggleMusic = () => {
     if (audioRef.current) {
+      // Handle double click to skip to quiz
+      setClickCount(prev => prev + 1);
+      
+      if (clickTimerRef.current) {
+        clearTimeout(clickTimerRef.current);
+      }
+      
+      clickTimerRef.current = setTimeout(() => {
+        setClickCount(0);
+      }, 300); // Reset after 300ms
+      
+      // Double click detected - skip to quiz
+      if (clickCount === 1) {
+        if (audioRef.current.paused) {
+          setHasClicked(true);
+          setShowBubble(true);
+          setShowQuiz(true);
+          setClickCount(0);
+          return;
+        }
+      }
+      
       if (isPlaying) {
         // Pause music and hide bubble
         audioRef.current.pause();
         setIsPlaying(false);
         setShowBubble(false);
+        setShowQuiz(false);
       } else {
         if (!hasClicked) {
           // First click - show hint message
@@ -99,8 +129,42 @@ export default function LandingPage() {
 
   const handleMusicEnded = () => {
     setIsPlaying(false);
-    setShowBubble(false);
     setCurrentLyric("");
+    setShowQuiz(true); // Show quiz when music ends
+    setShowBubble(true); // Keep bubble visible
+  };
+
+  const handleQuizSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const correctAnswer = "the ballad of ho chi minh";
+    const userAnswer = quizAnswer.trim().toLowerCase();
+    
+    if (userAnswer === correctAnswer) {
+      // Correct answer!
+      setShowBubble(true);
+      setCurrentLyric("🎉 Chính xác! Đó là 'The Ballad of Ho Chi Minh'");
+      setShowQuiz(false);
+      setQuizAnswer("");
+      
+      // Hide success message after 3s
+      setTimeout(() => {
+        setShowBubble(false);
+        setCurrentLyric("");
+        setHasClicked(false);
+      }, 3000);
+    } else {
+      // Wrong answer - reset everything
+      setShowQuiz(false);
+      setShowBubble(false);
+      setHasClicked(false);
+      setQuizAnswer("");
+      setCurrentLyric("");
+      setIsPlaying(false);
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+      }
+    }
   };
 
   const handleTimeUpdate = () => {
@@ -330,13 +394,38 @@ export default function LandingPage() {
                   {showBubble && (
                     <div className="absolute -top-6 left-full ml-2 bg-white text-gray-800 px-5 py-3 rounded-2xl shadow-xl w-72 animate-fade-in z-10">
                       <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white"></div>
-                      <p className="text-sm font-medium leading-relaxed">
-                        {!hasClicked 
-                          ? "🎤 Bạn có muốn nghe bài hát về Bác không?"
-                          : isPlaying && currentLyric
-                            ? currentLyric
-                            : "🎵 Bạn hãy đoán xem đây là bài gì nhé!"}
-                      </p>
+                      
+                      {showQuiz ? (
+                        // Quiz mode
+                        <form onSubmit={handleQuizSubmit} className="space-y-2">
+                          <p className="text-sm font-medium mb-2">
+                            🎵 Bạn biết đây là bài hát gì không?
+                          </p>
+                          <input
+                            type="text"
+                            value={quizAnswer}
+                            onChange={(e) => setQuizAnswer(e.target.value)}
+                            placeholder="Bài hát này là: "
+                            className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent"
+                            autoFocus
+                          />
+                          <button
+                            type="submit"
+                            className="w-full px-3 py-2 text-sm bg-[#FFD700] text-[#b30000] font-medium rounded-lg hover:bg-yellow-400 transition-colors"
+                          >
+                            Trả lời
+                          </button>
+                        </form>
+                      ) : (
+                        // Normal mode
+                        <p className="text-sm font-medium leading-relaxed">
+                          {!hasClicked 
+                            ? "🎤 Bạn có muốn nghe bài hát về Bác không?"
+                            : isPlaying && currentLyric
+                              ? currentLyric
+                              : currentLyric || "🎵 Bạn hãy đoán xem đây là bài gì nhé!"}
+                        </p>
+                      )}
                     </div>
                   )}
                 </div>

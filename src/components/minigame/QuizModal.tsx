@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
 import type { Question } from '../../types/game';
-import { getRandomQuestion } from '../../services/firebase/gameService';
+import { getRandomQuestion, loadQuestionsToCache, isQuestionsCacheLoaded } from '../../services/firebase/gameService';
 
 interface QuizModalProps {
   isOpen: boolean;
@@ -86,6 +86,13 @@ export default function QuizModal({
   const loadQuestion = async () => {
     setLoading(true);
     try {
+      // ⚡ TỐI ƯU: Đảm bảo cache đã load trước khi lấy câu hỏi
+      // Chỉ gọi Firebase 1 lần, các lần sau lấy từ cache!
+      if (!isQuestionsCacheLoaded()) {
+        console.log('[QuizModal] Cache chưa load, đang load...');
+        await loadQuestionsToCache();
+      }
+      
       const randomQuestion = await getRandomQuestion();
       if (randomQuestion) {
         setQuestion(randomQuestion);

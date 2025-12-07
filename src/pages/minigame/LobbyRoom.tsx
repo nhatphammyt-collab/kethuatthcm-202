@@ -167,13 +167,13 @@ export default function LobbyRoom() {
                     </div>
                     <ul className="text-white/90 space-y-2 text-sm ml-11">
                       <li>• <strong>Dice Double:</strong> Lần lắc tiếp theo x2 điểm</li>
-                      <li>• <strong>Score Double:</strong> Mỗi ô di chuyển +2 điểm (75 giây)</li>
-                      <li>• <strong>Quiz Bonus:</strong> Trả lời đúng +2 lượt lắc (75 giây)</li>
+                      <li>• <strong>Score Double:</strong> Mỗi ô di chuyển +2 điểm (20 giây)</li>
+                      <li>• <strong>Quiz Bonus:</strong> Trả lời đúng +2 lượt lắc (20 giây)</li>
                       <li>• <strong>Free Dice:</strong> Tất cả người chơi +1 lượt lắc miễn phí</li>
                       <li>• <strong>Lose Dice:</strong> Tất cả người chơi -1 lượt lắc</li>
-                      <li>• <strong>No Score:</strong> Di chuyển không cộng điểm (75 giây)</li>
-                      <li>• <strong>Penalty Wrong:</strong> Trả lời sai -5 điểm (75 giây)</li>
-                      <li>• <strong>Low Dice Penalty:</strong> Lắc &lt; 5 thì -3 điểm (75 giây)</li>
+                      <li>• <strong>No Score:</strong> Di chuyển không cộng điểm (20 giây)</li>
+                      <li>• <strong>Penalty Wrong:</strong> Trả lời sai -5 điểm (20 giây)</li>
+                      <li>• <strong>Low Dice Penalty:</strong> Lắc &lt; 5 thì -3 điểm (20 giây)</li>
                     </ul>
                   </div>
 
@@ -189,10 +189,10 @@ export default function LobbyRoom() {
                       <li>• Phần thưởng sẽ mở dần theo thời gian:</li>
                       <li className="ml-4 mt-2">
                         <div className="space-y-1">
-                          <div>• <strong>Pepsi:</strong> Mở sau 0s, 3 phút, 6 phút</div>
-                          <div>• <strong>Bánh snack:</strong> Mở sau 1 phút, 4 phút, 7 phút</div>
-                          <div>• <strong>Kẹo:</strong> Mở sau 0s, 2 phút, 5 phút, 8 phút</div>
-                          <div>• <strong>Hộp quà bí ẩn:</strong> Mở sau 1.5 phút, 5 phút, 8 phút</div>
+                          <div>• <strong>Pepsi:</strong> Mở sau 0s, 1.5 phút, 3 phút</div>
+                          <div>• <strong>Bánh snack:</strong> Mở sau 30s, 2 phút, 3.5 phút</div>
+                          <div>• <strong>Kẹo:</strong> Mở sau 0s, 1 phút, 2.5 phút, 4 phút</div>
+                          <div>• <strong>Hộp quà bí ẩn:</strong> Mở sau 1 phút, 2.5 phút, 4 phút</div>
                         </div>
                       </li>
                       <li className="mt-2">• Nếu phần thưởng chưa mở, bạn sẽ thấy thông báo thời gian còn lại</li>
@@ -208,7 +208,7 @@ export default function LobbyRoom() {
                       <li>• Trả lời đúng nhiều câu hỏi để có nhiều lượt lắc</li>
                       <li>• Tận dụng Events để tăng điểm hoặc lượt lắc</li>
                       <li>• Nhận phần thưởng đúng thời điểm để không lãng phí cơ hội</li>
-                      <li>• Game kéo dài 10 phút, người có điểm cao nhất sẽ thắng!</li>
+                      <li>• <strong>Game kéo dài 5 phút</strong>, người có điểm cao nhất sẽ thắng!</li>
                     </ul>
                   </div>
                 </div>

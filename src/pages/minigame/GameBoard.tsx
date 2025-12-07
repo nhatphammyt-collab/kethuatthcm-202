@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { subscribeToRoom, rollDice, claimReward, triggerEvent, endActiveEvent } from '../../services/firebase/gameService';
+import { subscribeToRoom, rollDice, claimReward, triggerEvent, endActiveEvent, loadQuestionsToCache } from '../../services/firebase/gameService';
 import { isRewardTile, getRewardTypeByTile, getRewardImagePath } from '../../utils/gameHelpers';
 import { useEventManager } from '../../hooks/useEventManager';
 import { useToast } from '../../components/minigame/ErrorToast';
@@ -77,6 +77,7 @@ export default function GameBoard() {
   const [isRollingDice, setIsRollingDice] = useState(false);
   const [showEventPanel, setShowEventPanel] = useState(false);
   const [lastDiceResult, setLastDiceResult] = useState<number | null>(null);
+  const [diceCooldownRemaining, setDiceCooldownRemaining] = useState<number>(0);
   const previousEventTypeRef = useRef<string | null>(null);
   const { showToast, ToastContainer } = useToast();
   
@@ -94,6 +95,10 @@ export default function GameBoard() {
       navigate('/minigame');
       return;
     }
+
+    // ⚡ TỐI ƯU: Preload questions cache khi vào game
+    // Chỉ fetch Firebase 1 lần, các lần quiz sau lấy từ cache!
+    loadQuestionsToCache().catch(console.error);
 
     // Subscribe to room changes
     const unsubscribe = subscribeToRoom(roomId, (roomData) => {
@@ -143,6 +148,37 @@ export default function GameBoard() {
 
     return () => unsubscribe();
   }, [roomId, navigate, role, adminId, playerId]);
+
+  // ⚡ Cooldown timer cho dice rolls (7 giây)
+  useEffect(() => {
+    if (!room || !currentPlayer || !currentPlayer.lastDiceRollTime) {
+      setDiceCooldownRemaining(0);
+      return;
+    }
+    
+    const diceCooldown = room.settings.diceCooldown || 7;
+    
+    const updateCooldown = () => {
+      let lastRollTime: Date;
+      if (currentPlayer.lastDiceRollTime.toDate) {
+        lastRollTime = currentPlayer.lastDiceRollTime.toDate();
+      } else if (currentPlayer.lastDiceRollTime instanceof Date) {
+        lastRollTime = currentPlayer.lastDiceRollTime;
+      } else {
+        lastRollTime = new Date(currentPlayer.lastDiceRollTime);
+      }
+      
+      const now = new Date();
+      const elapsedSeconds = Math.floor((now.getTime() - lastRollTime.getTime()) / 1000);
+      const remaining = Math.max(0, diceCooldown - elapsedSeconds);
+      setDiceCooldownRemaining(remaining);
+    };
+    
+    updateCooldown();
+    const interval = setInterval(updateCooldown, 1000);
+    
+    return () => clearInterval(interval);
+  }, [room, currentPlayer]);
 
   // Memoize players array and available rolls (MUST be before early returns)
   // Filter players to show only current player's group (4 players per group, based on join order)
@@ -198,6 +234,12 @@ export default function GameBoard() {
       return;
     }
     
+    // ⚡ Check dice cooldown
+    if (diceCooldownRemaining > 0) {
+      showToast(`⏱️ Bạn phải chờ ${diceCooldownRemaining} giây nữa mới được lắc tiếp!`, 'warning');
+      return;
+    }
+    
     // Check if game is playing
     if (room?.status !== 'playing') {
       showToast('Game chưa bắt đầu hoặc đã kết thúc!', 'warning');
@@ -232,13 +274,19 @@ export default function GameBoard() {
           }
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error rolling dice:', error);
-      showToast('Lỗi khi lắc xúc xắc. Vui lòng thử lại.', 'error');
+      // ⚡ Handle cooldown error
+      if (error?.message?.startsWith('COOLDOWN_')) {
+        const seconds = error.message.split('_')[1];
+        showToast(`⏱️ Bạn phải chờ ${seconds} giây nữa mới được lắc tiếp!`, 'warning');
+      } else {
+        showToast('Lỗi khi lắc xúc xắc. Vui lòng thử lại.', 'error');
+      }
     } finally {
       setIsRollingDice(false);
     }
-  }, [roomId, playerId, currentPlayer, room, showToast]);
+  }, [roomId, playerId, currentPlayer, room, diceCooldownRemaining, showToast]);
 
   // Handle quiz button - memoized
   const handleQuiz = useCallback(() => {
@@ -475,9 +523,10 @@ export default function GameBoard() {
             {/* Dice Roll */}
             <SimpleDiceRoll
               onRoll={handleDiceRoll}
-              disabled={!currentPlayer || availableRolls <= 0 || room?.status !== 'playing' || isRollingDice}
+              disabled={!currentPlayer || availableRolls <= 0 || room?.status !== 'playing' || isRollingDice || diceCooldownRemaining > 0}
               availableRolls={availableRolls}
               lastDiceResult={lastDiceResult}
+              cooldownRemaining={diceCooldownRemaining}
             />
           </div>
         </div>
@@ -655,14 +704,14 @@ export default function GameBoard() {
             {/* Event Effects Info */}
             <div className="mt-4 p-3 bg-white/10 rounded-lg">
               <div className="text-white text-xs">
-                <div className="font-semibold mb-1">Event Effects:</div>
+                <div className="font-semibold mb-1">Event Effects (20s):</div>
                 <div className="space-y-1 text-gray-300">
                   <div>• dice_double: Lần lắc tiếp theo x2</div>
                   <div>• score_double: Mỗi ô +2 điểm</div>
                   <div>• quiz_bonus: Trả lời đúng +2 lượt</div>
-                  <div>• free_dice: +1 lượt miễn phí</div>
+                  <div>• free_dice: +1 lượt miễn phí (tức thì)</div>
                   <div>• penalty_wrong: Trả lời sai -5 điểm</div>
-                  <div>• lose_dice: -1 lượt lắc</div>
+                  <div>• lose_dice: -1 lượt lắc (tức thì)</div>
                   <div>• no_score: Di chuyển không cộng điểm</div>
                   <div>• low_dice_penalty: Lắc &lt; 5 thì -3 điểm</div>
                 </div>

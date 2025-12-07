@@ -333,10 +333,10 @@ export default function TestGameBoard() {
       const originalResult = Math.floor(Math.random() * 6) + 1;
       let result = originalResult;
       
-      // Apply dice_double event (không reset event, event kéo dài 75s)
+      // Apply dice_double event (không reset event, event kéo dài 20s)
       if (activeEvent.type === 'dice_double') {
         result = originalResult * 2;
-        // Không reset event, để event kéo dài 75 giây
+        // Không reset event, để event kéo dài 20 giây
       }
       
       // Apply low_dice_penalty event (check original dice result, not final result)
@@ -484,7 +484,7 @@ export default function TestGameBoard() {
   // Handle event trigger (for testing)
   const handleTriggerEvent = (eventType: EventType) => {
     const instantEvents: EventType[] = ['free_dice', 'lose_dice'];
-    const duration = instantEvents.includes(eventType) ? 0 : 75;
+    const duration = instantEvents.includes(eventType) ? 0 : 20;
     
     // Lưu điểm và số lần lắc tại thời điểm event bắt đầu (cho score_double và no_score)
     if (eventType === 'score_double' || eventType === 'no_score') {
