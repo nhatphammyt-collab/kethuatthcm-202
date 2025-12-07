@@ -41,37 +41,45 @@ function generateTourCode(): string {
  * Create a new tour room
  */
 export async function createTour(driverId: string, driverName: string, maxPlayers: number = 50): Promise<string> {
-  const tourCode = generateTourCode();
-  const tourId = doc(collection(db, TOURS_COLLECTION)).id;
-  
-  const tourData: Omit<Tour, 'tourId'> = {
-    tourCode,
-    driverId,
-    status: 'waiting',
-    currentLocation: null,
-    maxPlayers,
-    createdAt: new Date(),
-    startedAt: null,
-    players: {
-      [driverId]: {
-        playerId: driverId,
-        name: driverName,
-        role: 'driver',
-        joinedAt: new Date(),
-        isReady: true,
-        reactions: {},
-        messages: {},
+  try {
+    const tourCode = generateTourCode();
+    const tourId = doc(collection(db, TOURS_COLLECTION)).id;
+
+    console.log('[createTour] Creating tour with:', { tourId, tourCode, driverId, driverName });
+
+    const tourData: Omit<Tour, 'tourId'> = {
+      tourCode,
+      driverId,
+      status: 'waiting',
+      currentLocation: null,
+      maxPlayers,
+      createdAt: new Date(),
+      startedAt: null,
+      players: {
+        [driverId]: {
+          playerId: driverId,
+          name: driverName,
+          role: 'driver',
+          joinedAt: new Date(),
+          isReady: true,
+          reactions: {},
+          messages: {},
+        }
       }
-    }
-  };
+    };
 
-  await setDoc(doc(db, TOURS_COLLECTION, tourId), {
-    ...tourData,
-    createdAt: serverTimestamp(),
-    startedAt: null,
-  });
+    await setDoc(doc(db, TOURS_COLLECTION, tourId), {
+      ...tourData,
+      createdAt: serverTimestamp(),
+      startedAt: null,
+    });
 
-  return tourId;
+    console.log('[createTour] Tour created successfully:', tourId);
+    return tourId;
+  } catch (error) {
+    console.error('[createTour] Error creating tour:', error);
+    throw error; // Re-throw to be caught by caller
+  }
 }
 
 /**
@@ -421,22 +429,30 @@ export async function sendTourReaction(
  */
 export async function getLocationMessages(tourId: string, locationId: number): Promise<TourMessage[]> {
   try {
+    console.log('[getLocationMessages] Fetching messages for tour:', tourId, 'location:', locationId);
     const messagesRef = collection(db, TOURS_COLLECTION, tourId, TOUR_MESSAGES_COLLECTION);
+
+    // Simple query without orderBy to avoid index requirement
     const q = query(
       messagesRef,
       where('locationId', '==', locationId),
-      orderBy('timestamp', 'desc'),
-      limit(50) // Only get last 50 messages
+      limit(50)
     );
-    
+
     const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({
+    console.log('[getLocationMessages] Found', snapshot.docs.length, 'messages');
+
+    // Sort client-side instead
+    const messages = snapshot.docs.map(doc => ({
       messageId: doc.id,
       ...doc.data(),
       timestamp: doc.data().timestamp?.toDate() || new Date(),
     })) as TourMessage[];
+
+    // Sort by timestamp descending (newest first)
+    return messages.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
   } catch (error) {
-    console.error('Error getting messages:', error);
+    console.error('[getLocationMessages] Error getting messages:', error);
     return [];
   }
 }
@@ -446,21 +462,29 @@ export async function getLocationMessages(tourId: string, locationId: number): P
  */
 export async function getLocationReactions(tourId: string, locationId: number): Promise<TourReaction[]> {
   try {
+    console.log('[getLocationReactions] Fetching reactions for tour:', tourId, 'location:', locationId);
     const reactionsRef = collection(db, TOURS_COLLECTION, tourId, TOUR_REACTIONS_COLLECTION);
+
+    // Simple query without orderBy to avoid index requirement
     const q = query(
       reactionsRef,
-      where('locationId', '==', locationId),
-      orderBy('timestamp', 'desc')
+      where('locationId', '==', locationId)
     );
-    
+
     const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({
+    console.log('[getLocationReactions] Found', snapshot.docs.length, 'reactions');
+
+    // Sort client-side instead
+    const reactions = snapshot.docs.map(doc => ({
       reactionId: doc.id,
       ...doc.data(),
       timestamp: doc.data().timestamp?.toDate() || new Date(),
     })) as TourReaction[];
+
+    // Sort by timestamp descending (newest first)
+    return reactions.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
   } catch (error) {
-    console.error('Error getting reactions:', error);
+    console.error('[getLocationReactions] Error getting reactions:', error);
     return [];
   }
 }

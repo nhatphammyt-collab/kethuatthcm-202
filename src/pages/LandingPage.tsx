@@ -16,6 +16,7 @@ export default function LandingPage() {
   const [quizAnswer, setQuizAnswer] = useState("");
   const [clickCount, setClickCount] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const voiceRef = useRef<HTMLAudioElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const clickTimerRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -76,6 +77,18 @@ export default function LandingPage() {
     };
   }, []);
 
+  const playVoice = (voiceUrl: string) => {
+    // Stop any previous voice
+    if (voiceRef.current) {
+      voiceRef.current.pause();
+      voiceRef.current.currentTime = 0;
+    }
+
+    const voice = new Audio(voiceUrl);
+    voice.play().catch(console.error);
+    voiceRef.current = voice;
+  };
+
   const toggleMusic = () => {
     if (audioRef.current) {
       // Handle double click to skip to quiz
@@ -108,10 +121,12 @@ export default function LandingPage() {
         setShowQuiz(false);
       } else {
         if (!hasClicked) {
-          // First click - show hint message
+          // First click - show hint message and play voice
           setHasClicked(true);
           setShowBubble(true);
-          // Wait a bit before playing
+          // Play voice first
+          playVoice('/Voice/mainpage1.mp3');
+          // Wait a bit before playing music
           setTimeout(() => {
             if (audioRef.current) {
               audioRef.current.play();
@@ -142,12 +157,13 @@ export default function LandingPage() {
     const userAnswer = quizAnswer.trim().toLowerCase();
     
     if (userAnswer === correctAnswer) {
-      // Correct answer!
+      // Correct answer! Play success voice
+      playVoice('/Voice/mainpage2.mp3');
       setShowBubble(true);
       setCurrentLyric("🎉 Chính xác! Đó là 'The Ballad of Ho Chi Minh'");
       setShowQuiz(false);
       setQuizAnswer("");
-      
+
       // Hide success message after 3s
       setTimeout(() => {
         setShowBubble(false);

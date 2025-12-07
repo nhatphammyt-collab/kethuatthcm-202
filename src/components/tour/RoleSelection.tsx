@@ -24,27 +24,35 @@ export function RoleSelection() {
     try {
       // Import here to avoid circular dependency
       const { createTour } = await import("../../services/firebase/tourService")
+
+      // Generate playerId ONCE and reuse it
+      const playerId = `driver_${Date.now()}`
+      console.log('[RoleSelection] Creating tour for:', playerName.trim(), 'with playerId:', playerId)
+
       const tourId = await createTour(
-        `driver_${Date.now()}`,
+        playerId,
         playerName.trim(),
         50
       )
+
+      console.log('[RoleSelection] Tour created:', tourId)
 
       if (tourId) {
         navigate(`/memory-gallery/tour/${tourId}`, {
           state: {
             role: "driver",
-            playerId: `driver_${Date.now()}`,
+            playerId, // Use the same playerId
             playerName: playerName.trim(),
             tourId,
           },
         })
       } else {
+        console.error('[RoleSelection] tourId is null/undefined')
         alert("Không thể tạo tour. Vui lòng thử lại.")
       }
     } catch (error) {
-      console.error("Error creating tour:", error)
-      alert("Có lỗi xảy ra. Vui lòng thử lại.")
+      console.error("[RoleSelection] Error creating tour:", error)
+      alert(`Có lỗi xảy ra: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setLoading(false)
     }

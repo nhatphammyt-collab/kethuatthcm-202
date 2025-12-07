@@ -551,9 +551,9 @@
   .section-character-icon {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: -100px; /* Moved outside to the right */
     z-index: 20;
-    pointer-events: none;
+    pointer-events: auto; /* Allow clicks */
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
     mix-blend-mode: normal;
   }
@@ -561,6 +561,16 @@
   .section-character-icon img {
     animation: characterFloat 3s ease-in-out infinite;
     will-change: transform;
+  }
+
+  /* Character icon starts invisible, revealed by intersection observer */
+  .section-character-icon .character-icon-img {
+    opacity: 0;
+  }
+
+  /* When revealed by observer */
+  .section-character-icon .character-icon-img.opacity-100 {
+    opacity: 1;
   }
 
   @keyframes characterFloat {
@@ -575,9 +585,9 @@
   @media (max-width: 900px) {
     .section-character-icon {
       top: 10px;
-      right: 10px;
+      right: -60px; /* Adjusted for mobile */
     }
-    
+
     .section-character-icon img {
       width: 80px !important;
       height: 80px !important;

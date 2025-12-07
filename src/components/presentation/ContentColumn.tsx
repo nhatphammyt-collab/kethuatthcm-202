@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const sections = [
   {
@@ -112,8 +112,54 @@ const tocItems = [
   { part: "Phần 6:", title: "Tài Liệu Tham Khảo & Trích Dẫn" },
 ]
 
+// Audio mapping for each section
+const SECTION_AUDIO_MAP: Record<string, string> = {
+  "dan-nhap": "/Voice/TrinhChieu1.mp3",
+  "giac-noi-xam": "/Voice/TrinhChieu2.mp3",
+  "vu-khi": "/Voice/TrinhChieu3.mp3",
+  "van-dung": "/Voice/TrinhChieu4.mp3",
+  "ket-luan": "/Voice/TrinhChieu5.mp3",
+}
+
 export function ContentColumn() {
   const columnRef = useRef<HTMLDivElement>(null)
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [playingSection, setPlayingSection] = useState<string | null>(null)
+
+  const handleCharacterClick = (sectionId: string) => {
+    const audioUrl = SECTION_AUDIO_MAP[sectionId]
+    if (!audioUrl) return
+
+    // Stop previous audio if playing
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current.currentTime = 0
+    }
+
+    // If clicking the same section that's playing, just stop
+    if (playingSection === sectionId) {
+      setPlayingSection(null)
+      audioRef.current = null
+      return
+    }
+
+    // Play new audio
+    const audio = new Audio(audioUrl)
+    audio.play().catch(console.error)
+    setPlayingSection(sectionId)
+
+    audio.onended = () => {
+      setPlayingSection(null)
+      audioRef.current = null
+    }
+
+    audio.onerror = () => {
+      setPlayingSection(null)
+      audioRef.current = null
+    }
+
+    audioRef.current = audio
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -186,13 +232,25 @@ export function ContentColumn() {
           style={{ transitionDelay: `${(index + 2) * 100}ms` }}
         >
           {/* Character Icon - Right Corner */}
-          <div className="section-character-icon">
-            <img 
-              src="/nvnu.png" 
-              alt="Nhân vật nữ" 
-              className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-0 transition-opacity duration-700"
+          <div
+            className="section-character-icon cursor-pointer"
+            onClick={() => handleCharacterClick(section.id)}
+            title="Click để nghe giảng bài"
+          >
+            <img
+              src="/nvnu.png"
+              alt="Nhân vật nữ"
+              className={`character-icon-img w-32 h-32 md:w-40 md:h-40 object-contain transition-all duration-700 hover:scale-110 ${
+                playingSection === section.id ? 'animate-pulse scale-110' : ''
+              }`}
               style={{ transitionDelay: `${(index + 2) * 150}ms` }}
             />
+            {/* Playing indicator */}
+            {playingSection === section.id && (
+              <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#FFD700] rounded-full flex items-center justify-center animate-pulse">
+                <div className="w-4 h-4 bg-[#b30000] rounded-full"></div>
+              </div>
+            )}
           </div>
 
           {/* Special layout for Part 1 */}
