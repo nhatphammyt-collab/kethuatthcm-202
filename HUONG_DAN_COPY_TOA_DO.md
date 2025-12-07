@@ -5,7 +5,7 @@ Copy tọa độ đã điều chỉnh từ **TestGameBoard** vào **GameBoard.ts
 
 ---
 
-## 📝 Các bước thực hiện
+## 📝 Các bước thực hiện.
 
 ### Bước 1: Kiểm tra tọa độ trong Test Page
 1. Mở trang test: `http://localhost:5173/minigame/test`
