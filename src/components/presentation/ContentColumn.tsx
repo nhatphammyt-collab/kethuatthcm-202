@@ -125,10 +125,16 @@ export function ContentColumn() {
   const columnRef = useRef<HTMLDivElement>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [playingSection, setPlayingSection] = useState<string | null>(null)
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set())
 
   const handleCharacterClick = (sectionId: string) => {
     const audioUrl = SECTION_AUDIO_MAP[sectionId]
-    if (!audioUrl) return
+    if (!audioUrl) {
+      console.log('[handleCharacterClick] No audio for section:', sectionId)
+      return
+    }
+
+    console.log('[handleCharacterClick] Playing audio for section:', sectionId, audioUrl)
 
     // Stop previous audio if playing
     if (audioRef.current) {
@@ -145,7 +151,7 @@ export function ContentColumn() {
 
     // Play new audio
     const audio = new Audio(audioUrl)
-    audio.play().catch(console.error)
+    audio.play().catch((err) => console.error('[handleCharacterClick] Audio play error:', err))
     setPlayingSection(sectionId)
 
     audio.onended = () => {
@@ -153,7 +159,8 @@ export function ContentColumn() {
       audioRef.current = null
     }
 
-    audio.onerror = () => {
+    audio.onerror = (err) => {
+      console.error('[handleCharacterClick] Audio error:', err)
       setPlayingSection(null)
       audioRef.current = null
     }
@@ -172,11 +179,11 @@ export function ContentColumn() {
             // Also handle content-item animations
             entry.target.classList.add("animate-in", "fade-in", "slide-in-from-bottom-4")
             entry.target.classList.remove("opacity-0", "translate-y-4")
-            // Show character icon
-            const characterIcon = entry.target.querySelector(".section-character-icon img")
-            if (characterIcon) {
-              characterIcon.classList.add("opacity-100")
-              characterIcon.classList.remove("opacity-0")
+
+            // Track visible section for character icon (using React state)
+            const sectionId = entry.target.getAttribute('data-section-id')
+            if (sectionId) {
+              setVisibleSections(prev => new Set(prev).add(sectionId))
             }
           }
         })
@@ -228,6 +235,7 @@ export function ContentColumn() {
       {sections.slice(0, 4).map((section, index) => (
         <div
           key={section.id}
+          data-section-id={section.id}
           className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block relative"
           style={{ transitionDelay: `${(index + 2) * 100}ms` }}
         >
@@ -241,6 +249,8 @@ export function ContentColumn() {
               src="/nvnu.png"
               alt="Nhân vật nữ"
               className={`character-icon-img w-32 h-32 md:w-40 md:h-40 object-contain transition-all duration-700 hover:scale-110 ${
+                visibleSections.has(section.id) ? 'opacity-100' : ''
+              } ${
                 playingSection === section.id ? 'animate-pulse scale-110' : ''
               }`}
               style={{ transitionDelay: `${(index + 2) * 150}ms` }}
@@ -421,17 +431,32 @@ export function ContentColumn() {
       {sections.slice(4, 5).map((section) => (
         <div
           key={section.id}
+          data-section-id={section.id}
           className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block relative"
           style={{ transitionDelay: `${(4 + 2) * 100}ms` }}
         >
           {/* Character Icon - Right Corner */}
-          <div className="section-character-icon">
-            <img 
-              src="/nvnu.png" 
-              alt="Nhân vật nữ" 
-              className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-0 transition-opacity duration-700"
+          <div
+            className="section-character-icon cursor-pointer"
+            onClick={() => handleCharacterClick(section.id)}
+            title="Click để nghe giảng bài"
+          >
+            <img
+              src="/nvnu.png"
+              alt="Nhân vật nữ"
+              className={`character-icon-img w-32 h-32 md:w-40 md:h-40 object-contain transition-all duration-700 hover:scale-110 ${
+                visibleSections.has(section.id) ? 'opacity-100' : ''
+              } ${
+                playingSection === section.id ? 'animate-pulse scale-110' : ''
+              }`}
               style={{ transitionDelay: `${(4 + 2) * 150}ms` }}
             />
+            {/* Playing indicator */}
+            {playingSection === section.id && (
+              <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#FFD700] rounded-full flex items-center justify-center animate-pulse">
+                <div className="w-4 h-4 bg-[#b30000] rounded-full"></div>
+              </div>
+            )}
           </div>
 
           <div className="section-grid">
