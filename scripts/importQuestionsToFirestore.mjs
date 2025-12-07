@@ -1,9 +1,8 @@
 // Script to import questions from questions.json to Firestore
 // Run with: node scripts/importQuestionsToFirestore.mjs
-// Note: Make sure Firebase is configured and you have write access
+// ⚡ Sử dụng Firebase Admin SDK để bypass Firestore Rules
 
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import admin from 'firebase-admin';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,19 +10,37 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Firebase config (same as src/config/firebase.ts)
-const firebaseConfig = {
-  apiKey: "AIzaSyD_7weiW4VqBzyzl6yOCg3TVbVNo_0wgxY",
-  authDomain: "hcm202-1eafa.firebaseapp.com",
-  projectId: "hcm202-1eafa",
-  storageBucket: "hcm202-1eafa.firebasestorage.app",
-  messagingSenderId: "895894768594",
-  appId: "1:895894768594:web:3af407fd0a3090ffc8560b"
-};
+// Load Firebase Admin credentials
+// Tự động tìm file service account (ưu tiên file mới nhất)
+const possiblePaths = [
+  path.join(__dirname, '..', 'hcm202-b1d7f-firebase-adminsdk-fbsvc-2058dd403c.json'),
+  path.join(__dirname, '..', 'firebaseadmin.json'),
+];
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+let serviceAccountPath = null;
+for (const p of possiblePaths) {
+  if (fs.existsSync(p)) {
+    serviceAccountPath = p;
+    break;
+  }
+}
+
+if (!serviceAccountPath) {
+  console.error('❌ Không tìm thấy file service account!');
+  console.error('Vui lòng đảm bảo có file firebaseadmin.json hoặc hcm202-b1d7f-firebase-adminsdk-*.json');
+  process.exit(1);
+}
+
+const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, 'utf-8'));
+
+// Initialize Firebase Admin (bypass Firestore Rules)
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
+
+const db = admin.firestore();
 
 // Read questions.json
 const questionsPath = path.join(__dirname, '..', 'questions.json');
@@ -32,16 +49,16 @@ const questions = JSON.parse(fs.readFileSync(questionsPath, 'utf-8'));
 console.log(`📚 Bắt đầu import ${questions.length} câu hỏi vào Firestore...\n`);
 
 async function importQuestions() {
-  const questionsRef = collection(db, 'questions');
+  const questionsRef = db.collection('questions');
   let successCount = 0;
   let errorCount = 0;
 
   for (let i = 0; i < questions.length; i++) {
     const question = questions[i];
     try {
-      await addDoc(questionsRef, {
+      await questionsRef.add({
         ...question,
-        createdAt: serverTimestamp(),
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
       });
       successCount++;
       console.log(`✅ [${i + 1}/${questions.length}] Đã import: "${question.question.substring(0, 50)}..."`);
