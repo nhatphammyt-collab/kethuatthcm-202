@@ -18,14 +18,14 @@ export function FixedNavBar() {
 
         {/* Center - Title */}
         <div className="flex items-center gap-2 text-white">
-          <BookOpen className="w-5 h-5 text-[#FFD700]" />
-          <span className="font-serif font-bold text-lg tracking-wide">THƯ VIỆN KỶ NIỆM</span>
+          <FileText className="w-5 h-5 text-[#FFD700]" />
+          <span className="font-arial font-bold text-lg tracking-wide">NỘI DUNG TRÌNH CHIẾU</span>
         </div>
 
         {/* Right - Content label */}
         <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20">
-          <FileText className="w-5 h-5 text-[#FFD700]" />
-          <span className="font-serif text-white font-medium">Nội Dung Trình Chiếu</span>
+          <BookOpen className="w-5 h-5 text-[#FFD700]" />
+          <span className="font-serif text-white font-medium">THƯ VIỆN KỶ NIỆM</span>
         </div>
       </div>
     </nav>

@@ -1,22 +1,27 @@
 import { useEffect, useRef } from "react"
-import { useNavigate } from "react-router-dom"
 
 const sections = [
   {
     id: "dan-nhap",
     title: "PHẦN 1: DẪN NHẬP",
-    subtitle: "Từ bối cảnh lịch sử đến nhiệm vụ",
+    subtitle: "Từ bối cảnh lịch sử đến nhiệm vụ thời đại",
     color: "from-orange-600 to-orange-700",
     image: "/images/34808-bac-ho.jpg",
     content: {
       intro:
-        'Năm 1945, khi nước Việt Nam Dân chủ Cộng hòa vừa ra đời, Chủ tịch Hồ Chí Minh đã xác định ba thứ "giặc" cần phải đánh bại:',
-      bullets: [
-        { bold: "Giặc đói", text: "nghèo đói, thiếu thốn vật chất" },
-        { bold: "Giặc dốt", text: "mù chữ, thiếu kiến thức" },
-        { bold: "Giặc ngoại xâm", text: "kẻ thù xâm lược từ bên ngoài" },
+        'Để hiểu rõ vì sao Chủ tịch Hồ Chí Minh khẳng định văn hóa là một "mặt trận" và người làm văn hóa là "chiến sĩ", chúng ta cần đặt nó trong bối cảnh lịch sử đầy biến động cuối thế kỷ XIX - đầu thế kỷ XX.\n\nLúc bấy giờ, sau khi xâm lược Việt Nam, thực dân Pháp không chỉ dùng quân sự để thống trị mà còn thi hành nhiều chính sách cực kỳ thâm độc về văn hóa.',
+      policies: [
+        { bold: "Chính sách ngu dân:", text: "Hạn chế mở trường, không cho dân ta học cao, chỉ đào tạo một tầng lớp tay sai phục vụ chính quyền thực dân." },
+        { bold: "Chính sách đồng hóa:", text: 'Truyền bá lối sống, tư tưởng, thói quen, thị hiếu của văn hóa Pháp với mục đích làm "nhạt nhòa" bản sắc Việt.' },
+        { bold: "Chính sách chia rẽ tinh thần dân tộc:", text: "Xuyên tạc lịch sử, thay đổi chương trình giáo dục, hạ thấp giá trị của tổ tiên ta." },
       ],
-      quote: { text: "Một dân tộc dốt là một dân tộc yếu.", author: "Hồ Chí Minh" },
+      conclusion: {
+        text: "Thực dân không chỉ muốn chiếm đất mà còn muốn chiếm luôn linh hồn và trí tuệ dân tộc.\n\nChính vì vậy, Hồ Chí Minh nhìn rất rõ:",
+        points: [
+          "Nếu văn hóa không đứng lên, dân tộc sẽ suy yếu từ bên trong.",
+          "Nếu tinh thần bị nô dịch, thì độc lập chính trị cũng chỉ là hình thức.",
+        ],
+      },
     },
   },
   {
@@ -27,7 +32,7 @@ const sections = [
     content: {
       intro:
         '"Giặc nội xâm" là những thói hư tật xấu, những căn bệnh tinh thần tồn tại trong mỗi con người và trong xã hội:',
-      numbered: [
+      bullets: [
         { bold: "Chủ nghĩa cá nhân:", text: "Ích kỷ, chỉ nghĩ đến bản thân, không quan tâm đến tập thể" },
         { bold: "Tham ô, lãng phí:", text: "Tham nhũng, sử dụng tài sản công không đúng mục đích" },
         { bold: "Quan liêu:", text: "Xa rời quần chúng, không lắng nghe ý kiến nhân dân" },
@@ -109,7 +114,6 @@ const tocItems = [
 
 export function ContentColumn() {
   const columnRef = useRef<HTMLDivElement>(null)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -175,118 +179,172 @@ export function ContentColumn() {
           className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block"
           style={{ transitionDelay: `${(index + 2) * 100}ms` }}
         >
-          <div className="section-grid">
-            {/* Image Card */}
-            <div className="glass-card p-0 overflow-hidden">
-              <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden">
-                <img 
-                  src={section.image || "/placeholder.svg"} 
-                  alt={section.title} 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r ${section.color}`}>
-                  <h3 className="heading-title text-lg font-bold text-white">{section.title}</h3>
-                  {section.subtitle && <p className="text-sm text-white/80">{section.subtitle}</p>}
+          {/* Special layout for Part 1 */}
+          {section.id === "dan-nhap" ? (
+            <>
+              <div className="section-grid">
+                {/* Image Card */}
+                <div className="glass-card p-0 overflow-hidden">
+                  <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden">
+                    <img 
+                      src={section.image || "/placeholder.svg"} 
+                      alt={section.title} 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r ${section.color}`}>
+                      <h3 className="heading-title text-lg font-bold text-white">{section.title}</h3>
+                      {section.subtitle && <p className="text-sm text-white/80">{section.subtitle}</p>}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Card */}
+                <div className="glass-card">
+                  <div className="space-y-4 text-white flex flex-col justify-center h-full">
+                    {section.content.intro && (
+                      <p className="leading-relaxed whitespace-pre-line">{section.content.intro}</p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Content Card */}
-            <div className="glass-card">
-              <div className="space-y-4 text-white">
-                {section.content.intro && <p className="leading-relaxed">{section.content.intro}</p>}
-
-                {section.content.text && <p className="leading-relaxed text-lg">{section.content.text}</p>}
-
-                {section.content.bullets && (
-                  <ul className="space-y-2 ml-4">
-                    {section.content.bullets.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="text-[#FFD700] font-bold">•</span>
-                        <span>
-                          <strong className="text-[#FFD700]">{item.bold}</strong> - {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {section.content.numbered && (
-                  <ul className="space-y-3 ml-4">
-                    {section.content.numbered.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-[#FFD700] text-[#b30000] flex items-center justify-center text-sm font-bold shrink-0">
-                          {i + 1}
-                        </span>
-                        <span>
-                          <strong className="text-[#FFD700]">{item.bold}</strong> {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {section.content.checklist && (
-                  <ul className="space-y-3 ml-4">
-                    {section.content.checklist.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded bg-[#FFD700] text-[#b30000] flex items-center justify-center text-sm font-bold shrink-0">
-                          ✓
-                        </span>
-                        <span>
-                          <strong className="text-[#FFD700]">{item.bold}</strong> {item.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {section.content.sections && (
-                  <div className="space-y-6">
-                    {section.content.sections.map((sub, i) => (
-                      <div key={i}>
-                        <h4 className="text-lg font-bold text-[#FFD700] mb-3 flex items-center gap-2">
-                          <span className="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center text-sm">
-                            {sub.icon}
-                          </span>
-                          {sub.title}
-                        </h4>
-                        <ul className="space-y-2 ml-10">
-                          {sub.items.map((subItem, j) => (
-                            <li key={j} className="flex items-start gap-2">
-                              <span className="text-[#FFD700]">★</span>
-                              {typeof subItem === "string" ? (
-                                <span>{subItem}</span>
-                              ) : (
-                                <span>
-                                  <strong className="text-[#FFD700]">{subItem.bold}</strong> {subItem.text}
-                                </span>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
+              {/* Policies Text Box - Full Width */}
+              {section.content.policies && (
+                <div className={`mt-6 glass-card bg-gradient-to-r from-orange-500/20 to-orange-600/20 backdrop-blur-md border-2 border-orange-400/30`}>
+                  <div className="space-y-3 text-white p-6">
+                    {section.content.policies.map((item, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <span className="text-white font-bold text-lg">•</span>
+                        <div>
+                          <strong className="text-white font-semibold">{item.bold}</strong>
+                          <span className="ml-2">{item.text}</span>
+                        </div>
                       </div>
                     ))}
                   </div>
-                )}
+                </div>
+              )}
 
-                {section.content.quote && (
-                  <div className="quote-block mt-4">
-                    <p className="italic text-white/90">"{section.content.quote.text}"</p>
-                    <p className="text-right text-sm text-[#FFD700] mt-2">— {section.content.quote.author}</p>
+              {/* Conclusion Text Box - Full Width */}
+              {section.content.conclusion && (
+                <div className={`mt-6 glass-card bg-gradient-to-r from-orange-500/20 to-orange-600/20 backdrop-blur-md border-2 border-orange-400/30`}>
+                  <div className="space-y-4 text-white p-6">
+                    <p className="leading-relaxed whitespace-pre-line">{section.content.conclusion.text}</p>
+                    {section.content.conclusion.points && (
+                      <ul className="space-y-2 ml-4">
+                        {section.content.conclusion.points.map((point, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-white font-bold">→</span>
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                )}
+                </div>
+              )}
+            </>
+          ) : (
+            /* Normal layout for other sections */
+            <div className="section-grid">
+              {/* Image Card */}
+              <div className="glass-card p-0 overflow-hidden">
+                <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden">
+                  <img 
+                    src={section.image || "/placeholder.svg"} 
+                    alt={section.title} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className={`absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-r ${section.color}`}>
+                    <h3 className="heading-title text-lg font-bold text-white">{section.title}</h3>
+                    {section.subtitle && <p className="text-sm text-white/80">{section.subtitle}</p>}
+                  </div>
+                </div>
+              </div>
 
-                {section.content.outro && <p className="leading-relaxed mt-4">{section.content.outro}</p>}
+              {/* Content Card */}
+              <div className="glass-card">
+                <div className="space-y-4 text-white">
+                  {section.content.intro && <p className="leading-relaxed">{section.content.intro}</p>}
+
+                  {section.content.text && <p className="leading-relaxed text-lg">{section.content.text}</p>}
+
+                  {section.content.bullets && (
+                    <ul className="space-y-2 ml-4">
+                      {section.content.bullets.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="text-[#FFD700] font-bold">•</span>
+                          <span>
+                            <strong className="text-[#FFD700]">{item.bold}</strong> - {item.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {section.content.checklist && (
+                    <ul className="space-y-3 ml-4">
+                      {section.content.checklist.map((item, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <span className="w-6 h-6 rounded bg-[#FFD700] text-[#b30000] flex items-center justify-center text-sm font-bold shrink-0">
+                            ✓
+                          </span>
+                          <span>
+                            <strong className="text-[#FFD700]">{item.bold}</strong> {item.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {section.content.sections && (
+                    <div className="space-y-6">
+                      {section.content.sections.map((sub, i) => (
+                        <div key={i}>
+                          <h4 className="text-lg font-bold text-[#FFD700] mb-3 flex items-center gap-2">
+                            <span className="w-8 h-8 rounded-full bg-[#FFD700]/20 flex items-center justify-center text-sm">
+                              {sub.icon}
+                            </span>
+                            {sub.title}
+                          </h4>
+                          <ul className="space-y-2 ml-10">
+                            {sub.items.map((subItem, j) => (
+                              <li key={j} className="flex items-start gap-2">
+                                <span className="text-[#FFD700]">★</span>
+                                {typeof subItem === "string" ? (
+                                  <span>{subItem}</span>
+                                ) : (
+                                  <span>
+                                    <strong className="text-[#FFD700]">{subItem.bold}</strong> {subItem.text}
+                                  </span>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {section.content.quote && (
+                    <div className="quote-block mt-4">
+                      <p className="italic text-white/90">"{section.content.quote.text}"</p>
+                      <p className="text-right text-sm text-[#FFD700] mt-2">— {section.content.quote.author}</p>
+                    </div>
+                  )}
+
+                  {section.content.outro && <p className="leading-relaxed mt-4">{section.content.outro}</p>}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       ))}
 
       {/* Section 5 (Kết Luận) - Full width */}
-      {sections.slice(4, 5).map((section, index) => (
+      {sections.slice(4, 5).map((section) => (
         <div
           key={section.id}
           className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block"
