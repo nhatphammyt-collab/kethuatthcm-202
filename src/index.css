@@ -17,31 +17,44 @@
 }
 
 @layer components {
+  /* ⚡ Modern Glassmorphism Card - Reusable glass effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 28px;
+    border: 1px solid rgba(255, 215, 0, 0.28);
+    box-shadow:
+      inset 0 0 12px rgba(255, 215, 0, 0.15),
+      0 8px 32px rgba(0, 0, 0, 0.45);
+    padding: 32px;
+  }
+
   .glassmorphism-hero {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
   }
 
   .glassmorphism-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
     transition: all 0.3s ease;
   }
 
   .glassmorphism-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
   }
 
   .glassmorphism-card.hover\:glow:hover {
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.5),
-                0 12px 40px 0 rgba(0, 0, 0, 0.3);
+                0 22px 50px rgba(0, 0, 0, 0.4);
   }
 
   .cta-button {
@@ -215,6 +228,114 @@
 
   .prose ul, .prose ol {
     margin-bottom: 1rem;
+  }
+
+  /* ⚡ Vietnam Flag Logo Container */
+  .flag-logo-container {
+    background: rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 10px;
+    padding: 4px 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 215, 0, 0.35);
+  }
+
+  /* ⚡ Vietnam Flag - Simple styling, animation is in SVG */
+  .flag-logo-image {
+    display: block;
+    border-radius: 4px;
+  }
+
+  /* Logo row utility */
+  .logo-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Smaller variant for mobile header if needed */
+  @media (max-width: 480px) {
+    .flag-logo-container.header-flag {
+      padding: 3px 5px;
+    }
+  }
+
+  /* ⚡ Modern Pill-Style Glass Navigation */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+  }
+
+  .nav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .nav-item {
+    position: relative;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffe9c7;
+    text-decoration: none;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ffc400, #ffdf6f);
+    opacity: 0;
+    transform: scaleX(0.3);
+    transform-origin: center;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .nav-item:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  .nav-item--active {
+    background: rgba(255, 210, 80, 0.18);
+    color: #ffffff;
+  }
+
+  .nav-item--active::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  @media (max-width: 768px) {
+    .top-nav {
+      padding: 10px 16px;
+    }
+    .nav-pill {
+      padding: 4px 6px;
+    }
+    .nav-item {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
   }
 }
 

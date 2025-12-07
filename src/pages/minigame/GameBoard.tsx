@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useMemo, useCallback } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { subscribeToRoom, rollDice, claimReward, triggerEvent, endActiveEvent, loadQuestionsToCache } from '../../services/firebase/gameService';
+import { subscribeToRoom, subscribeToEvents, getRoomById, rollDice, claimReward, triggerEvent, endActiveEvent, loadQuestionsToCache } from '../../services/firebase/gameService';
 import { isRewardTile, getRewardTypeByTile, getRewardImagePath } from '../../utils/gameHelpers';
 import { useEventManager } from '../../hooks/useEventManager';
 import { useToast } from '../../components/minigame/ErrorToast';
@@ -69,6 +69,7 @@ export default function GameBoard() {
   const [room, setRoom] = useState<Room | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentPlayer, setCurrentPlayer] = useState<Player | null>(null);
+  const [activeEvent, setActiveEvent] = useState<Room['events']['activeEvent'] | null>(null); // ⚡ HYBRID: Event state riêng
   const [showDetails, setShowDetails] = useState(false);
   const [showQuiz, setShowQuiz] = useState(false);
   const [showRewardModal, setShowRewardModal] = useState(false);
@@ -80,6 +81,16 @@ export default function GameBoard() {
   const [diceCooldownRemaining, setDiceCooldownRemaining] = useState<number>(0);
   const previousEventTypeRef = useRef<string | null>(null);
   const { showToast, ToastContainer } = useToast();
+  
+  // ⚡ BATCH QUIZ UPDATES: Queue để gộp nhiều quiz answers
+  interface QuizUpdate {
+    playerId: string;
+    isCorrect: boolean;
+    currentDiceRolls: number;
+    currentScore: number;
+  }
+  const quizUpdateQueue = useRef<QuizUpdate[]>([]);
+  const quizUpdateTimer = useRef<NodeJS.Timeout | null>(null);
   
   const isAdmin = role === 'admin' && adminId === room?.adminId;
   
@@ -100,36 +111,14 @@ export default function GameBoard() {
     // Chỉ fetch Firebase 1 lần, các lần quiz sau lấy từ cache!
     loadQuestionsToCache().catch(console.error);
 
-    // Subscribe to room changes
-    const unsubscribe = subscribeToRoom(roomId, (roomData) => {
-      setRoom(roomData);
-      setLoading(false);
-
-      // Get current player data
-      if (roomData && playerId && roomData.players[playerId]) {
-        setCurrentPlayer(roomData.players[playerId]);
-      }
-      
-      // Debug: Log activeEvent state (only log when it changes to avoid spam)
-      if (roomData?.events?.activeEvent) {
-        const activeEventType = roomData.events.activeEvent.type;
-        // Only log when event type changes or becomes null
-        if (activeEventType !== previousEventTypeRef.current) {
-          console.log('[GameBoard] ActiveEvent update:', {
-            type: activeEventType,
-            typeValue: activeEventType,
-            isNull: activeEventType === null,
-            isUndefined: activeEventType === undefined,
-            isString: typeof activeEventType === 'string',
-            isEmpty: activeEventType === '',
-            truthy: !!activeEventType,
-          });
-        }
-      }
+    // ⚡ HYBRID OPTIMIZATION: Real-time cho events (tất cả players)
+    // Events cần real-time để quiz answers check đúng
+    const eventUnsubscribe = subscribeToEvents(roomId, (eventData) => {
+      setActiveEvent(eventData);
       
       // Check for new event
-      if (roomData?.events?.activeEvent?.type) {
-        const currentEventType = roomData.events.activeEvent.type;
+      if (eventData?.type) {
+        const currentEventType = eventData.type;
         if (currentEventType !== previousEventTypeRef.current) {
           previousEventTypeRef.current = currentEventType;
           setShowEventNotification(true);
@@ -137,17 +126,100 @@ export default function GameBoard() {
       } else {
         previousEventTypeRef.current = null;
       }
-
-      // If game ended, navigate to end screen
-      if (roomData?.status === 'finished') {
-        navigate(`/minigame/end/${roomId}`, { 
-          state: { role, adminId, playerId } 
-        });
-      }
     });
 
-    return () => unsubscribe();
-  }, [roomId, navigate, role, adminId, playerId]);
+    // ⚡ HYBRID: Admin dùng real-time, Players dùng polling
+    let fullUnsubscribe: (() => void) | null = null;
+    let pollInterval: NodeJS.Timeout | null = null;
+
+    if (isAdmin) {
+      // Admin: Real-time cho tất cả (cần để trigger events)
+      fullUnsubscribe = subscribeToRoom(roomId, (roomData) => {
+        setRoom(roomData);
+        setLoading(false);
+
+        // Merge với event state từ real-time
+        if (roomData) {
+          setRoom({
+            ...roomData,
+            events: {
+              ...roomData.events,
+              activeEvent: activeEvent || roomData.events.activeEvent,
+            },
+          });
+        }
+
+        // Get current player data
+        if (roomData && playerId && roomData.players[playerId]) {
+          setCurrentPlayer(roomData.players[playerId]);
+        }
+
+        // If game ended, navigate to end screen
+        if (roomData?.status === 'finished') {
+          navigate(`/minigame/end/${roomId}`, { 
+            state: { role, adminId, playerId } 
+          });
+        }
+      });
+    } else {
+      // Players: Polling mỗi 3 giây cho updates thông thường
+      const pollRoom = async () => {
+        try {
+          const roomData = await getRoomById(roomId);
+          if (roomData) {
+            setLoading(false);
+            
+            // Merge với event state từ real-time
+            setRoom({
+              ...roomData,
+              events: {
+                ...roomData.events,
+                activeEvent: activeEvent || roomData.events.activeEvent,
+              },
+            });
+
+            // Get current player data
+            if (roomData.players[playerId]) {
+              setCurrentPlayer(roomData.players[playerId]);
+            }
+
+            // If game ended, navigate to end screen
+            if (roomData.status === 'finished') {
+              navigate(`/minigame/end/${roomId}`, { 
+                state: { role, adminId, playerId } 
+              });
+            }
+          }
+        } catch (error) {
+          console.error('[GameBoard] Error polling room:', error);
+        }
+      };
+
+      // Poll ngay lập tức
+      pollRoom();
+      // Poll mỗi 3 giây
+      pollInterval = setInterval(pollRoom, 3000);
+    }
+
+    return () => {
+      eventUnsubscribe();
+      if (fullUnsubscribe) {
+        fullUnsubscribe();
+      }
+      if (pollInterval) {
+        clearInterval(pollInterval);
+      }
+      // ⚡ BATCH QUIZ: Cleanup - batch update trước khi unmount
+      if (quizUpdateTimer.current) {
+        clearTimeout(quizUpdateTimer.current);
+        quizUpdateTimer.current = null;
+      }
+      // Batch update ngay nếu còn items trong queue
+      if (quizUpdateQueue.current.length > 0) {
+        batchQuizUpdates();
+      }
+    };
+  }, [roomId, navigate, role, adminId, playerId, isAdmin, batchQuizUpdates, activeEvent]);
 
   // ⚡ Cooldown timer cho dice rolls (7 giây)
   useEffect(() => {
@@ -293,38 +365,91 @@ export default function GameBoard() {
     setShowQuiz(true);
   }, []);
 
-  // Handle quiz answer - memoized
-  const handleQuizAnswer = useCallback(async (isCorrect: boolean) => {
-    if (!roomId || !playerId || !currentPlayer || !room) return;
+  // ⚡ BATCH QUIZ UPDATES: Batch update function
+  const batchQuizUpdates = useCallback(async () => {
+    if (quizUpdateQueue.current.length === 0) return;
+    
+    if (!roomId) return;
 
     try {
-      const { doc, updateDoc } = await import('firebase/firestore');
+      const { doc, getDoc, updateDoc } = await import('firebase/firestore');
       const { db } = await import('../../config/firebase');
       
       const roomRef = doc(db, 'rooms', roomId);
       
-      if (isCorrect) {
-        // Check for quiz_bonus event
-        const quizBonus = room.events?.activeEvent?.type === 'quiz_bonus';
-        const diceRollsToAdd = quizBonus ? 2 : 1;
-        
-        await updateDoc(roomRef, {
-          [`players.${playerId}.diceRolls`]: (currentPlayer.diceRolls || 0) + diceRollsToAdd,
-        });
-      } else {
-        // Check for penalty_wrong event
-        if (room.events?.activeEvent?.type === 'penalty_wrong') {
-          const newScore = Math.max(0, (currentPlayer.score || 0) - 5);
-          await updateDoc(roomRef, {
-            [`players.${playerId}.score`]: newScore,
-          });
-        }
+      // ⚡ AN TOÀN: Đọc lại room từ Firebase để có event state MỚI NHẤT
+      // Tránh race condition khi event thay đổi trong lúc queue
+      const roomSnap = await getDoc(roomRef);
+      if (!roomSnap.exists()) {
+        console.error('[BatchQuiz] Room not found');
+        quizUpdateQueue.current = [];
+        return;
       }
+      
+      const currentRoom = roomSnap.data() as Room;
+      const currentEventType = currentRoom.events?.activeEvent?.type;
+      const isQuizBonus = currentEventType === 'quiz_bonus';
+      const isPenaltyWrong = currentEventType === 'penalty_wrong';
+      
+      // ⚡ Gộp tất cả updates vào 1 write
+      const updates: Record<string, any> = {};
+      
+      quizUpdateQueue.current.forEach((update) => {
+        if (update.isCorrect) {
+          // Quiz đúng: +1 lượt (hoặc +2 nếu có quiz_bonus event)
+          const diceRollsToAdd = isQuizBonus ? 2 : 1;
+          const currentDiceRolls = update.currentDiceRolls || 0;
+          updates[`players.${update.playerId}.diceRolls`] = currentDiceRolls + diceRollsToAdd;
+        } else {
+          // Quiz sai: -5 điểm nếu có penalty_wrong event
+          if (isPenaltyWrong) {
+            const newScore = Math.max(0, (update.currentScore || 0) - 5);
+            updates[`players.${update.playerId}.score`] = newScore;
+          }
+        }
+      });
+      
+      // ⚡ Ghi Firebase 1 lần cho tất cả updates
+      if (Object.keys(updates).length > 0) {
+        await updateDoc(roomRef, updates);
+        console.log(`[BatchQuiz] ✅ Batch updated ${quizUpdateQueue.current.length} quiz answers`);
+      }
+      
+      // Xóa hàng đợi
+      quizUpdateQueue.current = [];
     } catch (error) {
-      console.error('Error updating after quiz answer:', error);
+      console.error('[BatchQuiz] Error batch updating quiz answers:', error);
       showToast('Lỗi khi cập nhật kết quả. Vui lòng thử lại.', 'error');
+      // Xóa hàng đợi để tránh retry vô hạn
+      quizUpdateQueue.current = [];
     }
-  }, [roomId, playerId, currentPlayer, room, showToast]);
+  }, [roomId, showToast]);
+
+  // Handle quiz answer - memoized
+  // ⚡ BATCH QUIZ: Queue thay vì write ngay
+  const handleQuizAnswer = useCallback(async (isCorrect: boolean) => {
+    if (!roomId || !playerId || !currentPlayer || !room) return;
+
+    // ⚡ Lưu vào hàng đợi (chưa ghi Firebase)
+    quizUpdateQueue.current.push({
+      playerId,
+      isCorrect,
+      currentDiceRolls: currentPlayer.diceRolls || 0,
+      currentScore: currentPlayer.score || 0,
+    });
+    
+    // ⚡ Debounce: Đợi 500ms, sau đó batch update
+    // Nếu có timer cũ, clear nó và tạo timer mới
+    if (quizUpdateTimer.current) {
+      clearTimeout(quizUpdateTimer.current);
+    }
+    
+    quizUpdateTimer.current = setTimeout(() => {
+      batchQuizUpdates();
+      quizUpdateTimer.current = null;
+    }, 500); // 500ms debounce
+    
+  }, [roomId, playerId, currentPlayer, room, batchQuizUpdates]);
 
   // Handle event trigger (admin only)
   const handleTriggerEvent = useCallback(async (eventType: EventType) => {
@@ -339,7 +464,8 @@ export default function GameBoard() {
     }
 
     // Check if there's an active event (must be a valid EventType string, not null/undefined/empty)
-    const activeEventType = room.events?.activeEvent?.type;
+    // ⚡ HYBRID: Dùng activeEvent từ state (real-time)
+    const activeEventType = activeEvent?.type;
     const hasActiveEvent = activeEventType && 
                           typeof activeEventType === 'string' && 
                           activeEventType.trim() !== '' &&
@@ -368,7 +494,7 @@ export default function GameBoard() {
       console.error('Error triggering event:', error);
       showToast('Lỗi khi kích hoạt event. Vui lòng thử lại.', 'error');
     }
-  }, [roomId, adminId, isAdmin, room, showToast]);
+  }, [roomId, adminId, isAdmin, room, activeEvent, showToast]);
 
   // Handle end active event (admin only)
   const handleEndEvent = useCallback(async () => {
@@ -377,7 +503,8 @@ export default function GameBoard() {
       return;
     }
 
-    if (!room || !room.events?.activeEvent?.type) {
+    // ⚡ HYBRID: Dùng activeEvent từ state (real-time)
+    if (!activeEvent?.type) {
       showToast('Không có event nào đang diễn ra!', 'warning');
       return;
     }
@@ -395,7 +522,7 @@ export default function GameBoard() {
       console.error('Error ending event:', error);
       showToast('Lỗi khi kết thúc event. Vui lòng thử lại.', 'error');
     }
-  }, [roomId, adminId, isAdmin, room, showToast]);
+  }, [roomId, adminId, isAdmin, activeEvent, showToast]);
 
   if (loading) {
     return (
@@ -592,17 +719,17 @@ export default function GameBoard() {
 
         {/* Event Notification */}
         <EventNotification
-          eventType={room?.events?.activeEvent?.type || null}
+          eventType={activeEvent?.type || null}
           isOpen={showEventNotification}
           onClose={() => setShowEventNotification(false)}
-          duration={room?.events?.activeEvent?.duration || 0}
+          duration={activeEvent?.duration || 0}
         />
 
         {/* Event Timer */}
         {room?.startedAt && (
           <EventTimer
-            activeEvent={room.events?.activeEvent || { type: null, startedAt: null, duration: 0, data: {} }}
-            gameStartedAt={room.startedAt?.toDate?.() || new Date(room.startedAt)}
+            activeEvent={activeEvent || { type: null, startedAt: null, duration: 0, data: {} }}
+            gameStartedAt={room?.startedAt?.toDate?.() || new Date(room?.startedAt || Date.now())}
           />
         )}
 
@@ -626,13 +753,13 @@ export default function GameBoard() {
             </div>
 
             {/* Current Active Event */}
-            {room.events?.activeEvent?.type && (
+            {activeEvent?.type && (
               <div className="mb-4 p-3 bg-purple-500/20 rounded-lg border border-purple-500">
                 <div className="text-white font-semibold mb-2">Event đang active:</div>
-                <div className="text-purple-300 font-bold">{room.events.activeEvent.type}</div>
-                {room.events.activeEvent.duration > 0 && (
+                <div className="text-purple-300 font-bold">{activeEvent.type}</div>
+                {activeEvent.duration > 0 && (
                   <div className="text-purple-200 text-sm mt-1">
-                    Duration: {room.events.activeEvent.duration}s
+                    Duration: {activeEvent.duration}s
                   </div>
                 )}
                 <button

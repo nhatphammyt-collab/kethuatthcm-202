@@ -280,6 +280,26 @@ export function subscribeToRoom(
 }
 
 /**
+ * ⚡ HYBRID OPTIMIZATION: Subscribe chỉ events (real-time)
+ * Giảm reads bằng cách chỉ subscribe events thay vì toàn bộ room
+ */
+export function subscribeToEvents(
+  roomId: string,
+  callback: (activeEvent: Room['events']['activeEvent'] | null) => void
+): () => void {
+  const roomRef = doc(db, ROOMS_COLLECTION, roomId);
+  
+  return onSnapshot(roomRef, (doc) => {
+    if (doc.exists()) {
+      const roomData = doc.data() as Room;
+      callback(roomData.events?.activeEvent || null);
+    } else {
+      callback(null);
+    }
+  });
+}
+
+/**
  * Log game action
  */
 export async function logGameAction(

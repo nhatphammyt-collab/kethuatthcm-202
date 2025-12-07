@@ -1,7 +1,8 @@
-import { useNavigate } from 'react-router-dom';
-import { GraduationCap, Star } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { GraduationCap } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { balladLyrics } from '../data/lyrics';
+import VietnamFlagLogo from '../components/VietnamFlagLogo';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -230,65 +231,75 @@ export default function LandingPage() {
         scrolled ? 'bg-[#b30000]/95 backdrop-blur-md shadow-2xl' : 'bg-transparent'
       }`}>
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-4 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <img
-                src="/image copy copy copy copy copy.png"
-                alt="Logo"
-                className="w-12 h-12 object-contain"
-              />
+          <header className="top-nav">
+            <div className="brand logo-row cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <VietnamFlagLogo size={40} className="header-flag" />
               <div className="text-left">
                 <div className="text-[#FFD700] font-bold text-sm">TƯ TƯỞNG</div>
                 <div className="text-white font-bold text-base">HỒ CHÍ MINH</div>
               </div>
             </div>
 
-            <div className="hidden md:flex items-center gap-8">
-              <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+            <nav className="nav-pill hidden md:flex">
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className={`nav-item ${location.pathname === '/' ? 'nav-item--active' : ''}`}
               >
                 Trang Chủ
-              </button>
-              <button
-                onClick={() => navigate('/presentation')}
-                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              </a>
+              <a
+                href="/presentation"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/presentation');
+                }}
+                className={`nav-item ${location.pathname === '/presentation' ? 'nav-item--active' : ''}`}
               >
                 Trình Chiếu
-              </button>
-              <button
-                onClick={() => navigate('/memory-gallery')}
-                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              </a>
+              <a
+                href="/memory-gallery"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/memory-gallery');
+                }}
+                className={`nav-item ${location.pathname === '/memory-gallery' ? 'nav-item--active' : ''}`}
               >
                 Thư Viện Kỷ Niệm
-              </button>
-              <button
-                onClick={() => navigate('/minigame')}
-                className="text-white hover:text-[#FFD700] font-medium transition-colors duration-200"
+              </a>
+              <a
+                href="/minigame"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate('/minigame');
+                }}
+                className={`nav-item ${location.pathname === '/minigame' ? 'nav-item--active' : ''}`}
               >
                 Minigame
-              </button>
-            </div>
-          </div>
+              </a>
+            </nav>
+          </header>
         </div>
       </nav>
 
       <div className="relative z-10">
         <header className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
-          <div className="glassmorphism-hero max-w-4xl mx-auto p-12 rounded-3xl animate-fade-in">
-            <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-20 h-20 bg-[#FFD700] rounded-full flex items-center justify-center shadow-2xl">
-                <Star size={48} className="text-[#b30000] fill-[#b30000]" />
-              </div>
+          <div className="glass-card max-w-4xl mx-auto animate-fade-in">
+            <div className="logo-row justify-center mb-8">
+              <VietnamFlagLogo size={56} className="hero-flag" />
               <div className="text-left">
                 <div className="text-[#FFD700] font-bold text-lg">TƯ TƯỞNG</div>
                 <div className="text-white font-bold text-2xl">HỒ CHÍ MINH</div>
               </div>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-2xl" style={{textShadow: '3px 3px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)'}}>
               SINH VIÊN TRÊN <span className="whitespace-nowrap">"MẶT TRẬN VĂN HÓA"</span>
             </h1>
-            <h2 className="text-2xl md:text-4xl font-semibold text-[#FFD700] mb-8 drop-shadow-xl">
+            <h2 className="text-2xl md:text-4xl font-semibold text-[#FFD700] mb-8 drop-shadow-xl" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
               CUỘC CHIẾN CHỐNG <span className="whitespace-nowrap">"GIẶC NỘI XÂM"</span>
             </h2>
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 text-sm md:text-base">
@@ -325,11 +336,11 @@ export default function LandingPage() {
               }`}
             >
               <div className="flex-1">
-                <div className="glassmorphism-card p-8 rounded-2xl hover:glow transition-all duration-500">
-                  <h3 className="text-3xl font-bold text-[#FFD700] mb-6">
+                <div className="glass-card hover:glow transition-all duration-500">
+                  <h3 className="text-3xl font-bold text-[#FFD700] mb-6" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
                     {section.title}
                   </h3>
-                  <p className="text-lg text-gray-100 leading-relaxed mb-6">
+                  <p className="text-lg text-gray-100 leading-relaxed mb-6" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.8)'}}>
                     {section.content}
                   </p>
                   <div 
@@ -365,7 +376,7 @@ export default function LandingPage() {
         </main>
 
         <section className="container mx-auto px-6 py-20" ref={timelineRef}>
-          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
+          <div className="glass-card mb-20 fade-in-section">
             {/* Title with Singing Character */}
             <div className="flex items-center justify-between mb-8">
               <div className="flex-1 flex justify-start">
@@ -436,7 +447,7 @@ export default function LandingPage() {
                   onTimeUpdate={handleTimeUpdate}
                 />
               </div>
-              <h2 className="text-3xl font-bold text-[#FFD700] text-center flex-1 whitespace-nowrap">
+              <h2 className="text-3xl font-bold text-[#FFD700] text-center flex-1 whitespace-nowrap" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
                 Dòng Thời Gian Cuộc Đời Chủ Tịch Hồ Chí Minh
               </h2>
               <div className="flex-1"></div>
@@ -485,8 +496,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
-            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12">
+          <div className="glass-card mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
               Những Câu Nói Bất Hủ
             </h2>
             <div className="space-y-8">
@@ -509,8 +520,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
-            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12">
+          <div className="glass-card mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-12" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
               Di Sản & Giá Trị Vĩnh Hằng
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
@@ -549,8 +560,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="glassmorphism-card p-12 rounded-3xl mb-20 fade-in-section">
-            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-8">
+          <div className="glass-card mb-20 fade-in-section">
+            <h2 className="text-4xl font-bold text-[#FFD700] text-center mb-8" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
               Thông Điệp Dành Cho Sinh Viên
             </h2>
             <div className="max-w-4xl mx-auto">

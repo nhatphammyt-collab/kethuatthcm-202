@@ -163,16 +163,16 @@ export default function PresentationPage() {
 
       <div className="pt-24 pb-12 min-h-screen relative z-10">
         <div className="container mx-auto px-6 max-w-5xl relative">
-          <div className="bg-gradient-to-r from-[#b30000]/80 to-[#8b0000]/80 p-12 rounded-3xl shadow-2xl mb-12 text-center border-4 border-[#FFD700] backdrop-blur-md hover:shadow-[0_20px_60px_rgba(179,0,0,0.4)] transition-all duration-300">
-            <h1 className="text-4xl md:text-5xl font-black text-white mb-4 drop-shadow-lg" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.5)'}}>
+          <div className="glass-card mb-12 text-center hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300">
+            <h1 className="text-4xl md:text-5xl font-black text-white mb-4 drop-shadow-lg" style={{textShadow: '3px 3px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)'}}>
               BÀI THUYẾT TRÌNH
             </h1>
-            <h2 className="text-2xl md:text-3xl text-[#FFD700] font-bold drop-shadow-md" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
+            <h2 className="text-2xl md:text-3xl text-[#FFD700] font-bold drop-shadow-md" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
               SINH VIÊN TRÊN "MẶT TRẬN VĂN HÓA" – CUỘC CHIẾN CHỐNG "GIẶC NỘI XÂM"
             </h2>
           </div>
 
-          <div className="bg-white/95 backdrop-blur-md p-8 rounded-2xl shadow-2xl mb-12 border-4 border-[#FFD700] hover:shadow-[0_20px_60px_rgba(255,215,0,0.3)] transition-all duration-300">
+          <div className="glass-card mb-12 hover:shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-300">
             <h3 className="text-3xl font-black text-[#b30000] mb-6 flex items-center gap-2 drop-shadow-md">
               <BookOpen size={32} />
               MỤC LỤC
