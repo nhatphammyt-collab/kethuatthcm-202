@@ -181,13 +181,15 @@ src/
 
 **Important:** Most Firebase logic is in `src/services/firebase/gameService.ts`. When making changes to game logic, always check this file first.
 
+**Quiz Answer Logic:** Quiz answers are handled in `GameBoard.tsx` (lines 85-155, 488-512) using a batch queue system, NOT in gameService.
+
 - **Real-time subscriptions:**
   - `subscribeToRoom()` - Full room updates (admin only)
   - `subscribeToEvents()` - Event updates only (all players)
 
 - **Player actions:**
   - `rollDice()` - Atomic transaction with cooldown check (7s), applies event effects
-  - `answerQuestion()` - Not in gameService, handled in GameBoard with batching
+  - Quiz answers - Handled in `GameBoard.tsx` with batching (500ms queue)
   - `claimReward()` - Transaction with time-based unlock checks and per-player limits (max 2 rewards)
 
 - **Admin actions:**
@@ -196,10 +198,10 @@ src/
   - `startGame()` / `endGame()`
 
 - **Optimizations:**
-  - `loadQuestionsToCache()` - Load all questions once at game start
+  - `loadQuestionsToCache()` - Load all questions once at game start (called in `GameBoard.tsx` line 172)
   - `getRandomQuestionFromCache()` - Get questions from memory (no Firebase read)
-  - Polling instead of subscriptions for players
-  - Batch quiz answer updates (500ms window)
+  - Polling instead of subscriptions for players (3s interval)
+  - Batch quiz answer updates (500ms debounce window with queue system)
 
 ### Game Events
 
@@ -228,6 +230,8 @@ Each player can claim max 2 rewards total (including Mystery Box).
 ### Important Implementation Details
 
 1. **Dice Cooldown:** Players must wait 7 seconds between dice rolls (stored in `player.lastDiceRollTime`)
+   - Client-side countdown timer updates every second (`GameBoard.tsx` lines 284-313)
+   - Server-side validation in `rollDice()` throws `COOLDOWN_X` error
 
 2. **Position Tracking:** Two position fields:
    - `position` (0-23): Visual position on board (modulo 24)
@@ -250,6 +254,23 @@ Each player can claim max 2 rewards total (including Mystery Box).
    - `rollDice()` - Prevent race conditions
    - `joinRoom()` - Check room capacity atomically
    - `claimReward()` - Prevent duplicate claims
+
+7. **Player Grouping:** GameBoard shows only 4 players at a time per group (`GameBoard.tsx` lines 318-342)
+   - Prevents UI clutter with 50 players
+   - Players grouped by join order
+   - Admin excluded from grouping
+
+8. **Quiz Batch System:** (`GameBoard.tsx` lines 85-155)
+   - Queue: `quizUpdateQueue.current` stores pending updates
+   - Debounce: 500ms timer before batch write
+   - Safety: Re-reads room state to check current event before applying effects
+   - Cleanup: Flushes queue on component unmount
+
+9. **Hybrid State Management:**
+   - Admin: Real-time subscription via `subscribeToRoom()` (line 197)
+   - Players: Polling with `getRoomById()` every 3s (line 226-261)
+   - Events: Real-time for all via `subscribeToEvents()` (line 176)
+   - Local state merged with Firebase state for consistent UX
 
 ## Common Tasks
 

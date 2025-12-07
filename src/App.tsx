@@ -9,6 +9,9 @@ import LobbyRoom from './pages/minigame/LobbyRoom';
 import GameBoard from './pages/minigame/GameBoard';
 import TestGameBoard from './pages/minigame/TestGameBoard';
 import GameEnd from './pages/minigame/GameEnd';
+import TourLobbyPage from './pages/tour/TourLobbyPage';
+import TourTravelPage from './pages/tour/TourTravelPage';
+import TourTestPage from './pages/tour/TourTestPage';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route path="/minigame/end/:roomId" element={<GameEnd />} />
         <Route path="/minigame/test" element={<TestGameBoard />} />
         <Route path="/memory-gallery" element={<MemoryGalleryPage />} />
+        <Route path="/memory-gallery/tour/:tourId" element={<TourLobbyPage />} />
+        <Route path="/memory-gallery/tour/:tourId/travel" element={<TourTravelPage />} />
+        <Route path="/memory-gallery/test" element={<TourTestPage />} />
       </Routes>
     </Router>
   );

@@ -454,7 +454,7 @@ export default function LandingPage() {
               </div>
               <h2 className="text-3xl font-bold text-[#FFD700] text-center flex-1 whitespace-nowrap" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.9), 0 0 15px rgba(0,0,0,0.6)'}}>
                 Dòng Thời Gian Cuộc Đời Chủ Tịch Hồ Chí Minh
-              </h2>
+            </h2>
               <div className="flex-1"></div>
             </div>
 

@@ -126,6 +126,12 @@ export function ContentColumn() {
             // Also handle content-item animations
             entry.target.classList.add("animate-in", "fade-in", "slide-in-from-bottom-4")
             entry.target.classList.remove("opacity-0", "translate-y-4")
+            // Show character icon
+            const characterIcon = entry.target.querySelector(".section-character-icon img")
+            if (characterIcon) {
+              characterIcon.classList.add("opacity-100")
+              characterIcon.classList.remove("opacity-0")
+            }
           }
         })
       },
@@ -176,9 +182,19 @@ export function ContentColumn() {
       {sections.slice(0, 4).map((section, index) => (
         <div
           key={section.id}
-          className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block"
+          className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block relative"
           style={{ transitionDelay: `${(index + 2) * 100}ms` }}
         >
+          {/* Character Icon - Right Corner */}
+          <div className="section-character-icon">
+            <img 
+              src="/nvnu.png" 
+              alt="Nhân vật nữ" 
+              className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-0 transition-opacity duration-700"
+              style={{ transitionDelay: `${(index + 2) * 150}ms` }}
+            />
+          </div>
+
           {/* Special layout for Part 1 */}
           {section.id === "dan-nhap" ? (
             <>
@@ -347,9 +363,19 @@ export function ContentColumn() {
       {sections.slice(4, 5).map((section) => (
         <div
           key={section.id}
-          className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block"
+          className="content-item opacity-0 translate-y-4 transition-all duration-500 section-block relative"
           style={{ transitionDelay: `${(4 + 2) * 100}ms` }}
         >
+          {/* Character Icon - Right Corner */}
+          <div className="section-character-icon">
+            <img 
+              src="/nvnu.png" 
+              alt="Nhân vật nữ" 
+              className="w-32 h-32 md:w-40 md:h-40 object-contain opacity-0 transition-opacity duration-700"
+              style={{ transitionDelay: `${(4 + 2) * 150}ms` }}
+            />
+          </div>
+
           <div className="section-grid">
             <div className="glass-card p-0 overflow-hidden">
               <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden">
