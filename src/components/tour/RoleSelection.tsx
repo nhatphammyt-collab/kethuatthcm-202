@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Bus, Users } from "lucide-react"
+import { Bus, Users, Home, Gamepad2 } from "lucide-react"
 import type { TourRole } from "../../types/tour"
 
 export function RoleSelection() {
@@ -97,6 +97,24 @@ export function RoleSelection() {
       >
         <div className="absolute inset-0 bg-black/40 z-0" />
       </div>
+
+      {/* Navigation Buttons - Top Left */}
+      <nav className="fixed top-6 left-6 z-20 flex gap-3">
+        <button
+          onClick={() => navigate('/')}
+          className="flex items-center gap-2 bg-[#FFD700] text-[#b30000] px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
+        >
+          <Home size={20} />
+          Trang Chủ
+        </button>
+        <button
+          onClick={() => navigate('/minigame')}
+          className="flex items-center gap-2 bg-[#FFD700] text-[#b30000] px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-transform shadow-lg"
+        >
+          <Gamepad2 size={20} />
+          Minigame
+        </button>
+      </nav>
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-2xl">
