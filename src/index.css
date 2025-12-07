@@ -7,12 +7,35 @@
     scroll-behavior: smooth;
   }
 
+  html,
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Page fade-in animation */
+  @keyframes pageFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  #root {
+    animation: pageFadeIn 0.6s ease-out;
+  }
+
+  .heading-title {
+    font-family: "Playfair Display", "Be Vietnam Pro", serif;
+    letter-spacing: 0.04em;
+  }
+
+  .heading-subtitle {
+    font-weight: 500;
+    font-size: 1rem;
   }
 }
 
@@ -22,12 +45,66 @@
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    border-radius: 28px;
-    border: 1px solid rgba(255, 215, 0, 0.28);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 215, 0, 0.25);
     box-shadow:
-      inset 0 0 12px rgba(255, 215, 0, 0.15),
-      0 8px 32px rgba(0, 0, 0, 0.45);
-    padding: 32px;
+      inset 0 0 10px rgba(255, 215, 0, 0.12),
+      0 10px 32px rgba(0, 0, 0, 0.45);
+    padding: 24px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Animation-ready glass card (for sections that need animation) */
+  .glass-card.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  
+  .glass-card.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Enhanced glass card with gradient border effect (only for presentation page) */
+  .presentation-page .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #FFD86B, #F4C542);
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Ensure content is above gradient border */
+  .presentation-page .glass-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Animated reflective highlight (only for presentation page) */
+  .presentation-page .glass-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    transition: left 0.6s ease;
+    pointer-events: none;
+  }
+
+  .presentation-page .glass-card:hover::after {
+    left: 100%;
   }
 
   .glassmorphism-hero {
@@ -65,19 +142,21 @@
     padding: 1rem 2.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 0 2px rgba(255, 215, 0, 0.5),
                 inset 0 -2px 4px rgba(0, 0, 0, 0.2),
                 inset 0 2px 4px rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
-    border: none;
+    border: 1px solid rgba(255, 215, 0, 0.3);
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
 
   .cta-button:hover {
-    transform: scale(1.05) translateY(-2px);
+    transform: translateY(-2px);
     box-shadow: 0 0 25px rgba(255, 215, 0, 0.8),
                 0 8px 16px rgba(0, 0, 0, 0.2),
+                0 0 3px rgba(255, 215, 0, 0.6),
                 inset 0 -2px 4px rgba(0, 0, 0, 0.2),
                 inset 0 2px 4px rgba(255, 255, 255, 0.5);
   }
@@ -337,6 +416,189 @@
       font-size: 12px;
     }
   }
+
+  /* Quote Block Style */
+  .quote-block {
+    position: relative;
+    padding: 1.5rem;
+    padding-left: 2rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, rgba(179, 0, 0, 0.08) 0%, rgba(255, 215, 0, 0.08) 100%);
+    border-left: 4px solid #ffd700;
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+
+  .quote-block::before {
+    content: '"';
+    position: absolute;
+    top: -0.5rem;
+    left: 0.5rem;
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    color: #ffd700;
+    opacity: 0.3;
+    line-height: 1;
+  }
+
+  /* Update quote block for dark glass background */
+  .glass-card .quote-block {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(179, 0, 0, 0.15) 100%);
+    border-left-color: #ffd700;
+  }
+
+  .glass-card .quote-block::before {
+    color: #ffd700;
+    opacity: 0.5;
+  }
+
+  /* ⚡ PRESENTATION PAGE LAYOUT */
+  .presentation-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  .section-block {
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+
+  /* Sticky header with blur effect */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  .sticky-header.scrolled {
+    background-color: rgba(179, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Parallax background effect */
+  .parallax-background {
+    background-attachment: fixed;
+    filter: brightness(0.85);
+  }
+
+  /* Character breathing animation */
+  @keyframes characterBreathe {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .character-breathe {
+    animation: characterBreathe 3s ease-in-out infinite;
+  }
+
+  /* hero title card (top big red card) */
+  .hero-title-card {
+    background: linear-gradient(
+      180deg,
+      rgba(180, 0, 24, 0.9),
+      rgba(130, 0, 15, 0.92)
+    );
+    text-align: center;
+  }
+
+  /* TOC (Table of Contents) card */
+  .toc-card {
+    background: rgba(255, 255, 255, 0.96);
+    color: #222;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  .toc-title {
+    margin-bottom: 16px;
+  }
+
+  .toc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .toc-item {
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(248, 248, 248, 0.9);
+    font-weight: 500;
+  }
+
+  /* generic 2-column section layout: image + content */
+  .section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 900px) {
+    .section-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* side CTA buttons (Thư Viện Kỷ Niệm / Chuyển Sang Minigame) */
+  .side-cta {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .side-cta {
+      position: static;
+      margin-top: 24px;
+      align-items: flex-end;
+    }
+  }
+
+  /* primary CTA button style (can reuse existing yellow buttons) */
+  .button-primary {
+    background: linear-gradient(180deg, #ffe572 0%, #ffb800 100%);
+    color: #8a1c00;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 32px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35),
+                0 0 2px rgba(255, 215, 0, 0.5);
+    text-transform: uppercase;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+      background 0.15s ease;
+    cursor: pointer;
+  }
+
+  .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45),
+                0 0 3px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(180deg, #fff08a 0%, #ffc533 100%);
+  }
+
+  .button-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35),
+                0 0 1px rgba(255, 215, 0, 0.4);
+  }
 }
 
 @layer utilities {
@@ -398,5 +660,40 @@
     height: 100%;
     object-fit: contain;
     object-position: center;
+  }
+
+  /* Sticky header with blur effect */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+
+  .sticky-header.scrolled {
+    background-color: rgba(179, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Parallax background effect */
+  .parallax-background {
+    background-attachment: fixed;
+    filter: brightness(0.85);
+  }
+
+  /* Character breathing animation */
+  @keyframes characterBreathe {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .character-breathe {
+    animation: characterBreathe 3s ease-in-out infinite;
   }
 }

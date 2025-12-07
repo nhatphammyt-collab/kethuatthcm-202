@@ -94,6 +94,66 @@ export default function GameBoard() {
   
   const isAdmin = role === 'admin' && adminId === room?.adminId;
   
+  // ⚡ BATCH QUIZ UPDATES: Batch update function (moved before useEffect to avoid initialization error)
+  const batchQuizUpdates = useCallback(async () => {
+    if (quizUpdateQueue.current.length === 0) return;
+    
+    if (!roomId) return;
+
+    try {
+      const { doc, getDoc, updateDoc } = await import('firebase/firestore');
+      const { db } = await import('../../config/firebase');
+      
+      const roomRef = doc(db, 'rooms', roomId);
+      
+      // ⚡ AN TOÀN: Đọc lại room từ Firebase để có event state MỚI NHẤT
+      // Tránh race condition khi event thay đổi trong lúc queue
+      const roomSnap = await getDoc(roomRef);
+      if (!roomSnap.exists()) {
+        console.error('[BatchQuiz] Room not found');
+        quizUpdateQueue.current = [];
+        return;
+      }
+      
+      const currentRoom = roomSnap.data() as Room;
+      const currentEventType = currentRoom.events?.activeEvent?.type;
+      const isQuizBonus = currentEventType === 'quiz_bonus';
+      const isPenaltyWrong = currentEventType === 'penalty_wrong';
+      
+      // ⚡ Gộp tất cả updates vào 1 write
+      const updates: Record<string, any> = {};
+      
+      quizUpdateQueue.current.forEach((update) => {
+        if (update.isCorrect) {
+          // Quiz đúng: +1 lượt (hoặc +2 nếu có quiz_bonus event)
+          const diceRollsToAdd = isQuizBonus ? 2 : 1;
+          const currentDiceRolls = update.currentDiceRolls || 0;
+          updates[`players.${update.playerId}.diceRolls`] = currentDiceRolls + diceRollsToAdd;
+        } else {
+          // Quiz sai: -5 điểm nếu có penalty_wrong event
+          if (isPenaltyWrong) {
+            const newScore = Math.max(0, (update.currentScore || 0) - 5);
+            updates[`players.${update.playerId}.score`] = newScore;
+          }
+        }
+      });
+      
+      // ⚡ Ghi Firebase 1 lần cho tất cả updates
+      if (Object.keys(updates).length > 0) {
+        await updateDoc(roomRef, updates);
+        console.log(`[BatchQuiz] ✅ Batch updated ${quizUpdateQueue.current.length} quiz answers`);
+      }
+      
+      // Xóa hàng đợi
+      quizUpdateQueue.current = [];
+    } catch (error) {
+      console.error('[BatchQuiz] Error batch updating quiz answers:', error);
+      showToast('Lỗi khi cập nhật kết quả. Vui lòng thử lại.', 'error');
+      // Xóa hàng đợi để tránh retry vô hạn
+      quizUpdateQueue.current = [];
+    }
+  }, [roomId, showToast]);
+  
   // Event Manager hook (only for admin) - handles game end timer, leaderboard updates, and auto event ending
   useEventManager({ 
     room, 
@@ -364,66 +424,6 @@ export default function GameBoard() {
   const handleQuiz = useCallback(() => {
     setShowQuiz(true);
   }, []);
-
-  // ⚡ BATCH QUIZ UPDATES: Batch update function
-  const batchQuizUpdates = useCallback(async () => {
-    if (quizUpdateQueue.current.length === 0) return;
-    
-    if (!roomId) return;
-
-    try {
-      const { doc, getDoc, updateDoc } = await import('firebase/firestore');
-      const { db } = await import('../../config/firebase');
-      
-      const roomRef = doc(db, 'rooms', roomId);
-      
-      // ⚡ AN TOÀN: Đọc lại room từ Firebase để có event state MỚI NHẤT
-      // Tránh race condition khi event thay đổi trong lúc queue
-      const roomSnap = await getDoc(roomRef);
-      if (!roomSnap.exists()) {
-        console.error('[BatchQuiz] Room not found');
-        quizUpdateQueue.current = [];
-        return;
-      }
-      
-      const currentRoom = roomSnap.data() as Room;
-      const currentEventType = currentRoom.events?.activeEvent?.type;
-      const isQuizBonus = currentEventType === 'quiz_bonus';
-      const isPenaltyWrong = currentEventType === 'penalty_wrong';
-      
-      // ⚡ Gộp tất cả updates vào 1 write
-      const updates: Record<string, any> = {};
-      
-      quizUpdateQueue.current.forEach((update) => {
-        if (update.isCorrect) {
-          // Quiz đúng: +1 lượt (hoặc +2 nếu có quiz_bonus event)
-          const diceRollsToAdd = isQuizBonus ? 2 : 1;
-          const currentDiceRolls = update.currentDiceRolls || 0;
-          updates[`players.${update.playerId}.diceRolls`] = currentDiceRolls + diceRollsToAdd;
-        } else {
-          // Quiz sai: -5 điểm nếu có penalty_wrong event
-          if (isPenaltyWrong) {
-            const newScore = Math.max(0, (update.currentScore || 0) - 5);
-            updates[`players.${update.playerId}.score`] = newScore;
-          }
-        }
-      });
-      
-      // ⚡ Ghi Firebase 1 lần cho tất cả updates
-      if (Object.keys(updates).length > 0) {
-        await updateDoc(roomRef, updates);
-        console.log(`[BatchQuiz] ✅ Batch updated ${quizUpdateQueue.current.length} quiz answers`);
-      }
-      
-      // Xóa hàng đợi
-      quizUpdateQueue.current = [];
-    } catch (error) {
-      console.error('[BatchQuiz] Error batch updating quiz answers:', error);
-      showToast('Lỗi khi cập nhật kết quả. Vui lòng thử lại.', 'error');
-      // Xóa hàng đợi để tránh retry vô hạn
-      quizUpdateQueue.current = [];
-    }
-  }, [roomId, showToast]);
 
   // Handle quiz answer - memoized
   // ⚡ BATCH QUIZ: Queue thay vì write ngay
